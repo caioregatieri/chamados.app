@@ -1,0 +1,12 @@
+{
+  "name": "laravel-chamados",
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",
+    "jquery-mask-plugin": "jQuery-Mask-Plugin#~1.13.4",
+    "font-awesome": "fontawesome#~4.5.0",
+    "datatables": "~1.10.10",
+    "datatables-plugins": "~1.10.10",
+    "morrisjs": "~0.5.1"
+  }
+}

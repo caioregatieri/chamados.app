@@ -1,0 +1,84 @@
+@extends('template')
+
+@section('title')
+show call
+@endsection
+
+@section('content')
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Details</h3>
+  </div>
+  <div class="panel-body">
+    <b>Id:</b> {{$call->id}} <br/>
+    <b>Created at:</b>  {{$call->created_at}}<br/>
+    <b>Updated at:</b>  {{$call->updated_at}}<br/>
+    <b>User:</b> {{$call->user->name}} <br/>
+    <b>Departament:</b> {{$call->place->Departament->name}} <br/>
+    <b>Place:</b><a href="{{ route('places.show',['id'=>$call->place->id]) }}"> {{$call->place->name}} </a><br/>
+    <b>Title:</b> {{ $call->title }} <br/>
+    <b>Description:</b>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        {!! $call->description !!}
+      </div>
+    </div>
+    @if($call->files->count() > 0)
+      <b>Attachements:</b> 
+      <div class="panel panel-default">
+        <div class="panel-body">
+          @foreach($call->files as $file)
+            <p><a href="{!! route('calls.file.download',['call'=>$call->id,'file'=>$file->id]) !!}">{!! $file->filename !!}</a></p>
+          @endforeach            
+        </div>
+      </div>
+    @endif
+
+    <a href="{{ route('calls.index') }}" class="btn btn-default">Back</a>
+    @if($call->history->last()->status->isend == "0")
+      <a href="{{ route('calls.edit',['id'=>$call->id])}}" class="btn btn-primary">Edit</a>
+    @endif
+
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">History</h3>
+  </div>
+  <div class="panel-body">
+
+    @if($call->history->last()->status->isend == "0")
+        <a href="{{ route('calls.history.create', ['id'=>$call->id]) }}" class="btn btn-success">Create new history</a><br/><br/>
+    @endif
+
+    @foreach($call->history->sortByDesc('id') as $history)
+        <div class="panel panel-{{ $history->status->color }}">
+          <div class="panel-heading">{{ $history->status->name }}</div>
+          <div class="panel-body">
+            <b>Date:</b> {{ $history->created_at }} <br/>
+            <b>User:</b> {{ $history->user->name }} <br/>
+            <b>Description:</b> 
+            <div class="panel panel-default">
+              <div class="panel-body">
+                {!! $history->description !!}
+              </div>
+            </div>
+            @if($history->files->count() > 0)
+              <b>Attachements:</b> 
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  @foreach($history->files as $file)
+                    <p><a href="{!! route('calls.history.file.download',['history'=>$history->id,'file'=>$file->id]) !!}">{!! $file->filename !!}</a></p>
+                  @endforeach            
+                </div>
+              </div>
+            @endif
+          </div>
+        </div>
+    @endforeach
+  </div>
+</div>
+
+@endsection

@@ -1,0 +1,9 @@
+/bower_components
+/vendor
+/storage/uploads
+/storage/logs
+/storage/database.sqlite
+/node_modules
+Homestead.yaml
+Homestead.json
+.env
