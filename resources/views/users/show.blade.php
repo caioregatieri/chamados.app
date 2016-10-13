@@ -19,8 +19,11 @@ Show User
     <b>Place:</b> {{ $user->place->prefix }} {{ $user->place->name }} <br/>
     <b>Register:</b> {{ $user->register }} <br/>
     <b>E-mail:</b> {{ $user->email }} <br/>
-    <b>Locked:</b> {{ $user->locked == 0 ? 'No' : 'Yes' }} <br/><br/>
-
+    <b>Locked:</b> {{ $user->locked == 0 ? 'No' : 'Yes' }}
+    @if($user->logs->count() > 1)
+      <b>Houveram modificações neste usuário</b>
+    @endif
+    <br/><br/>
     <a href="{{ route('users.index') }}" class="btn btn-default">Back</a>
     <a href="{{ route('users.edit',['id'=>$user->id])}}" class="btn btn-primary">Edit</a>
 

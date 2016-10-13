@@ -1,5 +1,11 @@
 <?php
 
+/*
+Autor: Caio Regatieri
+E-mail: caio.cesar.regatieri@gmail.com
+Description: Sistema desenvolvido para controle de chamados 
+*/
+
 namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
@@ -26,5 +32,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('inspire')
                  ->hourly();
+        // Run once a minute 
+        $schedule->command('queue:work')->cron('* * * * * *'); 
     }
+
 }

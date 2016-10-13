@@ -1,5 +1,11 @@
 <?php
 
+/*
+Autor: Caio Regatieri
+E-mail: caio.cesar.regatieri@gmail.com
+Description: Sistema desenvolvido para controle de chamados
+*/
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -24,6 +30,8 @@ use \App\Entities\CallStatus\CallStatus;
 use \App\Entities\Departament\Departament;
 use \App\Entities\Place\Place;
 use \App\Entities\User\User;
+
+use \App\Events\statusCall;
 
 class CallsController extends Controller
 {
@@ -62,7 +70,7 @@ class CallsController extends Controller
       $w = '';
 
       if($search != ''){
-        $w = $w . "where c.title like '%" . $search . "%' ";
+        $w = $w . "where (c.title like '%" . $search . "%' or c.description like '%" . $search . "%') ";
       }
 
       if($mode != ''){
@@ -179,6 +187,8 @@ class CallsController extends Controller
             'status_id' => '1'
         ]);
 
+        $res = \Event::fire(new statusCall($call));
+
         return redirect()->route('calls.index');
     }
 
@@ -190,11 +200,16 @@ class CallsController extends Controller
 
     public function edit($id)
     {
+        $call = Call::find($id);
+
+        if ($call->history->last()->status->isend == 'on')
+            return redirect()->route('calls.index');
+
         $users =        User::lists('name','id');
         $modes =        CallMode::lists('name','id');
         $departaments = Departament::lists('name','id');
         $places =       Place::lists('name','id');
-        $call =         Call::find($id);
+
         return view('calls.edit', compact('departaments','places','users','call','modes'));
     }
 
@@ -216,6 +231,9 @@ class CallsController extends Controller
             return redirect()->back();
           }
         }
+
+        $res = \Event::fire(new statusCall($call));
+
         return redirect()->route('calls.index');
     }
 
@@ -226,33 +244,41 @@ class CallsController extends Controller
 
     public function historycreate($id)
     {
+        $call =   Call::find($id);
+
+        if ($call->history->last()->status->isend == 'on')
+            return redirect()->route('calls.index');
+
         $users =  User::where('id', Auth::user()->id)->lists('name','id');
         $status = CallStatus::where('id','<>','1')->lists('name','id');
-        $call =   Call::find($id);
+        
         return view('calls.history.create', compact('users','status','call'));
     }
 
     public function historystore(HistoryRequest $request)
     {
-      $files = Input::file('files');
-      $history = CallHistory::create([
-          'call_id'=>$request['call'],
-          'user_id'=>$request['user'],
-          'description'=>trim($request['description']),
-          'status_id'=>$request['status']
-      ]);
-      if($files[0]){
-        //executa a função de upload e verifica se houveram erros
-        if(!$this->uploadhistoryfiles($history->id, $files)){
-          //em caso de erro com o upload ele remove o historico do banco
-          $history->files()->delete();
-          $history->delete();
-          return redirect()->back();
+        $files = Input::file('files');
+        $history = CallHistory::create([
+            'call_id'=>$request['call'],
+            'user_id'=>$request['user'],
+            'description'=>trim($request['description']),
+            'status_id'=>$request['status']
+        ]);
+        if($files[0]){
+          //executa a função de upload e verifica se houveram erros
+          if(!$this->uploadhistoryfiles($history->id, $files)){
+            //em caso de erro com o upload ele remove o historico do banco
+            $history->files()->delete();
+            $history->delete();
+            return redirect()->back();
+          }
         }
-      }
-      if ($history){
-        return redirect()->route('calls.show', [$request['call']]);
-      }
+        if ($history){
+
+          $res = \Event::fire(new statusCall($history->Call));
+
+          return redirect()->route('calls.show', [$request['call']]);
+        }
     }
 
     private function uploadhistoryfiles($historyId, $files)

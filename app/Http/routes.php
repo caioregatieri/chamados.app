@@ -1,5 +1,11 @@
 <?php
 
+/*
+Autor: Caio Regatieri
+E-mail: caio.cesar.regatieri@gmail.com
+Description: Sistema desenvolvido para controle de chamados
+*/
+
     //Route::controllers([
     //  'auth' => 'AuthController'
     //]);
@@ -16,6 +22,8 @@
     Route::group(['middleware' => 'auth'], function(){
 
       Route::get('home', ['as'=>'home','uses'=>'HomeController@index']);
+
+      Route::get('about', ['as'=>'about','uses'=>'HomeController@about']);
 
       Route::get('logs', ['as'=>'logs','uses'=>'LoginController@index']);
 

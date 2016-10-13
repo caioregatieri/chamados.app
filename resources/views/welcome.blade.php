@@ -32,14 +32,35 @@ Chamados
           border: 0;
           font-size: 96px;
       }
+      /* centered columns styles */
+      .row-centered {
+          text-align:center;
+      }
+      .col-centered {
+          display:inline-block;
+          float:none;
+          /* reset the text-align */
+          text-align:left;
+          /* inline-block space fix */
+          margin-right:-4px;
+      }
+      .panel {
+          border: none;
+          box-shadow: none;
+      }
+
   </style>
 @endsection
 
 @section('content')
-  <div class="panel panel-default">
-    <div class="title">
-      Chamados Técnicos<br/>
-      Secretaria Municipal de Educação
+  <div class="panel panel-default" >
+    <div class="row row-centered" >
+      <div class="col col-md-9 col-centered">
+        <div class="title" >
+          <b>Chamados Técnicos</b><br/>
+          Secretaria Municipal de Educação
+        </div>
+      </div>
     </div>
   </div>
 @endsection

@@ -16,7 +16,10 @@ Show user type
     <b>Name:</b> {{ $usertype->name }} <br/>
     <b>Administrador:</b> {{ $usertype->administrator == 0 ? 'No' : 'Yes' }} <br/>
     <b>Calls only for your site:</b> {{ $usertype->onlyyourplace == 0 ? 'No' : 'Yes' }} <br/><br/>
-
+    @if($usertype->logs->count() > 1)
+      <b>Houveram modificações neste registro</b>
+    @endif
+    <br/>
     <a href="{{ route('usertypes.index') }}" class="btn btn-default">Back</a>
     <a href="{{ route('usertypes.edit',['id'=>$usertype->id])}}" class="btn btn-primary">Edit</a>
 

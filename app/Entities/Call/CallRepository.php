@@ -1,5 +1,11 @@
 <?php
 
+/*
+Autor: Caio Regatieri
+E-mail: caio.cesar.regatieri@gmail.com
+Description: Sistema desenvolvido para controle de chamados 
+*/
+
 namespace App\Entities\Call;
 
 use Call;
@@ -7,14 +13,13 @@ use DB;
 
 class CallRepository
 {
-	private $repository;
+	private $entity;
 
-	public function __construct(Call $repository){
-		$this->repository = $repository;
+	public function __construct(Call $entity){
+		$this->entity = $entity;
 	}
 
 	public function DBSelect($conditions = array(), $order = ''){
-		
 		//comando a ser executado
       	$q = 'select c.id, c.created_at,  c.title, '.
                 'p.name as place,	'.
@@ -56,4 +61,5 @@ class CallRepository
       	//retorna os dados
       	return $dados
 	}
+  
 }

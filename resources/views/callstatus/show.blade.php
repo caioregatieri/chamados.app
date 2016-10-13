@@ -17,7 +17,10 @@ Show call status
     <b>Accent color:</b> {{ $callstatus->color }} <br/>
     <b>Is start the call:</b> {{ $callstatus->isstart == '0' ? 'No' : 'Yes' }} <br/>
     <b>Is end the call:</b> {{ $callstatus->isend == '0' ? 'No' : 'Yes' }} <br/>
-
+    @if($callstatus->logs->count() > 1)
+      <b>Houveram modificações neste registro</b>
+    @endif
+    <br/>    
     <a href="{{ route('callstatus.index') }}" class="btn btn-default">Back</a>
     <a href="{{ route('callstatus.edit',['id'=>$callstatus->id])}}" class="btn btn-primary">Edit</a>
 

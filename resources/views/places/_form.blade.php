@@ -66,5 +66,5 @@
 
 <div class="form-group">
   {!! Form::label('note','Note:') !!}
-  {!! Form::textarea('note', null, ['class'=>'form-control']) !!}
+  {!! Form::textarea('note', null, ['class'=>'ckeditor form-control']) !!}
 </div>

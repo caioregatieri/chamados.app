@@ -1,5 +1,11 @@
 <?php
 
+/*
+Autor: Caio Regatieri
+E-mail: caio.cesar.regatieri@gmail.com
+Description: Sistema desenvolvido para controle de chamados 
+*/
+
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 

@@ -1,5 +1,11 @@
 <?php
 
+/*
+Autor: Caio Regatieri
+E-mail: caio.cesar.regatieri@gmail.com
+Description: Sistema desenvolvido para controle de chamados
+*/
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -9,6 +15,7 @@ use App\Http\Controllers\Controller;
 use App\Entities\Call\Call;
 use App\Entities\CallStatus\CallStatus;
 use App\Entities\Departament\Departament;
+use App\Entities\Login\Login;
 use Auth;
 use DB;
 
@@ -17,10 +24,18 @@ class HomeController extends Controller
 
     public function index(){
       $c = ($this->calls());
-      $l = ($this->graphPerMonth('morris-area-chart', 6, Departament::lists('name'), Departament::lists('name')));
+      $l = ($this->graphPerMonth('morris-area-chart', 5, Departament::lists('name'), Departament::lists('name')));
       $p = ($this->graphPerDepartament('morris-donut-chart', $this->palletColors(), true));
       $z = ($this->graphPerMode('morris-donut-chart2', $this->palletColors(), true));
-      return view('home', compact('c','l','p','z'));
+      //dd(compact('c','l','p','z'));
+      return view('home.index', compact('c','l','p','z'));
+    }
+
+    public function about(Request $request){
+      /*Login::create(['user_id'=>Auth::user()->id,
+                     'ip'=>$request->ip(),
+                     'method'=>'about']);*/
+      return view('home.about');
     }
 
     function palletColors(){

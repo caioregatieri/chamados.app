@@ -1,5 +1,11 @@
 <?php
 
+/*
+Autor: Caio Regatieri
+E-mail: caio.cesar.regatieri@gmail.com
+Description: Sistema desenvolvido para controle de chamados 
+*/
+
 namespace App\Providers;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;

@@ -1,5 +1,11 @@
 <?php
 
+/*
+Autor: Caio Regatieri
+E-mail: caio.cesar.regatieri@gmail.com
+Description: Sistema desenvolvido para controle de chamados 
+*/
+
 return [
 
     /*
@@ -26,7 +32,7 @@ return [
     |
     */
 
-    'url' => 'http://localhost/chamados',
+    'url' => 'http://chamados.app',
 
     /*
     |--------------------------------------------------------------------------

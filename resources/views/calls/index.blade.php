@@ -4,6 +4,10 @@
 Calls
 @endsection
 
+@section('head')
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/css/select2.min.css" rel="stylesheet" />
+@endsection
+
 @section('content')
 
     <a href="{{ route('calls.create')}}" class="btn btn-success">Create new call</a>
@@ -15,7 +19,7 @@ Calls
       <div class="panel-body">
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
-            <input name="search" type="text" class="form-control" placeholder="Title" />
+            <input name="search" type="text" class="form-control" placeholder="Title or Description" />
           </div>
           <div class="form-group">
               <select class="form-control" name="mode">
@@ -86,13 +90,15 @@ Calls
 @endsection
 
 @section('scripts')
+  <!-- select2 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/js/select2.min.js"></script>
+
   <script type="text/javascript">
 
     $( document ).ready(function() {
       $('select[name=place]').empty();
       var departament_id = $('select[name=departament]').val();
       fillPlaces(departament_id);
-      SetPagination();
     });
 
     $('select[name=departament]').change(function(){
@@ -107,6 +113,7 @@ Calls
         $.each(places, function(key, value){
           $('select[name=place]').append('<option value='+value.id+'>'+value.name+'</option>');
         });
+        $('select[name=place]').select2();
       });
     }
 

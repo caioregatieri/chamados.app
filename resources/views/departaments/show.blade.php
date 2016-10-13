@@ -13,8 +13,11 @@ Show place
   <div class="panel-body">
     <b>Id:</b> {{$departament->id}} <br/>
     <b>Created at:</b>  {{$departament->created_at}}<br/>
-    <b>Name:</b> {{ $departament->name }} <br/><br/>
-
+    <b>Name:</b> {{ $departament->name }} <br/>
+    @if($departament->logs->count() > 1)
+      <b>Houveram modificações neste registro</b>
+    @endif
+    <br/>
     <a href="{{ route('departaments.index') }}" class="btn btn-default">Back</a>
     <a href="{{ route('departaments.edit',['id'=>$departament->id])}}" class="btn btn-primary">Edit</a>
 

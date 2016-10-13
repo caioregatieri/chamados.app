@@ -1,6 +1,12 @@
 <?php
 
 /*
+Autor: Caio Regatieri
+E-mail: caio.cesar.regatieri@gmail.com
+Description: Sistema desenvolvido para controle de chamados 
+*/
+
+/*
  * This file is part of laravel-auditing.
  *
  * @author Antério Vieira <anteriovieira@gmail.com>

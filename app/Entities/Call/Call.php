@@ -1,5 +1,11 @@
 <?php
 
+/*
+Autor: Caio Regatieri
+E-mail: caio.cesar.regatieri@gmail.com
+Description: Sistema desenvolvido para controle de chamados 
+*/
+
 namespace App\Entities\Call;
 
 use Illuminate\Database\Eloquent\Model;
@@ -46,5 +52,15 @@ class Call extends Model
   /*todo historico pertence a um modo*/
   public function mode(){
     return $this->belongsto('App\Entities\CallMode\CallMode');
+  }
+
+  /**/
+  public function getCreatedAtAttribute($value){
+    return date("d/m/Y h:i:s", strtotime($value));
+  }
+
+  /**/
+  public function getUpdatedAtAttribute($value){
+    return date("d/m/Y h:i:s", strtotime($value));
   }
 }

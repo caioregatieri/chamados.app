@@ -42,23 +42,30 @@ Show place
         <b>Telephone2:</b> {{$place->telephone2}} <br/>
         <b>Supervisor:</b> {{$place->responsavel}} <br/>
         <b>E-mail:</b> {{$place->email}} <br/>
-        <b>Note:</b> {{$place->note}} <br/><br/>
+        <b>Note:</b>
+        <div>
+          {!! $place->note !!}
+        </div>
       </div>
       <div class="col-md-6">
-        <div id="mapa" style="height: 270px; border-radius: 10px;"></div>
-        <br/><br/>
+        <div id="mapa" style="height: 350px; border-radius: 10px;"></div>
       </div>
     </div>
+    <br/>
+    @if($place->logs->count() > 1)
+      <b>Houveram modificações neste registro</b>
+    @endif
+    <br/>
     <a href="{{ route('places.index') }}" class="btn btn-default">Back</a>
-    <a href="{{ route('places.edit',['id'=>$place->id])}}" class="btn btn-primary">Edit</a>
-  </div>
-
+    <a href="{{ route('places.edit',['id'=>$place->id]) }}" class="btn btn-primary">Edit</a>
+  </div> 
 </div>
 
 @endsection
 
 @section('scripts')
-  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyCLwJ1rSXCuLcoi8E-IfvhduUatvjQs6c8"></script>
+
 
   <script type="text/javascript">
     var map = null;
@@ -77,9 +84,9 @@ Show place
     	var latlng = new google.maps.LatLng(latitude, longitude);
 
     	var myOptions = {
-    	   zoom: 16,
-    	    center: latlng,
-    	     mapTypeId: google.maps.MapTypeId.ROADMAP
+    	   zoom: 17,
+    	   center: latlng,
+    	   mapTypeId: google.maps.MapTypeId.ROADMAP
     	};
 
     	//criando o mapa

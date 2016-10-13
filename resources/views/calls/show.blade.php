@@ -34,10 +34,12 @@ show call
         </div>
       </div>
     @endif
-
+    @if($call->logs->count() > 1)
+      <p><b>Houveram modificações neste registro</b></p>
+    @endif
     <a href="{{ route('calls.index') }}" class="btn btn-default">Back</a>
     @if($call->history->last()->status->isend == "0")
-      <a href="{{ route('calls.edit',['id'=>$call->id])}}" class="btn btn-primary">Edit</a>
+      <a href="{{ route('calls.edit',['id'=>$call->id]) }}" class="btn btn-primary">Edit</a>
     @endif
 
   </div>

@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
@@ -10,8 +9,6 @@
         <link rel="stylesheet" href="{{ asset('css/boot.min.css') }}">
         <!-- font-awesome -->
         <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-        <!-- Morris Charts CSS -->
-        <link rel="stylesheet" href="{{ asset('css/morris.css') }}">
         @yield('head')
     </head>
     <body>
@@ -30,17 +27,19 @@
                     @if (Auth::user()->usertype->id == 1)
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                          Administration
+                          Menu
                           <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="administrationmenu">
                             <li><a href="{{ route('calls.index') }}">Calls</a></li>
-                            
                             <li><a href="{{ route('departaments.index') }}">Departaments</a></li>
                             <li><a href="{{ route('places.index') }}">Places</a></li>
                             <li><a href="{{ route('users.index') }}">Users</a></li>
                             <li><a href="{{ route('usertypes.index') }}">Users Types</a></li>
                         </ul>
+                      </li>
+                      <li>
+                        <a href="{{ route('about') }}">About</a>
                       </li>
                       @else
                         <li><a href="{{ route('calls.index') }}">Calls</a></li>
@@ -73,13 +72,13 @@
       	</div>
       </div>
     </div>
+    <div id="rodape">
+      &nbsp;&nbsp;&nbsp;&nbsp;Desenvolvido por <a href="mailto: caio.cesar.regatieri@gmail.com">Caio Regatieri</a>
+    </div>
     <!-- JQuery -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <!-- Bootstrap -->
     <script src="{{ asset('js/boot.min.js') }}"></script>
-    <!-- MorrisJs -->
-    <script src="{{ asset('js/morris.js') }}"></script>
-    <script src="{{ asset('js/raphael-min.js') }}"></script>
     @yield('scripts')
   </body>
 </html>
