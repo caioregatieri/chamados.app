@@ -7,7 +7,7 @@ Home
 @section('head')
   <!-- Morris Charts CSS -->
   <link rel="stylesheet" href="{{ asset('css/morris.css') }}">
-  
+
   <style>
       .huge {
           font-size: 40px;
@@ -86,8 +86,6 @@ Home
       }
   </style>
 @endsection
-
-
 
 @section('content')
 

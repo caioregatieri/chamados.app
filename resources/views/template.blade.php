@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
@@ -7,78 +7,101 @@
         <title>@yield('title')</title>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="{{ asset('css/boot.min.css') }}">
+        <!-- MetisMenu -->
+        <link rel="stylesheet" href="{{ asset('css/metisMenu.min.css') }}">
+        <!-- SB Admin 2 -->
+        <link rel="stylesheet" href="{{ asset('css/sb-admin-2.css') }}">
         <!-- font-awesome -->
         <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
         @yield('head')
     </head>
-    <body>
-      <div class="container-fluid">
-      	<div class="row">
-      		<div class="col-md-12">
-            <nav class="navbar navbar-default" role="navigation">
-      				<div class="navbar-header">
-      					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-      						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-      					</button> <a class="navbar-brand" href="{{ route('home') }}">Chamados Técnicos</a>
-      				</div>
-      				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      					<ul class="nav navbar-nav">
-                  @if (!Auth::guest())
-                    @if (Auth::user()->usertype->id == 1)
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                          Menu
-                          <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="administrationmenu">
-                            <li><a href="{{ route('calls.index') }}">Calls</a></li>
-                            <li><a href="{{ route('departaments.index') }}">Departaments</a></li>
-                            <li><a href="{{ route('places.index') }}">Places</a></li>
-                            <li><a href="{{ route('users.index') }}">Users</a></li>
-                            <li><a href="{{ route('usertypes.index') }}">Users Types</a></li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a href="{{ route('about') }}">About</a>
-                      </li>
-                      @else
-                        <li><a href="{{ route('calls.index') }}">Calls</a></li>
-                      @endif
-                    @endif
-        					</ul>
-      					<ul class="nav navbar-nav navbar-right">
-                  @if (Auth::guest())
-        						<li>
-                      <a href="{{ route('getLogin') }}">Entrar</a>
-        						</li>
-                  @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                          {{ Auth::user()->name }}
-                          <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ route('getLogout') }}">Logout</a></li>
-                        </ul>
-                    </li>
-                  @endif
-      					</ul>
-      				</div>
-      			</nav>
-            <div id="container" class="container">
-                @yield('content')
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ route('home') }}">Chamados técnicos</a>
             </div>
-          </div>
-      	</div>
-      </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="{{ route('users.show',['id'=>Auth::user()->id]) }}"><i class="fa fa-user fa-fw"></i> Perfil</a>
+                        </li>
+                        <li><a href="{{ route('users.edit',['id'=>Auth::user()->id]) }}"><i class="fa fa-gear fa-fw"></i> Configurações</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="{{ route('getLogout') }}"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li><a href="{{ route('home') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+                        <li>
+                          <a href="{{ route('calls.index') }}"><i class="fa fa-phone fa-fw"></i> Chamados</a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="fa fa-home fa-fw"></i> Locais</a>
+                          <ul class="nav nav-second-level">
+                            <li><a href="{{ route('departaments.index') }}">Secretarias</a></li>
+                            <li><a href="{{ route('places.index') }}">Setores</a></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <a href="#"><i class="fa fa-users fa-fw"></i> Usuarios</a>
+                          <ul class="nav nav-second-level">
+                            <li><a href="{{ route('users.index') }}">Usuarios</a></li>
+                            <li><a href="{{ route('usertypes.index') }}">Tipos</a></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <a href="{{ route('about') }}"><i class="fa fa-info fa-fw"></i> Sobre</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+              @yield('content')
+        </div>
+        <!-- /#page-wrapper -->
+
     </div>
     <div id="rodape">
-      &nbsp;&nbsp;&nbsp;&nbsp;Desenvolvido por <a href="mailto: caio.cesar.regatieri@gmail.com">Caio Regatieri</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;Desenvolvido por <a href="mailto: caio.cesar.regatieri@gmail.com">Caio Regatieri</a>
     </div>
+
     <!-- JQuery -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <!-- Bootstrap -->
     <script src="{{ asset('js/boot.min.js') }}"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="{{ asset('js/metisMenu.min.js') }}"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="{{ asset('js/sb-admin-2.js') }}"></script>
     @yield('scripts')
-  </body>
+</body>
+
 </html>

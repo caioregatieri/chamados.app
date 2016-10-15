@@ -5,11 +5,13 @@ Editar Chamado
 @endsection
 
 @section('head')
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/css/select2.min.css" rel="stylesheet" />  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/css/select2.min.css" rel="stylesheet" />
   @include('calls/_style')
 @endsection
 
 @section('content')
+<br/>
+<br/>
 
 @if($errors->any())
   <div class="alert alert-danger" role="alert">

@@ -9,21 +9,21 @@ Calls
 @endsection
 
 @section('content')
-
-    <a href="{{ route('calls.create')}}" class="btn btn-success">Create new call</a>
     <br/>
     <br/>
 
     <div class="panel panel-default">
-      <div class="panel-heading">Filter and search</div>
+      <div class="panel-heading">
+        <h4 class="panel-title">Filtrar e pesquisar</h4>
+      </div>
       <div class="panel-body">
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
-            <input name="search" type="text" class="form-control" placeholder="Title or Description" />
+            <input name="search" type="text" class="form-control" placeholder="Titulo ou descrição" />
           </div>
           <div class="form-group">
               <select class="form-control" name="mode">
-                <option value="" disabled selected>Mode</option>
+                <option value="" disabled selected>Tipo</option>
                 @foreach($modes as $mode)
                   <option value="{{ $mode->id }}">{{ $mode->name }}</option>
                 @endforeach
@@ -31,7 +31,7 @@ Calls
           </div>
           <div class="form-group">
             <select class="form-control" name="departament">
-              <option value="" disabled selected>Departament</option>
+              <option value="" disabled selected>Secretaria</option>
               @foreach($departaments as $departament)
                 <option value="{{ $departament->id }}">{{ $departament->name }}</option>
               @endforeach
@@ -39,36 +39,41 @@ Calls
           </div>
           <div class="form-group">
             <select class="form-control" name="place">
-              <option value="" disabled selected>Place</option>
+              <option value="" disabled selected>Setor</option>
               <!--codigo-->
             </select>
           </div>
           <div class="form-group">
             <select class="form-control" name="status">
-              <option value="" disabled selected>Status</option>
+              <option value="" disabled selected>Situação</option>
               @foreach($callstatus as $status)
                 <option value="{{ $status->id }}">{{ $status->name }}</option>
               @endforeach
             </select>
           </div>
-          <button type="submit" class="btn btn-default">Search</button>
+          <button type="submit" class="btn btn-default">Pesquisar</button>
         </form>
       </div>
     </div>
 
     <div class="panel panel-default">
       <!-- Default panel contents -->
-      <div class="panel-heading">Calls - Total: {{ $calls->total() }}</div>
+      <div class="panel-heading clearfix">
+        <div class="btn-group pull-left">
+          <a href="{{ route('calls.create')}}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Novo</a>
+        </div>
+        <h4 class="panel-title pull-right" style="padding-top: 7.5px;">Registros: {{ $calls->total() }}</h4>
+      </div>
       <!-- Table -->
       <table class="table">
           <tr>
             <th>Id</th>
-            <th>Date</th>
-            <th>Mode</th>
-            <th>Departament</th>
-            <th>Place</th>
-            <th>Title</th>
-            <th>Action</th>
+            <th>Data</th>
+            <th>Tipo</th>
+            <th>Secretaria</th>
+            <th>Setor</th>
+            <th>Titulo</th>
+            <th></th>
           </tr>
           @foreach($calls as $call)
               <tr class="list-group-item-{{$call->color}}">
@@ -78,7 +83,7 @@ Calls
               <td>{{$call->departament}}</td>
               <td>{{$call->place}}</td>
               <td>{{$call->title}}</td>
-              <td><a href="{{ route('calls.show',['id'=>$call->id])}}" class="btn btn-default">View</a></td>
+              <td><a href="{{ route('calls.show',['id'=>$call->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Ver</a></td>
             </tr>
           @endforeach
       </table>
@@ -109,7 +114,7 @@ Calls
     function fillPlaces(departament_id){
       $.get('/places/json/'+departament_id, function(places){
         $('select[name=place]').empty();
-        $('select[name=place]').append('<option value="" disabled selected>Place</option>');
+        $('select[name=place]').append('<option value="" disabled selected>Setor</option>');
         $.each(places, function(key, value){
           $('select[name=place]').append('<option value='+value.id+'>'+value.name+'</option>');
         });

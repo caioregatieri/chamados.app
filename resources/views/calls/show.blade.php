@@ -5,6 +5,8 @@ show call
 @endsection
 
 @section('content')
+<br/>
+<br/>
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -25,12 +27,12 @@ show call
       </div>
     </div>
     @if($call->files->count() > 0)
-      <b>Attachements:</b> 
+      <b>Attachements:</b>
       <div class="panel panel-default">
         <div class="panel-body">
           @foreach($call->files as $file)
             <p><a href="{!! route('calls.file.download',['call'=>$call->id,'file'=>$file->id]) !!}">{!! $file->filename !!}</a></p>
-          @endforeach            
+          @endforeach
         </div>
       </div>
     @endif
@@ -61,19 +63,19 @@ show call
           <div class="panel-body">
             <b>Date:</b> {{ $history->created_at }} <br/>
             <b>User:</b> {{ $history->user->name }} <br/>
-            <b>Description:</b> 
+            <b>Description:</b>
             <div class="panel panel-default">
               <div class="panel-body">
                 {!! $history->description !!}
               </div>
             </div>
             @if($history->files->count() > 0)
-              <b>Attachements:</b> 
+              <b>Attachements:</b>
               <div class="panel panel-default">
                 <div class="panel-body">
                   @foreach($history->files as $file)
                     <p><a href="{!! route('calls.history.file.download',['history'=>$history->id,'file'=>$file->id]) !!}">{!! $file->filename !!}</a></p>
-                  @endforeach            
+                  @endforeach
                 </div>
               </div>
             @endif

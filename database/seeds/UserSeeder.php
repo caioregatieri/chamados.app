@@ -3,7 +3,7 @@
 /*
 Autor: Caio Regatieri
 E-mail: caio.cesar.regatieri@gmail.com
-Description: Sistema desenvolvido para controle de chamados 
+Description: Sistema desenvolvido para controle de chamados
 */
 
 use Illuminate\Database\Seeder;
@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
           'usertype_id' => '1',
           'place_id' => '1',
           'register' => '1',
-          'email' => 'admin@admin',
+          'email' => 'admin@admin.com',
           'password' => bcrypt('admin'),
           'remember_token' => str_random(10),
           'locked' => '0'
