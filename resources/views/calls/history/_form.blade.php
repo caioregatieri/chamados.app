@@ -3,22 +3,22 @@
 </div>
 
 <div class="form-group">
-  {!! Form::label('user','User:') !!}
+  {!! Form::label('user','Usuário:') !!}
   {!! Form::select('user', $users, null,['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
-  {!! Form::label('description','Description:') !!}
+  {!! Form::label('description','Descrição:') !!}
   {!! Form::textarea('description', null, ['class'=>'ckeditor form-control']) !!}
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading">Attachments</div>
+  <div class="panel-heading">Anexos</div>
   <div class="panel-body">
 	  <!-- The fileinput-button span is used to style the file input field as button -->
     <span class="btn btn-primary fileinput-button">
         <i class="glyphicon glyphicon-plus"></i>
-        <span>Select files...</span>
+        <span>Selecione...</span>
         <!-- The file input field used as target for the file upload widget -->
         <input id="files" type="file" name="files[]" multiple>
     </span>
@@ -32,7 +32,7 @@
 </div>
 
 <div class="form-group">
-  {!! Form::label('status','Status:') !!}
+  {!! Form::label('status','Situação:') !!}
   {!! Form::select('status', $status, 3, ['class'=>'form-control']) !!}
 </div>
 

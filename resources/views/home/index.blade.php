@@ -94,7 +94,7 @@ Home
 <!-- Row title -->
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header"><a href="{!! url('calls') !!}">All calls</a></h1>
+        <h1 class="page-header"><a href="{!! url('calls') !!}">Todos chamados</a></h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -118,7 +118,7 @@ Home
           </div>
           <a href="{{ url('calls?status='.$call->id) }}">
               <div class="panel-footer">
-                  <span class="pull-left">View Details</span>
+                  <span class="pull-left">Detalhes</span>
                   <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                   <div class="clearfix"></div>
               </div>
@@ -135,7 +135,7 @@ Home
 <!-- Row title -->
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header"><a href="{!! url('calls?user='.Auth::user()->id) !!}">Yours calls</a></h1>
+        <h1 class="page-header"><a href="{!! url('calls?user='.Auth::user()->id) !!}">Seus chamados</a></h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -159,7 +159,7 @@ Home
           </div>
           <a href="{{ url('calls?status='.$call->id.'&user='.Auth::user()->id) }}">
               <div class="panel-footer">
-                  <span class="pull-left">View Details</span>
+                  <span class="pull-left">Detalhes</span>
                   <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                   <div class="clearfix"></div>
               </div>
@@ -174,7 +174,7 @@ Home
 <!-- Row title -->
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Calls details</h1>
+        <h1 class="page-header">Gráficos</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -186,7 +186,7 @@ Home
     <div class="col-lg-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-bar-chart-o fa-fw"></i> Calls per month
+                <i class="fa fa-bar-chart-o fa-fw"></i> Chamados por mês
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -203,7 +203,7 @@ Home
         <!-- /.panel -->
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-bar-chart-o fa-fw"></i> Calls per departament
+                <i class="fa fa-bar-chart-o fa-fw"></i> Chamados por secretaria
             </div>
             <div class="panel-body">
                 <div id="morris-donut-chart"></div>
@@ -219,7 +219,7 @@ Home
         <!-- /.panel -->
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-bar-chart-o fa-fw"></i> Calls per mode
+                <i class="fa fa-bar-chart-o fa-fw"></i> Chamados por tipo
             </div>
             <div class="panel-body">
                 <div id="morris-donut-chart2"></div>

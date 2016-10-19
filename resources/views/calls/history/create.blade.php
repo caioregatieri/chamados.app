@@ -12,7 +12,7 @@
 
 @if($errors->any())
   <div class="alert alert-danger" role="alert">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <strong>Whoops!</strong>Tivemos alguns problemas.<br><br>
     <ul>
       @foreach($errors->all() as $error)
         <li>{{ $error }}</li>
@@ -31,9 +31,9 @@
 
       @include('calls/history/_form')
 
-      <a href="{{ URL::previous() }}" class="btn btn-default"></i>Back</a>
+      <a href="{{ URL::previous() }}" class="btn btn-default"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar</a>
 
-      {!! Form::submit('Save',['class'=>'btn btn-success']) !!}
+      <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Salvar</button>
 
     {!! Form::close() !!}
 

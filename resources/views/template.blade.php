@@ -35,7 +35,7 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i> {{Auth::user()->name}} <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="{{ route('users.show',['id'=>Auth::user()->id]) }}"><i class="fa fa-user fa-fw"></i> Perfil</a>
@@ -84,14 +84,14 @@
         </nav>
 
         <div id="page-wrapper">
-              @yield('content')
+            @yield('content')
+            <div id="rodape">
+                Desenvolvido por <a href="mailto: caio.cesar.regatieri@gmail.com">Caio Regatieri</a>
+            </div>
         </div>
         <!-- /#page-wrapper -->
+    </div>
 
-    </div>
-    <div id="rodape">
-        &nbsp;&nbsp;&nbsp;&nbsp;Desenvolvido por <a href="mailto: caio.cesar.regatieri@gmail.com">Caio Regatieri</a>
-    </div>
 
     <!-- JQuery -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>

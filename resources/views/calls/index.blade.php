@@ -51,7 +51,7 @@ Calls
               @endforeach
             </select>
           </div>
-          <button type="submit" class="btn btn-default">Pesquisar</button>
+          <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i> Pesquisar</button>
         </form>
       </div>
     </div>
@@ -90,7 +90,10 @@ Calls
 
     </div>
 
-    {!! $calls->render() !!}
+    <div class="row row-centered" style="text-align: center;">
+      {!! $calls->render() !!}  
+    </div>
+    
 
 @endsection
 
