@@ -12,7 +12,10 @@ Route::get('logout', ['as'=>'getLogout', 'uses'=>'AuthController@getLogout']);
 
 
 Route::get('/', function () {
-    return view('welcome');
+    if(Auth::check()){
+      return redirect()->route('home');
+    }
+    return view('auth.welcome');
 });
 
 Route::group(['middleware' => 'auth'], function(){

@@ -1,4 +1,4 @@
-@extends('template')
+@extends('auth.template')
 
 @section('content')
 <div class="container-fluid">

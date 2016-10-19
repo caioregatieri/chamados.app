@@ -3,7 +3,7 @@
 /*
 Autor: Caio Regatieri
 E-mail: caio.cesar.regatieri@gmail.com
-Description: Sistema desenvolvido para controle de chamados 
+Description: Sistema desenvolvido para controle de chamados
 */
 
 return [
@@ -145,6 +145,7 @@ return [
         'Illuminate\Html\HtmlServiceProvider',
 
         OwenIt\Auditing\AuditingServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -203,7 +204,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => 'Illuminate\Html\FormFacade',
-	    'HTML'      => 'Illuminate\Html\HtmlFacade',
+	      'HTML'      => 'Illuminate\Html\HtmlFacade',
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 
