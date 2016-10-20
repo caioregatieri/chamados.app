@@ -6,6 +6,9 @@ Edit User
 
 @section('content')
 
+<br/>
+<br/>
+
 @if($errors->any())
   <div class="alert alert-danger" role="alert">
     <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -40,8 +43,8 @@ Edit User
         <a href="{{ route('users.password.edit',['id'=>$user->id]) }}" class="btn btn-primary">Reset password</a>
       </div>
 
-      <a href="{{ URL::previous() }}" class="btn btn-default">Back</a>
-      {!! Form::submit('Save',['class'=>'btn btn-success']) !!}
+      <a href="{{ URL::previous() }}" class="btn btn-default"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar</a>
+      <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Salvar</button>
 
     {!! Form::close() !!}
   </div>

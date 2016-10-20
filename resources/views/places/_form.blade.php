@@ -1,46 +1,46 @@
 
 <div class="form-group">
-  {!! Form::label('departament_id','Departament:') !!}
+  {!! Form::label('departament_id','Secretaria:') !!}
   {!! Form::select('departament_id', $departaments, null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
-  {!! Form::label('prefix','Prefix:') !!}
+  {!! Form::label('prefix','Prefixo:') !!}
   {!! Form::text('prefix', null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
-  {!! Form::label('name','Name:') !!}
+  {!! Form::label('name','Nome:') !!}
   {!! Form::text('name', null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
-  {!! Form::label('neighborhood','Neighborhood:') !!}
+  {!! Form::label('neighborhood','Bairro:') !!}
   {!! Form::text('neighborhood', null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
-  {!! Form::label('address','Address:') !!}
+  {!! Form::label('address','Logradouro:') !!}
   {!! Form::text('address', null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
-  {!! Form::label('number','Number:') !!}
+  {!! Form::label('number','Numero:') !!}
   {!! Form::text('number', null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
-  {!! Form::label('telephone1','Telephone 1:') !!}
+  {!! Form::label('telephone1','Telefone 1:') !!}
   {!! Form::text('telephone1', null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
-  {!! Form::label('telephone2','Telephone 2:') !!}
+  {!! Form::label('telephone2','Telefone 2:') !!}
   {!! Form::text('telephone2', null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
-  {!! Form::label('responsavel','Supervisor:') !!}
+  {!! Form::label('responsavel','Chefia/Responsavel:') !!}
   {!! Form::text('responsavel', null, ['class'=>'form-control']) !!}
 </div>
 
@@ -60,11 +60,11 @@
 </div>
 
 <div class="form-group">
-  {!! Form::label('region','Region:') !!}
+  {!! Form::label('region','Região:') !!}
   {!! Form::select('region', ['Norte'=>'Norte','Sul'=>'Sul','Leste'=>'Leste','Oeste'=>'Oeste','Centro'=>'Centro'],null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
-  {!! Form::label('note','Note:') !!}
+  {!! Form::label('note','Observações:') !!}
   {!! Form::textarea('note', null, ['class'=>'ckeditor form-control']) !!}
 </div>

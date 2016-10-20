@@ -40,7 +40,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Be right back.</div>
+                <div class="title">Ocorreu um erro, por favor volte a pagina anterior</div>
             </div>
         </div>
     </body>

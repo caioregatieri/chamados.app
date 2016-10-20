@@ -19,7 +19,7 @@ Edit user type
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Edit user type: {{ $usertype->id }}</h3>
+    <h3 class="panel-title">Editando: {{ $usertype->id }}</h3>
   </div>
   <div class="panel-body">
 
@@ -27,8 +27,8 @@ Edit user type
 
       @include('usertypes._formEdit')
 
-      <a href="{{ URL::previous() }}" class="btn btn-default">Back</a>
-      {!! Form::submit('Save',['class'=>'btn btn-success']) !!}
+      <a href="{{ URL::previous() }}" class="btn btn-default"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar</a>
+      <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Salvar</button>
 
     {!! Form::close() !!}
   </div>

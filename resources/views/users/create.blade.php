@@ -19,7 +19,7 @@ New user
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">New user</h3>
+    <h3 class="panel-title">Novo</h3>
   </div>
   <div class="panel-body">
 
@@ -29,8 +29,8 @@ New user
 
       @include('users/_password')
 
-      <a href="{{ route('departaments.index') }}" class="btn btn-default">Back</a>
-      {!! Form::submit('Save',['class'=>'btn btn-success']) !!}
+      <a href="{{ URL::previous() }}" class="btn btn-default"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar</a>
+      <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Salvar</button>
 
     {!! Form::close() !!}
   </div>

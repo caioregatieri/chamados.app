@@ -36,6 +36,6 @@ Page not found
 
 @section('content')
     <div class="content">
-        <div class="title">Page not found - Be right back</div>
+        <div class="title">Pagina não encontrada</div>
     </div>
 @endsection

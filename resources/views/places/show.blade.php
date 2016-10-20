@@ -30,19 +30,19 @@ Show place
     <div class="row">
       <div class="col-md-6">
         <b>Id:</b> {{$place->id}} <br/>
-        <b>Created at:</b>  {{$place->created_at}}<br/>
-        <b>Departament:</b> {{$place->Departament->name}} <br/>
-        <b>Prefix:</b> {{$place->prefix}} <br/>
-        <b>Name:</b> {{ $place->name }} <br/>
-        <b>Address:</b> {{$place->address}} <br/>
-        <b>Number:</b> {{$place->number}} <br/>
-        <b>Neighborhood:</b> {{$place->neighborhood}} <br/>
-        <b>Region:</b> {{$place->region}} <br/>
-        <b>Telephone1:</b> {{$place->telephone1}} <br/>
-        <b>Telephone2:</b> {{$place->telephone2}} <br/>
-        <b>Supervisor:</b> {{$place->responsavel}} <br/>
+        <b>Criado em:</b>  {{$place->created_at}}<br/>
+        <b>Secretaria:</b> {{$place->Departament->name}} <br/>
+        <b>Prefixo:</b> {{$place->prefix}} <br/>
+        <b>Nome:</b> {{ $place->name }} <br/>
+        <b>Logradouro:</b> {{$place->address}} <br/>
+        <b>Numero:</b> {{$place->number}} <br/>
+        <b>Bairro:</b> {{$place->neighborhood}} <br/>
+        <b>Região:</b> {{$place->region}} <br/>
+        <b>Telefone1:</b> {{$place->telephone1}} <br/>
+        <b>Telefone2:</b> {{$place->telephone2}} <br/>
+        <b>Chefia/responsavel:</b> {{$place->responsavel}} <br/>
         <b>E-mail:</b> {{$place->email}} <br/>
-        <b>Note:</b>
+        <b>Observações:</b>
         <div>
           {!! $place->note !!}
         </div>
@@ -56,8 +56,8 @@ Show place
       <b>Houveram modificações neste registro</b>
     @endif
     <br/>
-    <a href="{{ route('places.index') }}" class="btn btn-default">Back</a>
-    <a href="{{ route('places.edit',['id'=>$place->id]) }}" class="btn btn-primary">Edit</a>
+    <a href="{{ route('places.index') }}" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Voltar</a>
+    <a href="{{ route('places.edit',['id'=>$place->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i> Editar</a>
   </div> 
 </div>
 

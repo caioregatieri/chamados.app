@@ -6,7 +6,6 @@ Users
 
 @section('content')
 
-    <a href="{{ route('users.create')}}" class="btn btn-success">Create new user</a>
     <br/>
     <br/>
 
@@ -24,29 +23,36 @@ Users
 
     <div class="panel panel-default">
       <!-- Default panel contents -->
-      <div class="panel-heading">Users - Total: {{ $users->total() }}</div>
+      <div class="panel-heading clearfix">
+        <div class="btn-group pull-left">
+          <a href="{{ route('users.create')}}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Novo</a>
+        </div>
+        <h4 class="panel-title pull-right" style="padding-top: 7.5px;">Registros: {{ $users->total() }}</h4>
+      </div>
 
       <!-- Table -->
       <table class="table">
           <tr>
             <th>Id</th>
-            <th>Date</th>
-            <th>Name</th>
-            <th>Locked</th>
-            <th>Action</th>
+            <th>Data</th>
+            <th>Nome</th>
+            <th>Bloqueado</th>
+            <th></th>
           </tr>
           @foreach($users as $user)
             <tr>
               <td>{{$user->id}}</td>
               <td>{{$user->created_at}}</td>
               <td>{{$user->name}}</td>
-              <td><label class="label label-{{ $user->locked == 0 ? 'primary' : 'danger' }}">{{$user->locked == 0 ? 'No' : 'Yes'}}</label></td>
-              <td><a href="{{ route('users.show',['id'=>$user->id])}}" class="btn btn-default">View</a></td>
+              <td><label class="label label-{{ $user->locked == 0 ? 'primary' : 'danger' }}">{{$user->locked == 0 ? 'Sim' : 'Não'}}</label></td>
+              <td style="text-align: right;"><a href="{{ route('users.show',['id'=>$user->id])}}" class="btn btn-primary"><i class="fa fa-eye"></i> Ver</a></td>
             </tr>
           @endforeach
       </table>
     </div>
 
-    {!! $users->render() !!}
+    <div class="row row-centered" style="text-align: center;">
+      {!! $users->render() !!}
+    </div>
 
 @endsection

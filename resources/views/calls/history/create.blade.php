@@ -10,6 +10,9 @@
 
 @section('content')
 
+<br/>
+<br/>
+
 @if($errors->any())
   <div class="alert alert-danger" role="alert">
     <strong>Whoops!</strong>Tivemos alguns problemas.<br><br>
@@ -32,7 +35,6 @@
       @include('calls/history/_form')
 
       <a href="{{ URL::previous() }}" class="btn btn-default"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar</a>
-
       <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Salvar</button>
 
     {!! Form::close() !!}

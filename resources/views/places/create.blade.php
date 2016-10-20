@@ -6,6 +6,9 @@ New Place
 
 @section('content')
 
+<br/>
+<br/>
+
 @if($errors->any())
   <div class="alert alert-danger" role="alert">
     <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -27,8 +30,8 @@ New Place
 
       @include('places/_form')
 
-      <a href="{{ route('calls.index') }}" class="btn btn-default">Back</a>
-      {!! Form::submit('Save',['class'=>'btn btn-success']) !!}
+      <a href="{{ URL::previous() }}" class="btn btn-default"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar</a>
+      <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Salvar</button>
 
     {!! Form::close() !!}
   </div>

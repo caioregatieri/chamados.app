@@ -6,6 +6,9 @@ New user type
 
 @section('content')
 
+<br/>
+<br/>
+
 @if($errors->any())
   <div class="alert alert-danger" role="alert">
     <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -19,7 +22,7 @@ New user type
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">New user type</h3>
+    <h3 class="panel-title">Novo</h3>
   </div>
   <div class="panel-body">
 
@@ -27,8 +30,8 @@ New user type
 
       @include('usertypes/_formCreate')
 
-      <a href="{{ route('usertypes.index') }}" class="btn btn-default">Back</a>
-      {!! Form::submit('Save',['class'=>'btn btn-success']) !!}
+      <a href="{{ URL::previous() }}" class="btn btn-default"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar</a>
+      <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Salvar</button>
 
     {!! Form::close() !!}
   </div>

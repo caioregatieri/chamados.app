@@ -1,6 +1,6 @@
 
 <div class="form-group">
-  {!! Form::label('name','Name:') !!}
+  {!! Form::label('name','Nome:') !!}
   {!! Form::text('name', null, ['class'=>'form-control']) !!}
 </div>
 
@@ -8,7 +8,7 @@
   <div class="checkbox">
     <label>
       {!! Form::checkbox('administrator', null, null, []) !!}
-      Administrator
+      Administrador
     </label>
   </div>
 </div>
@@ -17,7 +17,7 @@
   <div class="checkbox">
     <label>
       {!! Form::checkbox('onlyyourplace', null, null, []) !!}
-      Calls only for your site
+      Ver somente seus chamados
     </label>
   </div>
 </div>
