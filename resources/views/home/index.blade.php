@@ -118,7 +118,7 @@ Home
           </div>
           <a href="{{ url('calls?status='.$call->id) }}">
               <div class="panel-footer">
-                  <span class="pull-left">Detalhes</span>
+                  <span class="pull-left">Ver</span>
                   <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                   <div class="clearfix"></div>
               </div>
@@ -159,7 +159,7 @@ Home
           </div>
           <a href="{{ url('calls?status='.$call->id.'&user='.Auth::user()->id) }}">
               <div class="panel-footer">
-                  <span class="pull-left">Detalhes</span>
+                  <span class="pull-left">Ver</span>
                   <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                   <div class="clearfix"></div>
               </div>

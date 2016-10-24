@@ -31,7 +31,7 @@ Departaments
       </div>
 
       <!-- Table -->
-      <table class="table">
+      <table class="table table-striped">
           <tr>
             <th>Id</th>
             <th>Data</th>

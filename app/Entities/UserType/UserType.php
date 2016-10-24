@@ -19,8 +19,13 @@ class UserType extends Model
 
   	protected $fillable = ['name','administrator','onlyyourplace'];
 
-	  /*todo tipo de usuario possui diversos usuarios*/
-	  public function user(){
-	    return $this->hasMany('App\Entities\User\User');
-	  }
+	/*todo tipo de usuario possui diversos usuarios*/
+	public function user(){
+		return $this->hasMany('App\Entities\User\User');
+	}
+    
+    /**/
+    public function getCreatedAtAttribute($value){
+        return date("d/m/Y h:i:s", strtotime($value));
+    }
 }

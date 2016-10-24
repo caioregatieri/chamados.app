@@ -36,7 +36,7 @@ Users
             <th>Id</th>
             <th>Data</th>
             <th>Nome</th>
-            <th>Bloqueado</th>
+            <th style="text-align: center;">Bloqueado</th>
             <th></th>
           </tr>
           @foreach($users as $user)
@@ -44,7 +44,9 @@ Users
               <td>{{$user->id}}</td>
               <td>{{$user->created_at}}</td>
               <td>{{$user->name}}</td>
-              <td><label class="label label-{{ $user->locked == 0 ? 'primary' : 'danger' }}">{{$user->locked == 0 ? 'Sim' : 'Não'}}</label></td>
+              <td style="text-align: center;">
+                <label class="label label-{{ $user->locked == 0 ? 'primary' : 'danger' }}">{{$user->locked == 0 ? 'Não' : 'Sim'}}</label>
+              </td>
               <td style="text-align: right;"><a href="{{ route('users.show',['id'=>$user->id])}}" class="btn btn-primary"><i class="fa fa-eye"></i> Ver</a></td>
             </tr>
           @endforeach

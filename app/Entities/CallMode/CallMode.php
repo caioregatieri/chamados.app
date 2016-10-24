@@ -13,14 +13,19 @@ use OwenIt\Auditing\AuditingTrait;
 
 class CallMode extends Model
 {
-  use AuditingTrait;
-  
-  protected $table = 'callmodes';
+	use AuditingTrait;
 
-  protected $fillable = ['name'];
+	protected $table = 'callmodes';
 
-  /*todo modo possui diversos chamados*/
-  public function call(){
-    return $this->hasMany('App\Entities\Call\Call');
-  }
+	protected $fillable = ['name'];
+
+	/*todo modo possui diversos chamados*/
+	public function call(){
+		return $this->hasMany('App\Entities\Call\Call');
+	}
+	
+	 /**/
+	public function getCreatedAtAttribute($value){
+	    return date("d/m/Y h:i:s", strtotime($value));
+	}
 }

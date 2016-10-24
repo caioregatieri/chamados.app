@@ -14,6 +14,8 @@
         <!-- font-awesome -->
         <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
         @yield('head')
+        <!-- Custom -->
+        <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     </head>
 <body>
 

@@ -28,4 +28,9 @@ class Place extends Model
     public function user(){
       return $this->hasMany('App\Entities\User\User');
     }
+
+    /**/
+    public function getCreatedAtAttribute($value){
+        return date("d/m/Y h:i:s", strtotime($value));
+    }
 }

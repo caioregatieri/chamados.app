@@ -61,6 +61,7 @@ Calls
       <div class="panel-heading clearfix">
         <div class="btn-group pull-left">
           <a href="{{ route('calls.create')}}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Novo</a>
+          <a id="btn-relatorio" href="#" class="btn btn-primary btn-sm"><i class="fa fa-print"></i> Relátorio</a>
         </div>
         <h4 class="panel-title pull-right" style="padding-top: 7.5px;">Registros: {{ $calls->total() }}</h4>
       </div>
@@ -68,7 +69,7 @@ Calls
       <table class="table">
           <tr>
             <th>Id</th>
-            <th>Data</th>
+            <th>Aberto em</th>
             <th>Tipo</th>
             <th>Secretaria</th>
             <th>Setor</th>
@@ -78,7 +79,7 @@ Calls
           @foreach($calls as $call)
               <tr class="list-group-item-{{$call->color}}">
               <td>{{$call->id}}</td>
-              <td>{{$call->created_at}}</td>
+              <td>{{date("d/m/Y h:i:s", strtotime($call->created_at))}}</td>
               <td>{{$call->mode}}</td>
               <td>{{$call->departament}}</td>
               <td>{{$call->place}}</td>
@@ -124,6 +125,10 @@ Calls
         $('select[name=place]').select2();
       });
     }
+
+    $('#btn-relatorio').on('click', function(){
+      alert('Função ainda não implementada.');
+    })
 
   </script>
 @endsection

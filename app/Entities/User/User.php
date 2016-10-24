@@ -44,4 +44,9 @@ class User extends Model implements AuthenticatableContract,
     public function logins(){
       return $this->hasMany('App\Entities\Login\Login');
     }
+    
+    /**/
+    public function getCreatedAtAttribute($value){
+        return date("d/m/Y h:i:s", strtotime($value));
+    }
 }

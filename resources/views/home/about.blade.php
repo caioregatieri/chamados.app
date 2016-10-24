@@ -54,22 +54,19 @@ Chamados
 @endsection
 
 @section('content')
+  <br/>
+  <br/>
   <div class="panel panel-default noborder">
     <div class="row row-centered">
       <div class="col-md-9 col-centered">
         <div class="title">
           Sistema de controle de chamados técnicos.<br/>
           Desenvolvido por: <a href="mailto:caio.cesar.regatieri">Caio Regatieri</a>.<br/>
-          Usando PHP (Laravel), Bootstrap e Sqlite.<br/><br/>
-          <b>Por que em Inglês?</b><br/>
-          <ol>
-            <li>Porque eu gosto.</li>
-            <li>Porque todos deviam saber.</li>
-            <li>Porque é a lingua que possue mais material para estudo.</li>
-            <li>Porque sim!</li>
-          </ol>
+          Usando PHP (Laravel), Bootstrap e Sqlite.
         </div>
       </div>
     </div>
   </div>
+  <br/>
+  <br/>
 @endsection

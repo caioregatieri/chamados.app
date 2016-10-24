@@ -1,0 +1,18 @@
+.select2-container--default .select2-selection--single{
+	min-height: 34px;
+	border: 1px solid #cccccc !important;
+}
+
+.select2-selection__arrow{
+	top: 3px !important;
+}
+
+.select2-selection__rendered{
+	padding-left: 15px !important;
+	padding-top: 3px;
+}
+
+.select2-selection__arrow b{
+	border-color: #555 transparent transparent transparent !important;
+	border-width: 5px 3px 0 3px !important;
+}

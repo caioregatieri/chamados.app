@@ -13,14 +13,19 @@ use OwenIt\Auditing\AuditingTrait;
 
 class CallFile extends Model
 {
-  use AuditingTrait;
-  
-  protected $table = 'callfiles';
+	use AuditingTrait;
 
-  protected $fillable = ['call_id','filename'];
+	protected $table = 'callfiles';
 
-  /*todo arquivo pertence a um historico*/
-  public function call(){
-    return $this->belongsto('App\Entities\Call\Call');
-  }
+	protected $fillable = ['call_id','filename'];
+
+	/*todo arquivo pertence a um historico*/
+	public function call(){
+		return $this->belongsto('App\Entities\Call\Call');
+	}
+
+     /**/
+    public function getCreatedAtAttribute($value){
+        return date("d/m/Y h:i:s", strtotime($value));
+    }
 }

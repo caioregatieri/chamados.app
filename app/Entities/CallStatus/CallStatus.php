@@ -13,14 +13,19 @@ use OwenIt\Auditing\AuditingTrait;
 
 class CallStatus extends Model
 {
-  use AuditingTrait;
-  
-  protected $table = 'callstatuses';
+	use AuditingTrait;
 
-  protected $fillable = ['name','color','isstart','isend'];
+	protected $table = 'callstatuses';
 
-  /*todo status possui um chamado*/
-  public function call(){
-    return $this->hasMany('App\Entities\Call\Call');
-  }
+	protected $fillable = ['name','color','isstart','isend'];
+
+	/*todo status possui um chamado*/
+	public function call(){
+		return $this->hasMany('App\Entities\Call\Call');
+	}
+    
+    /**/
+    public function getCreatedAtAttribute($value){
+        return date("d/m/Y h:i:s", strtotime($value));
+    }
 }

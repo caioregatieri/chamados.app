@@ -24,7 +24,7 @@ Show User
     <b>E-mail:</b> {{ $user->email }} <br/>
     <b>Bloqueado:</b> {{ $user->locked == 0 ? 'Não' : 'Sim' }}
     @if($user->logs->count() > 1)
-      <b>Houveram modificações neste usuário</b>
+      <br/><b>Houveram modificações neste usuário</b>
     @endif
     <br/><br/>
     <a href="{{ route('users.index') }}" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Voltar</a>

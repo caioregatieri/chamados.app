@@ -13,34 +13,39 @@ use OwenIt\Auditing\AuditingTrait;
 
 class CallHistory extends Model
 {
-  use AuditingTrait;
-  
-  protected $table = 'callhistories';
+    use AuditingTrait;
 
-  protected $fillable = ['call_id', 'user_id', 'description', 'status_id'];
+    protected $table = 'callhistories';
 
-  /*todo historico pertence a um chamado*/
-  public function call(){
-    return $this->belongsto('App\Entities\Call\Call');
-  }
+    protected $fillable = ['call_id', 'user_id', 'description', 'status_id'];
 
-  /*todo historico pertence a um status*/
-  public function user(){
-    return $this->belongsto('App\Entities\User\User');
-  }
+    /*todo historico pertence a um chamado*/
+    public function call(){
+        return $this->belongsto('App\Entities\Call\Call');
+    }
 
-  /*todo historico pertence a um modo*/
-  public function mode(){
-    return $this->belongsto('App\Entities\CallMode\CallMode');
-  }
+    /*todo historico pertence a um status*/
+    public function user(){
+        return $this->belongsto('App\Entities\User\User');
+    }
 
-  /*todo historico pertence a um status*/
-  public function status(){
-    return $this->belongsto('App\Entities\CallStatus\CallStatus');
-  }
+    /*todo historico pertence a um modo*/
+    public function mode(){
+        return $this->belongsto('App\Entities\CallMode\CallMode');
+    }
 
-  /*todo historico pode ter um ou mais arquivos*/
-  public function files(){
-    return $this->hasMany('App\Entities\CallHistoryFile\CallHistoryFile','history_id');
-  }
+    /*todo historico pertence a um status*/
+    public function status(){
+        return $this->belongsto('App\Entities\CallStatus\CallStatus');
+    }
+
+    /*todo historico pode ter um ou mais arquivos*/
+    public function files(){
+        return $this->hasMany('App\Entities\CallHistoryFile\CallHistoryFile','history_id');
+    }
+    
+    /**/
+    public function getCreatedAtAttribute($value){
+        return date("d/m/Y h:i:s", strtotime($value));
+    }
 }

@@ -13,15 +13,19 @@ use OwenIt\Auditing\AuditingTrait;
 
 class Departament extends Model
 {
-  use AuditingTrait;
-  
-  protected $table = 'departaments';
+	use AuditingTrait;
 
-  protected $fillable = ['name'];
+	protected $table = 'departaments';
 
-  /*todo departameto possui diversos locais*/
-  public function place(){
-    return $this->hasMany('App\Entities\Place\Place');
-  }
+	protected $fillable = ['name'];
 
+	/*todo departameto possui diversos locais*/
+	public function place(){
+		return $this->hasMany('App\Entities\Place\Place');
+	}
+
+    /**/
+    public function getCreatedAtAttribute($value){
+        return date("d/m/Y h:i:s", strtotime($value));
+    }
 }
