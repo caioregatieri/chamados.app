@@ -6,16 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>@yield('title')</title>
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="{{ asset('css/boot.min.css') }}">
+        <link name="bootstrap" rel="stylesheet" href="{{ asset('css/boot.min.css') }}">
         <!-- MetisMenu -->
-        <link rel="stylesheet" href="{{ asset('css/metisMenu.min.css') }}">
+        <link name="metismenu" rel="stylesheet" href="{{ asset('css/metisMenu.min.css') }}">
         <!-- SB Admin 2 -->
-        <link rel="stylesheet" href="{{ asset('css/sb-admin-2.css') }}">
+        <link name="sbadmin" rel="stylesheet" href="{{ asset('css/sb-admin-2.css') }}">
         <!-- font-awesome -->
-        <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+        <link name="fontawesome" rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
         @yield('head')
         <!-- Custom -->
-        <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+        <link name="custom" rel="stylesheet" href="{{ asset('css/custom.css') }}">
     </head>
 <body>
 
