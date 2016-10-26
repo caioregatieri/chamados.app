@@ -147,6 +147,8 @@ return [
         OwenIt\Auditing\AuditingServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 
+        Barryvdh\Snappy\ServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -205,7 +207,9 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => 'Illuminate\Html\FormFacade',
 	      'HTML'      => 'Illuminate\Html\HtmlFacade',
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Debugbar'  => Barryvdh\Debugbar\Facade::class,
+        'PDF'       => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
 
     ],
 

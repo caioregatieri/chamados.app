@@ -76,6 +76,16 @@
                           </ul>
                         </li>
                         <li>
+                          <a href="#"><i class="fa fa-print fa-fw"></i> Relátorios</a>
+                          <ul class="nav nav-second-level">
+                            <li><a href="{{ route('reports.calls.get') }}"><i class="fa fa-phone"></i> Chamados</a></li>
+                            <li><a href="{{ route('reports.departaments.get') }}"><i class="fa fa-home"></i> Secretarias</a></li>
+                            <li><a href="{{ route('reports.places.get') }}"><i class="fa fa-home"></i> Setores</a></li>
+                            <li><a href="{{ route('reports.users.get') }}"><i class="fa fa-users"></i> Usuários</a></li>
+                            <li><a href="{{ route('reports.usertypes.get') }}"><i class="fa fa-users"></i> Tipos de usuários</a></li>
+                          </ul>
+                        </li>
+                        <li>
                           <a href="{{ route('about') }}"><i class="fa fa-info fa-fw"></i> Sobre</a>
                         </li>
                     </ul>

@@ -61,7 +61,6 @@ Calls
       <div class="panel-heading clearfix">
         <div class="btn-group pull-left">
           <a href="{{ route('calls.create')}}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Novo</a>
-          <a id="btn-relatorio" href="#" class="btn btn-primary btn-sm"><i class="fa fa-print"></i> Relátorio</a>
         </div>
         <h4 class="panel-title pull-right" style="padding-top: 7.5px;">Registros: {{ $calls->total() }}</h4>
       </div>
@@ -92,9 +91,9 @@ Calls
     </div>
 
     <div class="row row-centered" style="text-align: center;">
-      {!! $calls->render() !!}  
+      {!! $calls->render() !!}
     </div>
-    
+
 
 @endsection
 
@@ -125,10 +124,6 @@ Calls
         $('select[name=place]').select2();
       });
     }
-
-    $('#btn-relatorio').on('click', function(){
-      alert('Função ainda não implementada.');
-    })
 
   </script>
 @endsection
