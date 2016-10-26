@@ -10,7 +10,10 @@
         "illuminate/html": "5.0.*",
         "owen-it/laravel-auditing": "^2.2",
         "strebl/l5-ldap-auth": "2.1.*",
-        "barryvdh/laravel-debugbar": "^2.3"
+        "barryvdh/laravel-debugbar": "^2.3",
+        "h4cc/wkhtmltopdf-amd64": "0.12.x",
+        "h4cc/wkhtmltoimage-amd64": "0.12.x",
+        "barryvdh/laravel-snappy": "^0.3.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

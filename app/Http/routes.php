@@ -104,4 +104,17 @@ Route::group(['middleware' => 'auth'], function(){
     });
   });
 
+  Route::group(['prefix'=>'reports'], function(){
+    Route::get('calls', ['as'=>'reports.calls.get','uses'=>'ReportController@getCalls']);
+    Route::post('calls', ['as'=>'reports.calls.post','uses'=>'ReportController@postCalls']);
+    Route::get('departaments', ['as'=>'reports.departaments.get','uses'=>'ReportController@getDepartaments']);
+    Route::post('departaments', ['as'=>'reports.departaments.post','uses'=>'ReportController@postDepartaments']);
+    Route::get('places', ['as'=>'reports.places.get','uses'=>'ReportController@getPlaces']);
+    Route::post('places', ['as'=>'reports.places.post','uses'=>'ReportController@postPlaces']);
+    Route::get('users', ['as'=>'reports.users.get','uses'=>'ReportController@getUsers']);
+    Route::post('users', ['as'=>'reports.users.post','uses'=>'ReportController@postUsers']);
+    Route::get('usertypes', ['as'=>'reports.usertypes.get','uses'=>'ReportController@getUserTypes']);
+    Route::post('usertypes', ['as'=>'reports.usertypes.post','uses'=>'ReportController@postUserTypes']);
+  });
+
 });

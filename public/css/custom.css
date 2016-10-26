@@ -1,6 +1,7 @@
 .select2-container--default .select2-selection--single{
 	min-height: 34px;
 	border: 1px solid #cccccc !important;
+	max-width: 350px;
 }
 
 .select2-selection__arrow{
