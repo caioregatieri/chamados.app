@@ -126,7 +126,8 @@ Calls
       });
     }
 
-    $('#btn-relatorio').on('click', function(){
+    $('#btn-relatorio').on('click', function(e){
+      e.preventDefault();
       alert('Função ainda não implementada.');
     })
 
