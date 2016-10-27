@@ -4,12 +4,23 @@
 Log de logins
 @endsection
 
+@section('head')
+  <link rel="stylesheet" href="{{ asset('css/daterangepicker.css')}}" />
+@endsection
+
 @section('content')
+    <br/>
+    <br/>
 
     <div class="panel panel-default">
       <div class="panel-heading">Filter and search</div>
       <div class="panel-body">
         <form class="navbar-form navbar-left" role="search">
+          
+          <div class="form-group">
+            <input name="created_at" type="text" class="form-control" placeholder="" />
+          </div>
+          
           <div class="form-group">
               <select class="form-control" name="user">
                 <option value="" disabled selected>User</option>
@@ -18,7 +29,9 @@ Log de logins
                 @endforeach
               </select>
           </div>
+
           <button type="submit" class="btn btn-default">Search</button>
+
         </form>
       </div>
     </div>
@@ -52,5 +65,13 @@ Log de logins
 @endsection
 
 @section('scripts')
-
+  <script src="{{ asset('js/moment.min.js') }}"></script>
+  <script src="{{ asset('js/daterangepicker.js') }}"></script>
+  <script type="text/javascript">
+      $('input[name="created_at"]').daterangepicker({
+        locale: {
+          format: 'DD/MM/YYYY'
+        }
+      });
+  </script>
 @endsection

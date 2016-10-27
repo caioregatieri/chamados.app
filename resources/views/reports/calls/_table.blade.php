@@ -18,12 +18,9 @@
         <th>Titulo</th>
         <th>Situação</th>
       </tr>
-      <tr>
-        <th colspan="8">Descrição</th>
-      </tr>
       @foreach($calls as $call)
         <tr>
-          <td><b>{{$call->id}}</b></td>
+          <td>{{$call->id}}</td>
           <td>{{date("d/m/Y h:i:s", strtotime($call->created_at))}}</td>
           <td>{{$call->usuario}}</td>
           <td>{{$call->mode}}</td>
@@ -33,7 +30,16 @@
           <td>{{$call->status}}</td>
         </tr>
         <tr>
-          <td colspan="8">{!!$call->description!!}</td>
+          <td colspan="8">
+            <table class="table" style="margin-bottom: 0;">
+              <tr>
+                <th>Descrição</th>
+              </tr>
+              <tr>
+                <td>{!!$call->description!!}</td>
+              </tr>
+            </table>
+          </td>
         </tr>
       @endforeach
   </table>

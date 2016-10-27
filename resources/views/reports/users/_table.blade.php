@@ -24,6 +24,26 @@
             <label class="label label-{{ $user->locked == 0 ? 'primary' : 'danger' }}">{{$user->locked == 0 ? 'Não' : 'Sim'}}</label>
           </td>
         </tr>
+        <tr>
+          <td colspan="4">
+            <table class="table" style="margin-bottom: 0">
+              <tr>
+                <th>Tipo</th>
+                <th>Secretaria</th>
+                <th>Setor</th>
+                <th>Chapa</th>
+                <th>E-mail</th>
+              </tr>
+              <tr>
+                <td>{{$user->usertype->name}}</td>
+                <td>{{$user->place->departament->name}}</td>
+                <td>{{$user->place->name}}</td>
+                <td>{{$user->register}}</td>
+                <td>{{$user->email}}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
       @endforeach
   </table>
 

@@ -25,7 +25,27 @@ Departament
           </div>
 
           <div class="form-group">
-            <input name="search" type="text" class="form-control" placeholder="Titulo ou descrição" />
+              <select class="form-control" name="region">
+                <option value="" disabled selected>Região</option>
+                  <option value="Centro">Centro</option>
+                  <option value="Leste">Leste</option>
+                  <option value="Norte">Norte</option>
+                  <option value="Oeste">Oeste</option>
+                  <option value="Sul">Sul</option>
+              </select>
+          </div>
+
+          <div class="form-group">
+            <select class="form-control" name="departament">
+              <option value="" disabled selected>Secretaria</option>
+              @foreach($departaments as $departament)
+                <option value="{{ $departament->id }}">{{ $departament->name }}</option>
+              @endforeach
+            </select>
+          </div>
+
+          <div class="form-group">
+            <input name="search" type="text" class="form-control" placeholder="Setor" />
           </div>
 
           <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i> Pesquisar</button>

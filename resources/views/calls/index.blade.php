@@ -5,7 +5,7 @@ Calls
 @endsection
 
 @section('head')
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}" />
 @endsection
 
 @section('content')
@@ -99,7 +99,7 @@ Calls
 
 @section('scripts')
   <!-- select2 -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/js/select2.min.js"></script>
+  <script src="{{ asset('js/select2.min.js') }}"></script>
 
   <script type="text/javascript">
 

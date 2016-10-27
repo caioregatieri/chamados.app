@@ -125,12 +125,19 @@ class ReportController extends Controller
     }
 
     public function getDepartaments(){
+      $nome       =Input::get('search');
+      $created_at = Input::get('created_at');
+      
       $departaments = new Departament;
-
-      $filter = isset($_GET['search']) ? trim($_GET['search']) : '';
-      if($filter != ''){
-        $departaments = $departaments->where('name','like','%'.$filter.'%');
+      
+      if($nome != ''){
+        $departaments = $departaments->where('name','like','%'.$nome.'%');
       }
+      
+      if($created_at != ''){
+        $departaments = $departaments->whereBetween('created_at', explode(' - ', str_replace('/', '-', $created_at)) ); 
+      }
+
 
       $departaments = $departaments->orderBY('name')->get();
       return view('reports.departaments.index', compact('departaments'));
@@ -138,6 +145,8 @@ class ReportController extends Controller
 
     public function getPlaces(){
       $name =        Input::get('search');
+      $region =      Input::get('region');
+      $created_at =  Input::get('created_at');
       $departament = Input::get('departament','');
 
       $places = new Place;
@@ -150,6 +159,14 @@ class ReportController extends Controller
         $places = $places->where('departament_id','=',$departament);
       }
 
+      if($region != ''){
+        $places = $places->where('region','=',$region); 
+      }
+
+      if($created_at != ''){
+        $places = $places->whereBetween('created_at', explode(' - ', str_replace('/', '-', $created_at)) ); 
+      }
+
       $places = $places->orderBy('name')->get();
 
       $departaments = Departament::orderBy('name')->get();
@@ -157,11 +174,17 @@ class ReportController extends Controller
     }
 
     public function getUsers(){
+      $name =        Input::get('search');
+      $created_at =  Input::get('created_at');
+      
       $users = new User;
 
-      $filter = isset($_GET['search']) ? trim($_GET['search']) : '';
-      if($filter != ''){
-        $users = $users->where('name','like','%'.$filter.'%');
+      if($name != ''){
+        $users = $users->where('name','like','%'.$name.'%');
+      }
+
+      if($created_at != ''){
+        $users = $users->whereBetween('created_at', explode(' - ', str_replace('/', '-', $created_at)) ); 
       }
 
       $users = $users->get();
@@ -170,7 +193,21 @@ class ReportController extends Controller
     }
 
     public function getUserTypes(){
+      $name =        Input::get('search');
+      $created_at =  Input::get('created_at');
+      
+      $users = new User;
+
+      if($name != ''){
+        $users = $users->where('name','like','%'.$name.'%');
+      }
+
+      if($created_at != ''){
+        $users = $users->whereBetween('created_at', explode(' - ', str_replace('/', '-', $created_at)) ); 
+      }
+
       $usertypes = new UserType;
+
       $usertypes = $usertypes->get();
       return view('reports.usertypes.index', compact('usertypes'));
     }

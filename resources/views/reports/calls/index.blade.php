@@ -5,8 +5,8 @@ Calls
 @endsection
 
 @section('head')
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/css/select2.min.css" />
-  <link rel="stylesheet" href="{{ asset('css/daterangepicker.css')}}" />
+  <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}" />
+  <link rel="stylesheet" href="{{ asset('css/daterangepicker.css') }}" />
 @endsection
 
 @section('content')
@@ -82,7 +82,7 @@ Calls
 
 @section('scripts')
   <!-- select2 -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/js/select2.min.js"></script>
+  <script src="{{ asset('js/select2.min.js') }}"></script>
   <script src="{{ asset('js/moment.min.js') }}"></script>
   <script src="{{ asset('js/daterangepicker.js') }}"></script>
 
@@ -113,13 +113,14 @@ Calls
     $('.btn-print').on('click', function(e){
       e.preventDefault();
       var mywindow = window.open('', 'print', '');
-      var btp = $("link[name='bootstrap']").attr('href');
+      var btp  = "{{ asset('css/boot.min.css') }}";
+      var jq   = "{{ asset('js/jquery.min.js') }}"
       var data = $("#table").html();
       mywindow.document.write('<html><head><title>Relátorio</title>');
       mywindow.document.write('<link rel="stylesheet" href="'+btp+'" type="text/css" />');
       mywindow.document.write('</head><body><table class="table table-striped">');
       mywindow.document.write(data);
-      mywindow.document.write('</table></body></html>');
+      mywindow.document.write('</table><script src="'+jq+'"><\/script><script>$(document).ready(function(){ window.print(); })<\/script></body></html>');
       mywindow.document.close(); // necessary for IE >= 10
       mywindow.focus(); // necessary for IE >= 10
     });
@@ -127,8 +128,7 @@ Calls
     $('input[name="created_at"]').daterangepicker({
       locale: {
         format: 'DD/MM/YYYY'
-      },
-      startDate: '10/08/2011'
+      }
     });
 
   </script>
