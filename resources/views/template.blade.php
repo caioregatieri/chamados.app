@@ -96,6 +96,9 @@
         </nav>
 
         <div id="page-wrapper">
+            <br/>
+            <br/>
+            <br/>
             @yield('content')
             <div id="rodape">
                 Desenvolvido por <a href="mailto: caio.cesar.regatieri@gmail.com">Caio Regatieri</a>

@@ -54,8 +54,7 @@ Chamados
 @endsection
 
 @section('content')
-  <br/>
-  <br/>
+
   <div class="panel panel-default noborder">
     <div class="row row-centered">
       <div class="col-md-9 col-centered">

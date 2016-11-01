@@ -9,8 +9,6 @@ Calls
 @endsection
 
 @section('content')
-    <br/>
-    <br/>
 
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -93,7 +91,6 @@ Calls
     <div class="row row-centered" style="text-align: center;">
       {!! $calls->render() !!}
     </div>
-
 
 @endsection
 

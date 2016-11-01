@@ -6,9 +6,6 @@ Show User
 
 @section('content')
 
-<br/>
-<br/>
-
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Detalhes</h3>

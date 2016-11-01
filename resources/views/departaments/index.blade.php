@@ -6,9 +6,6 @@ Departaments
 
 @section('content')
 
-    <br/>
-    <br/>
-
     <div class="panel panel-default">
       <div class="panel-heading">Filtrar e pesquisar</div>
       <div class="panel-body">

@@ -17,3 +17,12 @@
 	border-color: #555 transparent transparent transparent !important;
 	border-width: 5px 3px 0 3px !important;
 }
+
+#wrapper{
+	position: relative;
+}
+
+nav{
+	position: fixed !important;
+	width: 100%;
+}

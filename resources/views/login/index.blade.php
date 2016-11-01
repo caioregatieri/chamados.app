@@ -9,11 +9,9 @@ Log de logins
 @endsection
 
 @section('content')
-    <br/>
-    <br/>
 
     <div class="panel panel-default">
-      <div class="panel-heading">Filter and search</div>
+      <div class="panel-heading">Filtrar e pesquisar</div>
       <div class="panel-body">
         <form class="navbar-form navbar-left" role="search">
           
@@ -23,14 +21,14 @@ Log de logins
           
           <div class="form-group">
               <select class="form-control" name="user">
-                <option value="" disabled selected>User</option>
+                <option value="" disabled selected>Usuário</option>
                 @foreach($users as $user)
                   <option value="{{ $user->id }}">{{ $user->name }}</option>
                 @endforeach
               </select>
           </div>
 
-          <button type="submit" class="btn btn-default">Search</button>
+          <button type="submit" class="btn btn-default">Pesquisar</button>
 
         </form>
       </div>
@@ -43,10 +41,10 @@ Log de logins
       <!-- Table -->
       <table class="table">
           <tr>
-            <th>Date</th>
-            <th>User</th>
+            <th>Data</th>
+            <th>Usuário</th>
             <th>IP</th>
-            <th>Method</th>
+            <th>Metodo</th>
           </tr>
           @foreach($logins as $login)
               <tr>
@@ -60,7 +58,9 @@ Log de logins
 
     </div>
 
-    {!! $logins->render() !!}
+    <div class="row row-centered" style="text-align: center;">
+      {!! $logins->render() !!}  
+    </div>
 
 @endsection
 

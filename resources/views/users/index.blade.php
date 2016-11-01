@@ -6,9 +6,6 @@ Users
 
 @section('content')
 
-    <br/>
-    <br/>
-
     <div class="panel panel-default">
       <div class="panel-heading">Filter and search</div>
       <div class="panel-body">

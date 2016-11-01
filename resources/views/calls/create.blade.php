@@ -10,8 +10,6 @@
 @endsection
 
 @section('content')
-<br/>
-<br/>
 
 @if($errors->any())
   <div class="alert alert-danger" role="alert">

@@ -6,9 +6,6 @@ User types
 
 @section('content')
 
-  <br/>
-  <br/>
-
   <div class="panel panel-default">
     <!-- Default panel contents -->
     <div class="panel-heading clearfix">

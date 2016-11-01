@@ -6,13 +6,14 @@ Call status
 
 @section('content')
 
-    <a href="{{ route('callstatus.create')}}" class="btn btn-success">Create new call mode</a>
-    <br/>
-    <br/>
-
     <div class="panel panel-default">
       <!-- Default panel contents -->
-      <div class="panel-heading">Call status - Total: {{ $callstatuses->total() }}</div>
+      <div class="panel-heading clearfix">
+        <div class="btn-group pull-left">
+          <a href="{{ route('callstatus.create')}}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Novo</a>
+        </div>
+        <h4 class="panel-title pull-right" style="padding-top: 7.5px;">Registros: {{ $callstatuses->total() }}</h4>
+      </div>
 
       <!-- Table -->
       <table class="table">
