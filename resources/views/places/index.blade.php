@@ -43,6 +43,7 @@ Places
             <th>Região</th>
             <th>Secretaria</th>
             <th>Setor</th>
+            <th>Telefone</th>
             <th></th>
           </tr>
           @foreach($places as $place)
@@ -52,6 +53,7 @@ Places
               <td>{{$place->region}}</td>
               <td>{{$place->Departament->name}}</td>
               <td>{{$place->name}}</td>
+              <td>{{$place->telephone1}}</td>
               <td><a href="{{ route('places.show',['id'=>$place->id])}}" class="btn btn-primary"><i class="fa fa-eye"></i> Ver</a></td>
             </tr>
           @endforeach

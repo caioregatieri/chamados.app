@@ -33,7 +33,7 @@
       @include('calls/history/_form')
 
       <a href="{{ URL::previous() }}" class="btn btn-default"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar</a>
-      <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Salvar</button>
+      <button type="submit" class="btn btn-success btn-save"><i class="fa fa-check"></i> Salvar</button>
 
     {!! Form::close() !!}
 
@@ -50,7 +50,12 @@
   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
   
   <script type="text/javascript">
-    $(document).ready(function(){ showFiles(); });
+    $(document).ready(function(){ 
+      $('#form').submit(function(){
+        $('.btn-save').prop('disabled', true);
+      });
+      showFiles(); 
+    });
     $("#files").change(function(){ showFiles(); });
     function showFiles(){
       var files = $("#files")[0].files;

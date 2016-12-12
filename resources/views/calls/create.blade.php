@@ -33,7 +33,7 @@
       @include('calls/_form')
 
       <a href="{{ URL::previous() }}" class="btn btn-default"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar</a>
-      <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Salvar</button>
+      <button type="submit" class="btn btn-success btn-save"><i class="fa fa-check"></i> Salvar</button>
 
     {!! Form::close() !!}
   </div>
@@ -53,6 +53,9 @@
 
   <script type="text/javascript">
     $(document).ready(function(){
+      $('#form').submit(function(){
+        $('.btn-save').prop('disabled', true);
+      });
       var departament_id = $('select[name=departament]').val();
       fillPlaces(departament_id);
       showFiles();
