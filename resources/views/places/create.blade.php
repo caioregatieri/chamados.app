@@ -23,12 +23,12 @@ New Place
   </div>
   <div class="panel-body">
 
-    {!! Form::open(['route'=>'places.store', 'method'=>'post']) !!}
+    {!! Form::open(['route'=>'places.store', 'method'=>'post', 'id'=>'form']) !!}
 
       @include('places/_form')
 
       <a href="{{ URL::previous() }}" class="btn btn-default"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar</a>
-      <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Salvar</button>
+      <button type="submit" class="btn btn-success bt-save"><i class="fa fa-check"></i> Salvar</button>
 
     {!! Form::close() !!}
   </div>
@@ -39,4 +39,11 @@ New Place
 @section('scripts')
   <!-- ckEditor -->
   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#form').submit(function(){
+        $('.btn-save').prop('disabled', true);
+      });
+    }
+  </script>
 @endsection

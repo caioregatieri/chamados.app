@@ -39,4 +39,11 @@ Edit Call
 @section('scripts')
   <!-- ckEditor -->
   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#form').submit(function(){
+        $('.btn-save').prop('disabled', true);
+      });
+    }
+  </script>
 @endsection

@@ -23,15 +23,25 @@ New call mode
   </div>
   <div class="panel-body">
 
-    {!! Form::open(['route'=>'callmodes.store', 'method'=>'post']) !!}
+    {!! Form::open(['route'=>'callmodes.store', 'method'=>'post', 'id'=>'form']) !!}
 
       @include('callmodes/_formCreate')
 
       <a href="{{ route('callmodes.index') }}" class="btn btn-default">Back</a>
-      {!! Form::submit('Save',['class'=>'btn btn-success']) !!}
+      {!! Form::submit('Save',['class'=>'btn btn-success bt-save']) !!}
 
     {!! Form::close() !!}
   </div>
 </div>
 
+@endsection
+
+@section('scripts')
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#form').submit(function(){
+        $('.btn-save').prop('disabled', true);
+      });
+    }
+  </script>
 @endsection

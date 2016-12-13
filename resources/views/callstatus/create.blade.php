@@ -28,10 +28,20 @@ New call status
       @include('callstatus/_formCreate')
 
       <a href="{{ route('callstatus.index') }}" class="btn btn-default">Back</a>
-      {!! Form::submit('Save',['class'=>'btn btn-success']) !!}
+      {!! Form::submit('Save',['class'=>'btn btn-success bt-save']) !!}
 
     {!! Form::close() !!}
   </div>
 </div>
 
+@endsection
+
+@section('scripts')
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#form').submit(function(){
+        $('.btn-save').prop('disabled', true);
+      });
+    }
+  </script>
 @endsection
