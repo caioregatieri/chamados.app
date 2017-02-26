@@ -33,6 +33,8 @@ Users
             <th>Id</th>
             <th>Data</th>
             <th>Nome</th>
+            <th>Setor</th>
+            <th>Ult. Login</th>
             <th style="text-align: center;">Bloqueado</th>
             <th></th>
           </tr>
@@ -41,6 +43,8 @@ Users
               <td>{{$user->id}}</td>
               <td>{{$user->created_at}}</td>
               <td>{{$user->name}}</td>
+              <td>{{$user->place->name}} - {{$user->place->departament->name}}</td>
+              <td>{{ $user->logins->last() != null ? $user->logins->last()->created_at : '' }}</td>
               <td style="text-align: center;">
                 <label class="label label-{{ $user->locked == 0 ? 'primary' : 'danger' }}">{{$user->locked == 0 ? 'Não' : 'Sim'}}</label>
               </td>

@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-Edit call modes
+Editar tipo de chamado
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@ Edit call modes
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Edit call mode: {{ $callmodes->id }}</h3>
+    <h3 class="panel-title">Editado: {{ $callmode->id }}</h3>
   </div>
   <div class="panel-body">
 
@@ -27,8 +27,8 @@ Edit call modes
 
       @include('callmodes._formEdit')
 
-      <a href="{{ URL::previous() }}" class="btn btn-default">Back</a>
-      {!! Form::submit('Save',['class'=>'btn btn-success']) !!}
+      <a href="{{ route('callmodes.index') }}" class="btn btn-default"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar</a>
+      <button type="submit" class="btn btn-success btn-save"><i class="fa fa-check"></i> Salvar</button>
 
     {!! Form::close() !!}
   </div>

@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-  Novo chamado
+Novo chamado
 @endsection
 
 @section('head')

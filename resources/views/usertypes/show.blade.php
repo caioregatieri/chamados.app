@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-Show user type
+Tipos de usuário
 @endsection
 
 @section('content')

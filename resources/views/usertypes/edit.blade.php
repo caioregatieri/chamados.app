@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-Edit user type
+Editar tipo
 @endsection
 
 @section('content')

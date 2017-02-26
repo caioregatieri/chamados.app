@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-New user
+Novo usuário
 @endsection
 
 @section('content')

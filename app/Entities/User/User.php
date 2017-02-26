@@ -3,7 +3,7 @@
 /*
 Autor: Caio Regatieri
 E-mail: caio.cesar.regatieri@gmail.com
-Description: Sistema desenvolvido para controle de chamados 
+Description: Sistema desenvolvido para controle de chamados
 */
 
 namespace App\Entities\User;
@@ -44,7 +44,7 @@ class User extends Model implements AuthenticatableContract,
     public function logins(){
       return $this->hasMany('App\Entities\Login\Login');
     }
-    
+
     /**/
     public function getCreatedAtAttribute($value){
         return date("d/m/Y h:i:s", strtotime($value));

@@ -89,6 +89,16 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('show/{id}', ['as'=>'callstatus.show','uses'=>'CallStatusController@show']);
   });
 
+  Route::group(['prefix'=>'callmodes'], function(){
+    Route::get('', ['as'=>'callmodes.index','uses'=>'CallModesController@index']);
+    Route::get('create', ['as'=>'callmodes.create', 'uses'=>'CallModesController@create']);
+    Route::post('store', ['as'=>'callmodes.store', 'uses'=>'CallModesController@store']);
+    Route::get('edit/{id}', ['as'=>'callmodes.edit', 'uses'=>'CallModesController@edit']);
+    Route::post('update/{id}', ['as'=>'callmodes.update', 'uses'=>'CallModesController@update']);
+    Route::get('destroy/{id}', ['as'=>'callmodes.destroy', 'uses'=>'CallModesController@destroy']);
+    Route::get('show/{id}', ['as'=>'callmodes.show','uses'=>'CallModesController@show']);
+  });
+
   Route::group(['prefix'=>'users'], function(){
     Route::get('', ['as'=>'users.index','uses'=>'UsersController@index']);
     Route::get('create', ['as'=>'users.create', 'uses'=>'UsersController@create']);

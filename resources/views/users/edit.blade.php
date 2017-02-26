@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-Edit User
+Editar usuário
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@ Edit User
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Edit user: {{ $user->id }}</h3>
+    <h3 class="panel-title">Editando usuário: {{ $user->id }}</h3>
   </div>
   <div class="panel-body">
 
@@ -37,7 +37,7 @@ Edit User
       </div>
 
       <div class="form-group">
-        <a href="{{ route('users.password.edit',['id'=>$user->id]) }}" class="btn btn-primary">Reset password</a>
+        <a href="{{ route('users.password.edit',['id'=>$user->id]) }}" class="btn btn-primary">Redefinir senha</a>
       </div>
 
       <a href="{{ URL::previous() }}" class="btn btn-default"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar</a>

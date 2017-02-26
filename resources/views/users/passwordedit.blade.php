@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-Reset password
+Redefinir senha de usuário
 @endsection
 
 @section('content')

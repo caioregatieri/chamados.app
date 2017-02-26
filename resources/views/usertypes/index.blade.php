@@ -14,7 +14,6 @@ User types
       </div>
       <h4 class="panel-title pull-right" style="padding-top: 7.5px;">Registros: {{ $usertypes->total() }}</h4>
     </div>
-    <div class="panel-heading">User types - Total: {{ $usertypes->total() }}</div>
 
     <!-- Table -->
     <table class="table">
@@ -22,6 +21,7 @@ User types
           <th>Id</th>
           <th>Data</th>
           <th>Nome</th>
+          <th>Qtde. Usuários</th>
           <th></th>
         </tr>
         @foreach($usertypes as $usertype)
@@ -29,6 +29,7 @@ User types
             <td>{{$usertype->id}}</td>
             <td>{{$usertype->created_at}}</td>
             <td>{{$usertype->name}}</td>
+            <td>{{$usertype->users->count()}}</td>
             <td style="text-align: right;"><a href="{{ route('usertypes.show',['id'=>$usertype->id])}}" class="btn btn-primary"><i class="fa fa-eye"></i> Ver</a></td>
           </tr>
         @endforeach

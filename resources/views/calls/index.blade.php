@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-Calls
+Chamados
 @endsection
 
 @section('head')

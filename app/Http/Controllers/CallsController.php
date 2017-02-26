@@ -144,6 +144,15 @@ class CallsController extends Controller
       $modes =        CallMode::all()->sortBy('name');
       $departaments = Departament::all()->sortBy('name');
       $callstatus =   CallStatus::all()->sortBy('name');
+
+      /*$triages = collect();
+      $triages->push((Object)['id'=>'1', 'name'=>'Auxilio pelo telefone']);
+      $triages->push((Object)['id'=>'2', 'name'=>'Conexão remota']);
+      $triages->push((Object)['id'=>'3', 'name'=>'Garantia']);
+      $triages->push((Object)['id'=>'4', 'name'=>'Manutenção de equipamentos']);
+      $triages->push((Object)['id'=>'5', 'name'=>'Serviço externo']);
+      dd($triages);*/
+
       return view('calls.index',compact('calls','modes','departaments','callstatus'));
     }
 
@@ -251,7 +260,7 @@ class CallsController extends Controller
 
         $users =  User::where('id', Auth::user()->id)->lists('name','id');
         $status = CallStatus::where('id','<>','1')->lists('name','id');
-        
+
         return view('calls.history.create', compact('users','status','call'));
     }
 

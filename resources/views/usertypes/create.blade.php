@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-New user type
+Novo tipo
 @endsection
 
 @section('content')

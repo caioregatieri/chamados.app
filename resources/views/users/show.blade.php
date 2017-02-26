@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-Show User
+Usuários
 @endsection
 
 @section('content')
