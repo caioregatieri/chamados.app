@@ -121,6 +121,5 @@ Chamados
         $('select[name=place]').select2();
       });
     }
-
   </script>
 @endsection

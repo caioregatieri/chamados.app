@@ -88,5 +88,8 @@ Novo chamado
         $("#filesAttacheds").append("<p>Nenhum arquivo selecionado</p>");
       }
     }
+    $(window).resize(function(){
+        $('select[name=place]').select2();
+    });
   </script>
 @endsection

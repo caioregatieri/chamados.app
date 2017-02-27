@@ -177,6 +177,8 @@ class CallsController extends Controller
             'user_id'=>$request['user'],
             'mode_id'=>$request['mode'],
             'place_id'=>$request['place'],
+            'requester'=>trim($request['requester']),
+            'register'=>trim($request['register']),
             'title'=>trim($request['title']),
             'description'=>trim($request['description'])
         ]);
@@ -228,6 +230,8 @@ class CallsController extends Controller
         $call = Call::find($id);
         $call->mode_id = $request['mode'];
         $call->place_id = $request['place'];
+        $call->requester = trim($request['requester']);
+        $call->register = trim($request['register']);
         $call->title = trim($request['title']);
         $call->description = trim($request['description']);
         $call->save();

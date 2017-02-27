@@ -3,7 +3,7 @@
 /*
 Autor: Caio Regatieri
 E-mail: caio.cesar.regatieri@gmail.com
-Description: Sistema desenvolvido para controle de chamados 
+Description: Sistema desenvolvido para controle de chamados
 */
 
 namespace App\Entities\Call;
@@ -17,7 +17,7 @@ class Call extends Model
 
   protected $table = 'calls';
 
-  protected $fillable = ['user_id', 'mode_id', 'place_id', 'title', 'description'];
+  protected $fillable = ['user_id', 'mode_id', 'place_id', 'requester', 'register', 'title', 'description'];
 
   /*todo chamado possui um usuario*/
   public function user(){

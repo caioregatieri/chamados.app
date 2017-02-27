@@ -73,5 +73,8 @@ Editar Chamado
         $('select[name=place]').select2();
       });
     }
+    $(window).resize(function(){
+        $('select[name=place]').select2();
+    });
   </script>
 @endsection

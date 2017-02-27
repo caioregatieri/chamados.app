@@ -15,8 +15,10 @@ Chamado
     <b>Criado em:</b>  {{$call->created_at}}<br/>
     <b>Atualizado em:</b>  {{$call->updated_at}}<br/>
     <b>Criado por:</b> {{$call->user->name}} <br/>
+    <b>Tipo:</b> {{$call->mode->name}} <br/>
     <b>Secretaria:</b> {{$call->place->Departament->name}} <br/>
     <b>Setor:</b><a href="{{ route('places.show',['id'=>$call->place->id]) }}"> {{$call->place->name}} </a><br/>
+    <b>Solicitante:</b> {{ $call->register }} - {{ $call->requester }} <br/>
     <b>Titulo:</b> {{ $call->title }} <br/>
     <b>Descrição:</b>
     <div class="panel panel-default">

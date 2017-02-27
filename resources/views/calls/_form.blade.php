@@ -1,8 +1,10 @@
 
-<div class="form-group">
+<!-- <div class="form-group">
   {!! Form::label('user','Usuário:') !!}
   {!! Form::select('user', $users, (isset($call->user->id) ? $call->user->id : null ), ['class'=>'form-control']) !!}
-</div>
+</div>-->
+
+{!! Form::hidden('user', Auth::user()->id, ['class'=>'form-control']) !!}
 
 <div class="form-group">
   {!! Form::label('mode','Tipo:') !!}
@@ -17,6 +19,17 @@
 <div class="form-group">
   {!! Form::label('place','Setor:') !!}
   {!! Form::select('place', $places, (isset($call->place->id) ? $call->place->id : Auth::user()->place->id ), ['class'=>'form-control']) !!}
+</div>
+
+<div class="form-group">
+    <div class="col-sm-12 col-md-6 col-lg-6" style="padding: 0; margin-bottom: 15px;">
+      {!! Form::label('requester','Solicitante:') !!}
+      {!! Form::text('requester', null, ['class'=>'form-control']) !!}
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-6" style="padding: 0; margin-bottom: 15px;">
+      {!! Form::label('register','Chapa:') !!}
+      {!! Form::text('register', null, ['class'=>'form-control']) !!}
+    </div>
 </div>
 
 <div class="form-group">
