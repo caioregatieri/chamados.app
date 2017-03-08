@@ -33,8 +33,21 @@ class CallRequest extends Request
           'user'=>'required',
           'departament'=>'required',
           'place'=>'required',
-          'title'=>'required|min:5',
+          'title'=>'required|min:10',
           'description'=>'required|min:10'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+          'user.required' => 'O campo <b>usuário</b> é obrigatório.',
+          'departament.required' => 'O campo <b>secretaria</b> é obrigatório.',
+          'place.required' => 'O campo <b>setor</b> é obrigatório.',
+          'title.required' => 'O campo <b>titulo</b> é obrigatório.',
+          'description.required' => 'O campo <b>descrição</b> é obrigatório.',
+          'title.min' => 'O campo <b>titulo</b> deve ter no minimo :min caracteres.',
+          'description.min' => 'O campo <b>descrição</b> deve ter no minimo :min caracteres.'
         ];
     }
 }

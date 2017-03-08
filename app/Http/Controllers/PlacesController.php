@@ -30,7 +30,8 @@ class PlacesController extends Controller
         $places = new Place;
 
         if($name != ''){
-          $places = $places->where('name','like','%'.$name.'%');
+          $places = $places->where('prefix','like','%'.$name.'%');
+          $places = $places->orWhere('name','like','%'.$name.'%');
         }
 
         if($departament != ''){
@@ -102,9 +103,9 @@ class PlacesController extends Controller
 
     public function placesJson($departament_id){
         if(Auth::user()->usertype->onlyyourplace == "1"){
-            $places = Place::where('departament_id', Auth::user()->place->departament_id)->orderBy('name')->getQuery()->get(['name','id']);
+            $places = Place::where('departament_id', Auth::user()->place->departament_id)->orderBy('name')->getQuery()->get(['prefix','name','id']);
         }else{
-            $places = Place::where('departament_id', $departament_id)->orderBy('name')->getQuery()->get(['name','id']);
+            $places = Place::where('departament_id', $departament_id)->orderBy('name')->getQuery()->get(['prefix','name','id']);
         }
         return Response::json($places);
     }

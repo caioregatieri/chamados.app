@@ -9,12 +9,12 @@
 <div class="form-group">
   {!! Form::label('mode','Tipo:') !!}
   {!! Form::select('mode', $modes, (isset($call->mode->id) ? $call->mode->id : null ), ['class'=>'form-control', 'autofocus'=>'true']) !!}
-</div>
+</div>  
 
 <div class="form-group">
   {!! Form::label('departament','Secretaria:') !!}
   {!! Form::select('departament', $departaments, (isset($call->place->departament->id) ? $call->place->departament->id : Auth::user()->place->departament->id ), ['class'=>'form-control']) !!}
-</div>
+</div>  
 
 <div class="form-group">
   {!! Form::label('place','Setor:') !!}

@@ -2,14 +2,18 @@
   {!! Form::hidden('call', $call->id, null,['class'=>'form-control']) !!}
 </div>
 
-<div class="form-group">
+<!--<div class="form-group">
   {!! Form::label('user','Usuário:') !!}
   {!! Form::select('user', $users, null,['class'=>'form-control']) !!}
+</div>-->
+
+<div class="form-group">
+  {!! Form::hidden('user', Auth::user()->id, null,['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
   {!! Form::label('description','Descrição:') !!}
-  {!! Form::textarea('description', null, ['class'=>'ckeditor form-control']) !!}
+  {!! Form::textarea('description', null, ['class'=>'ckeditor form-control','autofocus'=>'true']) !!}
 </div>
 
 <div class="panel panel-default">

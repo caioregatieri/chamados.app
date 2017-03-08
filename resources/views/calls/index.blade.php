@@ -79,7 +79,7 @@ Chamados
               <td>{{date("d/m/Y h:i:s", strtotime($call->created_at))}}</td>
               <td>{{$call->mode}}</td>
               <td>{{$call->departament}}</td>
-              <td>{{$call->place}}</td>
+              <td>{{$call->prefix}} - {{$call->place}}</td>
               <td>{{$call->title}}</td>
               <td><a href="{{ route('calls.show',['id'=>$call->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Ver</a></td>
             </tr>
@@ -116,7 +116,7 @@ Chamados
         $('select[name=place]').empty();
         $('select[name=place]').append('<option value="" disabled selected>Setor</option>');
         $.each(places, function(key, value){
-          $('select[name=place]').append('<option value='+value.id+'>'+value.name+'</option>');
+          $('select[name=place]').append('<option value='+value.id+'>'+value.prefix+' - '+value.name+'</option>');
         });
         $('select[name=place]').select2();
       });

@@ -119,9 +119,10 @@
                     <td class="content">
                         <h2>Olá,</h2>
                         <p>Um chamado técnico foi aberto para seu setor. Seguem abaixo alguns detalhes:</p>
-                        <p>Código: <b> {!! $call->id !!} </b></p>
+                        <p>Código: <b><a href="http://172.21.48.247/calls/show/{{ $call->id }}">{!! $call->id !!}</a></b></p>
                         <p>Data: <b> {!! $call->created_at !!} </b></p>
                         <p>Aberto por: <b> {!! $call->user->name !!} </b></p>
+                        <p>Solicitante: <b> {!! $call->requester !!} </b></p>
                         <p>Titulo: <b> {!! $call->title !!} </b></p>
                         <p>Detalhes: <b> {!! $call->description !!} </b></p>
                         <hr/>

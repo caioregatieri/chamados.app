@@ -18,9 +18,9 @@ Departament
       <div class="panel-body">
         <form class="navbar-form navbar-left" role="search">
 
-          <div class="form-group">
+          <!--<div class="form-group">
             <input name="created_at" type="text" class="form-control" placeholder="" />
-          </div>
+          </div>-->
 
           <div class="form-group">
               <select class="form-control" name="region">

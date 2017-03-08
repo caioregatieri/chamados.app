@@ -52,9 +52,10 @@ class CallsController extends Controller
 
       //comando a ser executado
       $q = 'select c.id, c.created_at,  c.title, '.
+              'p.prefix, '.
               'p.name as place, '.
               'd.name as departament, '.
-              'm.name as  mode, '.
+              'm.name as mode, '.
               's.name as status, s.color '.
           'from calls c '.
           'inner join places p on c.place_id = p.id '.
@@ -197,9 +198,7 @@ class CallsController extends Controller
             'description' => 'Chamado aberto. Aguardando...',
             'status_id' => '1'
         ]);
-
         $res = \Event::fire(new statusCall($call));
-
         return redirect()->route('calls.index');
     }
 

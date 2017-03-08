@@ -52,7 +52,7 @@ Places
               <td>{{$place->created_at}}</td>
               <td>{{$place->region}}</td>
               <td>{{$place->Departament->name}}</td>
-              <td>{{$place->name}}</td>
+              <td>{{$place->prefix}} - {{$place->name}}</td>
               <td>{{$place->telephone1}}</td>
               <td><a href="{{ route('places.show',['id'=>$place->id])}}" class="btn btn-primary"><i class="fa fa-eye"></i> Ver</a></td>
             </tr>

@@ -13,10 +13,10 @@ Novo chamado
 
 @if($errors->any())
   <div class="alert alert-danger" role="alert">
-    <strong>Whoops!</strong> Algum(s) erros acontecerão ao enviar os dados.<br><br>
+    <strong>Whoops!</strong> Algum(s) erros aconteceram ao enviar os dados.<br><br>
     <ul>
       @foreach($errors->all() as $error)
-        <li>{{ $error }}</li>
+        <li>{!! $error !!}</li>
       @endforeach
     </ul>
   </div>
@@ -69,7 +69,7 @@ Novo chamado
         $('select[name=place]').empty();
         $('select[name=place]').append('<option value="" disabled selected>Place</option>');
         $.each(places, function(key, value){
-          $('select[name=place]').append('<option value='+value.id+'>'+value.name+'</option>');
+          $('select[name=place]').append('<option value='+value.id+'>'+value.prefix+' - '+value.name+'</option>');
         });
         $('select[name=place]').val("");
         $('select[name=place]').select2();
