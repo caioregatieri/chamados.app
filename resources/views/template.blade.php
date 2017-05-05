@@ -57,7 +57,9 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li><a href="{{ route('home') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+                        <li>
+                            <a href="{{ route('home') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
                         <li>
                           <a href="{{ route('calls.index') }}"><i class="fa fa-phone fa-fw"></i> Chamados</a>
                         </li>
@@ -84,6 +86,9 @@
                             <li><a href="{{ route('reports.users.get') }}"><i class="fa fa-users"></i> Usuários</a></li>
                             <li><a href="{{ route('reports.usertypes.get') }}"><i class="fa fa-users"></i> Tipos de usuários</a></li>
                           </ul>
+                        </li>
+                        <li>
+                            <a href="{{ route('reminders.index') }}"><i class="fa fa-file-text-o"></i> Lembretes</a>
                         </li>
                         <li>
                           <a href="{{ route('about') }}"><i class="fa fa-info fa-fw"></i> Sobre</a>

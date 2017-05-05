@@ -127,4 +127,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('usertypes', ['as'=>'reports.usertypes.post','uses'=>'ReportController@postUserTypes']);
   });
 
+  Route::group(['prefix'=>'reminders'], function(){
+    Route::get('', ['as'=>'reminders.index','uses'=>'ReminderController@index']);
+    Route::get('create', ['as'=>'reminders.create', 'uses'=>'ReminderController@create']);
+    Route::post('store', ['as'=>'reminders.store', 'uses'=>'ReminderController@store']);
+    Route::get('edit/{id}', ['as'=>'reminders.edit', 'uses'=>'ReminderController@edit']);
+    Route::post('update/{id}', ['as'=>'reminders.update', 'uses'=>'ReminderController@update']);
+    Route::get('destroy/{id}', ['as'=>'reminders.destroy', 'uses'=>'ReminderController@destroy']);
+    Route::get('show/{id}', ['as'=>'reminders.show','uses'=>'ReminderController@show']);
+  });
+
 });
