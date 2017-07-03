@@ -17,7 +17,7 @@ class Place extends Model
     
     protected $table = 'places';
 
-    protected $fillable = ['departament_id', 'name', 'prefix', 'neighborhood', 'address', 'number', 'telephone1', 'telephone2', 'responsavel', 'email', 'lat', 'lon', 'region', 'note'];
+    protected $fillable = ['departament_id', 'name', 'prefix', 'neighborhood', 'address', 'number', 'telephone1', 'telephone2', 'responsavel', 'email', 'lat', 'lon', 'region', 'note', 'ip_range', 'computer_names'];
 
     /*todo lugar possui um departamento(secretaria)*/
     public function departament(){

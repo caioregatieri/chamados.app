@@ -26,7 +26,7 @@ Chamados
           font-weight: 100;
           font-family: 'Josefin Sans', sans-serif;
           text-align: center;
-          display: table-cell;
+          /*display: table-cell;*/
           vertical-align: middle;
           border: 0;
       }
@@ -54,17 +54,12 @@ Chamados
 @endsection
 
 @section('content')
-
-  <div class="panel panel-default noborder">
-    <div class="row row-centered">
-      <div class="col-md-9 col-centered">
-        <div class="title">
-          Sistema de controle de chamados técnicos.<br/>
-          Desenvolvido por: <a href="mailto:caio.cesar.regatieri">Caio Regatieri</a>.<br/>
-          Usando PHP (Laravel), Bootstrap e Sqlite.
-        </div>
+  <div class="panel panel-default noborder" style="text-align: center;">
+      <div class="title" style="margin: 0 auto;">
+        Sistema de controle de chamados técnicos.<br/>
+        Desenvolvido por: <a href="mailto:caio.cesar.regatieri">Caio Regatieri</a>.<br/>
+        Usando PHP (Laravel), Bootstrap e Sqlite.
       </div>
-    </div>
   </div>
   <br/>
   <br/>

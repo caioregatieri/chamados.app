@@ -23,7 +23,7 @@ class ReminderController extends Controller
 
         $filter = isset($_GET['search']) ? trim($_GET['search']) : '';
         if($filter != ''){
-            $reminders = $reminders->where('name','like','%'.$filter.'%');
+            $reminders = $reminders->where('title','like','%'.$filter.'%');
         }
 
         $reminders = $reminders->paginate(10);

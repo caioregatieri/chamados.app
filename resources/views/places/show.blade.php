@@ -42,6 +42,8 @@ Show place
         <b>Telefone2:</b> {{$place->telephone2}} <br/>
         <b>Chefia/responsavel:</b> {{$place->responsavel}} <br/>
         <b>E-mail:</b> {{$place->email}} <br/>
+        <b>Faixa de IP:</b> <a href="#" id="ip" data-ip="{{$place->ip_range}}">{{$place->ip_range}}</a> <span id="status"></span> <br/>
+        <b>Nome de Maquinas:</b> {{$place->computer_names}} <br/>
         <b>Observações:</b>
         <div>
           {!! $place->note !!}
@@ -65,7 +67,7 @@ Show place
 
 @section('scripts')
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyCLwJ1rSXCuLcoi8E-IfvhduUatvjQs6c8"></script>
-
+  <script type="text/javascript" src="{!! asset('js/ping.js') !!}"></script>
 
   <script type="text/javascript">
     var map = null;
@@ -99,6 +101,31 @@ Show place
     		title: "{!! $place->name !!}",
     		icon: '{!! asset('img/point.png') !!}'
     	});
+
+      $("#ip").click(function(event ){
+        event.preventDefault();
+        verificarRede();
+      })
+
+      function verificarRede(){
+        if( $("#ip").data('ip') == "") return;
+        $.Ping('http://' + $("#ip").data('ip') /*, optional timeout */)
+        .done(function (success, url, time, on) {
+          console.log("ping done", arguments);
+          $("#status").html('<b style="color: green; font-weight: bold;">Online</b>');
+        })
+        .fail(function (failure, url, time, on) {
+          //console.log("ping fail", arguments);
+          $("#status").html('<b style="color: red; font-weight: bold;">Offline</b>');
+        });
+      }
+
+      function validateIP(ip){
+        var padraoip = "^(?:(?:25[0-5]2[0-4][0-9][01]?[0-9][0-9]?)\.){3}(?:25[0-5]2[0-4][0-9][01]?[0-9][0-9]?)$";
+        return ip.match(padraoip);
+      }
+
+      verificarRede();
     })();
 
   </script>

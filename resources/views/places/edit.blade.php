@@ -39,11 +39,23 @@ Edit Call
 @section('scripts')
   <!-- ckEditor -->
   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+  <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
   <script type="text/javascript">
     $(document).ready(function(){
       $('#form').submit(function(){
         $('.btn-save').prop('disabled', true);
       });
-    }
+      $('input[name=ip_range]').mask('000.000.000.000');
+      $('input[name=ip_range]').on('blur', function(){
+        console.log($(this).val());
+        if(!validateIP($(this).val())){
+          alert('IP inválido');
+        }
+      })
+      function validateIP(ip){
+        var padraoip = "^(?:(?:25[0-5]2[0-4][0-9][01]?[0-9][0-9]?)\.){3}(?:25[0-5]2[0-4][0-9][01]?[0-9][0-9]?)$";
+        return ip.match(padraoip);
+      }
+    });
   </script>
 @endsection

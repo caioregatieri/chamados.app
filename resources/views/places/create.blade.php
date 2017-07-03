@@ -39,11 +39,13 @@ New Place
 @section('scripts')
   <!-- ckEditor -->
   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+  <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
   <script type="text/javascript">
     $(document).ready(function(){
       $('#form').submit(function(){
         $('.btn-save').prop('disabled', true);
       });
-    }
+      $('input[name=ip_range]').mask('000.000.000.000');
+    });
   </script>
 @endsection

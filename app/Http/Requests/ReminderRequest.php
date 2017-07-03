@@ -31,8 +31,8 @@ class ReminderRequest extends Request
     {
         return [
           'user_id'=>'required',
-          'title'=>'required|min:10',
-          'description'=>'required|min:10'
+          'title'=>'required|min:5',
+          'description'=>'required|min:8'
         ];
     }
 

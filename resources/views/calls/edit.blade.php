@@ -67,7 +67,7 @@ Editar Chamado
         $('select[name=place]').empty();
         $('select[name=place]').append('<option value="" disabled selected>Place</option>');
         $.each(places, function(key, value){
-          $('select[name=place]').append('<option value='+value.id+'>'+value.name+'</option>');
+          $('select[name=place]').append('<option value='+value.id+'>'+ value.prefix + ' - ' + value.name+'</option>');
         });
         $('select[name=place]').val(place_id);
         $('select[name=place]').select2();

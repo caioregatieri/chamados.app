@@ -65,6 +65,16 @@
 </div>
 
 <div class="form-group">
+  {!! Form::label('ip_range','Faixa de IP:') !!}
+  {!! Form::text('ip_range', null, ['class'=>'form-control']) !!}
+</div>
+
+<div class="form-group">
+  {!! Form::label('computer_names','Nome de Maquinas:') !!}
+  {!! Form::text('computer_names', null, ['class'=>'form-control']) !!}
+</div>
+
+<div class="form-group">
   {!! Form::label('note','Observações:') !!}
   {!! Form::textarea('note', null, ['class'=>'ckeditor form-control']) !!}
 </div>

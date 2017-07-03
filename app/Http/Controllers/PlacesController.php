@@ -91,6 +91,8 @@ class PlacesController extends Controller
         $place->lat = $request['lat'];
         $place->lon = $request['lon'];
         $place->region = $request['region'];
+        $place->ip_range = $request['ip_range'];
+        $place->computer_names = $request['computer_names'];
         $place->note = $request['note'];
         $place->save();
         return redirect()->route('places.index');
