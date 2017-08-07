@@ -1,11 +1,23 @@
 @extends('template')
 
 @section('title')
-Departaments
+Setores
 @endsection
 
 @section('content')
 
+    @if(Session::has('created'))
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Sucesso!</strong> Setor criado com sucesso.
+      </div>
+    @endif
+    @if(Session::has('updated'))
+      <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Sucesso!</strong> Setor alterado com sucesso.
+      </div>
+    @endif
     <div class="panel panel-default">
       <div class="panel-heading">Filtrar e pesquisar</div>
       <div class="panel-body">

@@ -50,8 +50,10 @@ class ReminderController extends Controller
     public function store(ReminderRequest $request)
     {
         $reminder = Reminder::create($request->all());
-        if($reminder)
+        if($reminder){
+            \Session::flash('created', $reminder);
             return redirect()->route('reminders.index');
+        }
     }
 
     /**
@@ -90,8 +92,10 @@ class ReminderController extends Controller
     public function update(ReminderRequest $request, $id)
     {
         $reminder = Reminder::find($id)->update($request->all());
-        if($reminder)
+        if($reminder){
+            \Session::flash('updated', $reminder);
             return redirect()->route('reminders.index');
+        }
     }
 
     /**

@@ -41,6 +41,7 @@ class DepartamentController extends Controller
     public function store(DepartamentRequest $request)
     {
         $departament = Departament::Create($request->all());
+        \Session::flash('created', $departament);
         return redirect()->route('departaments.index');
     }
 
@@ -59,6 +60,7 @@ class DepartamentController extends Controller
     public function update(DepartamentRequest $request, $id)
     {
         $departament = Departament::find($id)->update($request->all());
+        \Session::flash('updated', $departament);
         return redirect()->route('departaments.index');
     }
 

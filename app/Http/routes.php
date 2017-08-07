@@ -44,7 +44,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('delete/call/{call}/file/{file}', ['as'=>'calls.file.delete','uses'=>'CallsController@deletecallfile']);
 
     Route::get('download/history/{history}/file/{file}', ['as'=>'calls.history.file.download','uses'=>'CallsController@downloadhistoryfile']);
-
   });
 
   Route::group(['prefix'=>'places'], function(){
@@ -135,6 +134,19 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('update/{id}', ['as'=>'reminders.update', 'uses'=>'ReminderController@update']);
     Route::get('destroy/{id}', ['as'=>'reminders.destroy', 'uses'=>'ReminderController@destroy']);
     Route::get('show/{id}', ['as'=>'reminders.show','uses'=>'ReminderController@show']);
+  });
+
+});
+
+Route::group(['prefix'=>'api'], function(){
+
+  Route::group(['prefix'=>'calls'], function(){
+    Route::get('/{id?}',         ['as'=>'api.calls.index', 'uses'=>'CallsController@api_index']);
+    Route::post('/',             ['as'=>'api.calls.store', 'uses'=>'CallsController@api_store']);
+    Route::put('/{id}',          ['as'=>'api.calls.update', 'uses'=>'CallsController@api_update']);
+    Route::delete('/{id}',       ['as'=>'api.calls.destroy', 'uses'=>'CallsController@api_destroy']);
+    Route::get('/{id}/history',  ['as'=>'api.calls.history.index','uses'=>'CallsController@api_history_index']);
+    Route::post('/{id}/history', ['as'=>'api.calls.history.store','uses'=>'CallsController@api_history_store']);
   });
 
 });

@@ -36,6 +36,7 @@ class UserTypesController extends Controller
           'administrator'=> isset($request['administrator']) ? 1 : 0,
           'onlyyourplace'=> isset($request['onlyyourplace']) ? 1 : 0
       ]);
+      \Session::flash('created', $usertype);
       return redirect()->route('usertypes.index');
   }
 
@@ -58,6 +59,7 @@ class UserTypesController extends Controller
           'administrator'=> isset($request['administrator']) ? 1 : 0,
           'onlyyourplace'=> isset($request['onlyyourplace']) ? 1 : 0
       ]);
+      \Session::flash('updated', $usertype);
       return redirect()->route('usertypes.index');
   }
 

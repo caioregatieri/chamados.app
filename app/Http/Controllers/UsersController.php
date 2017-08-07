@@ -47,7 +47,7 @@ class UsersController extends Controller
 
   public function store(UsersCreateRequest $request)
   {
-      $users = User::create([
+      $user = User::create([
         'usertype_id' => $request['usertype_id'],
         'place_id' => $request['place_id'],
         'name' => $request['name'],
@@ -56,6 +56,7 @@ class UsersController extends Controller
         'password' => bcrypt($request['password']),
         'locked' => 1
       ]);
+      \Session::flash('created', $user);
       return redirect()->route('users.index');
   }
 
@@ -84,6 +85,7 @@ class UsersController extends Controller
         'email' => $request['email'],
         'locked' => (!isset($request['locked']) ? 0 : 1)
       ]);
+      \Session::flash('updated', $user);
       return redirect()->route('users.show',['id'=>$id]);
   }
 

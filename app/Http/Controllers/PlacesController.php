@@ -59,6 +59,7 @@ class PlacesController extends Controller
     public function store(PlaceRequest $request)
     {
         $place = Place::create($request->all());
+        \Session::flash('created', $place);
         return redirect()->route('places.index');
     }
 
@@ -95,6 +96,7 @@ class PlacesController extends Controller
         $place->computer_names = $request['computer_names'];
         $place->note = $request['note'];
         $place->save();
+        \Session::flash('updated', $place);
         return redirect()->route('places.index');
     }
 
