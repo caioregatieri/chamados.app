@@ -24,7 +24,30 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Novo atendimento para o chamado: {{ $call->title }}</h3>
+    <h3 class="panel-title">Detalhes do chamado</h3>
+  </div>
+  <div class="panel-body">
+    <b>Id:</b> {{$call->id}} <br/>
+    <b>Criado em:</b>  {{$call->created_at}}<br/>
+    <b>Atualizado em:</b>  {{$call->updated_at}}<br/>
+    <b>Criado por:</b> {{$call->user->name}} <br/>
+    <b>Tipo:</b> {{$call->mode->name}} <br/>
+    <b>Secretaria:</b> {{$call->place->Departament->name}} <br/>
+    <b>Setor:</b><a href="{{ route('places.show',['id'=>$call->place->id]) }}"> {{$call->place->prefix}} - {{$call->place->name}} </a><br/>
+    <b>Solicitante:</b> {{ $call->register }} - {{ $call->requester }} <br/>
+    <b>Titulo:</b> {{ $call->title }} <br/>
+    <b>Descrição:</b>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        {!! $call->description !!}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Novo atendimento</h3>
   </div>
   <div class="panel-body">
 

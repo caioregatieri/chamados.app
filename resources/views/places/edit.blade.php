@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-Edit Call
+Editando setor
 @endsection
 
 @section('content')

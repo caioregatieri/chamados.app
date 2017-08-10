@@ -26,6 +26,16 @@ Secretarias
             <input name="search" type="text" class="form-control" placeholder="Nome" />
           </div>
           <div class="form-group">
+            <select class="form-control" name="region">
+              <option value="" disabled selected>Região</option>
+                <option value="Norte">Norte</option>                
+                <option value="Sul">Sul</option>                
+                <option value="Leste">Leste</option>                
+                <option value="Oeste">Oeste</option>
+                <option value="Centro">Centro</option>
+            </select>
+          </div>
+          <div class="form-group">
             <select class="form-control" name="departament">
               <option value="" disabled selected>Secretaria</option>
               @foreach($departaments as $departament)

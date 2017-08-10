@@ -25,13 +25,18 @@ class PlacesController extends Controller
     public function index()
     {
         $name =        Input::get('search');
+        $region = Input::get('region','');
         $departament = Input::get('departament','');
-
+        
         $places = new Place;
 
         if($name != ''){
           $places = $places->where('prefix','like','%'.$name.'%');
           $places = $places->orWhere('name','like','%'.$name.'%');
+        }
+
+        if($region != ''){
+          $places = $places->where('region','=',$region);
         }
 
         if($departament != ''){

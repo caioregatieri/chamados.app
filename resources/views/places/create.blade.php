@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-New Place
+Novo setor
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@ New Place
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">New place</h3>
+    <h3 class="panel-title">Novo setor</h3>
   </div>
   <div class="panel-body">
 
