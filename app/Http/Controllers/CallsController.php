@@ -32,6 +32,7 @@ use \App\Entities\Place\Place;
 use \App\Entities\User\User;
 
 use \App\Events\statusCall;
+use \App\Events\createCall;
 
 class CallsController extends Controller
 {
@@ -198,7 +199,8 @@ class CallsController extends Controller
             'description' => 'Chamado aberto. Aguardando...',
             'status_id' => '1'
         ]);
-        $res = \Event::fire(new statusCall($call));
+        \Event::fire(new statusCall($call)); //envia e-mail para o responsável do setor requisitante
+        \Event::fire(new createCall($call)); //envia e-mail para o grupo de suporte técnico
         \Session::flash('created', $call);
         return redirect()->route('calls.index');
     }

@@ -93,7 +93,7 @@ Chamados
               <td>{{$call->departament}}</td>
               <td>{{$call->prefix}} - {{$call->place}}</td>
               <td>{{$call->title}}</td>
-              <td><a href="{{ route('calls.show',['id'=>$call->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Ver</a></td>
+              <td style="text-align: right;"><a href="{{ route('calls.show',['id'=>$call->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Ver</a></td>
             </tr>
           @endforeach
       </table>

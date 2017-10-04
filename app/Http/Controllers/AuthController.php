@@ -43,7 +43,8 @@ class AuthController extends Controller
                                'ip'=>$request->ip(),
                                'method'=>'login']);
 
-                return redirect('home');
+                return redirect()->intended('home');
+                //return redirect('home');
             }
 
             Auth::logout();

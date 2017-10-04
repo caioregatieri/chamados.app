@@ -56,9 +56,15 @@ class Handler extends ExceptionHandler
         }
 
         if ($e instanceof TokenMismatchException){
-            //redirect to form an example of how I handle mine
-            return redirect($request->fullUrl())->with('csrf_error',"Opps! Seems you couldn't submit form for a longtime. Please try again");
+            return redirect()->back()->withErrors(["csrf_error", "Opps! Seems you couldn't submit form for a longtime. Please try again"]);
+            //return redirect($request->fullUrl())->with('csrf_error',"Opps! Seems you couldn't submit form for a longtime. Please try again");
         }
+
+        if($e instanceof Swift_TransportException) {
+            return parent::render($request);
+        }
+
+        //dd($e, $request);
 
         return parent::render($request, $e);
     }

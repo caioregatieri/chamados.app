@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-  New history
+  Novo atendimento
 @endsection
 
 @section('head')
