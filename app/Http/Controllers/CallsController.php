@@ -169,7 +169,13 @@ class CallsController extends Controller
           $departaments = Departament::lists('name','id');
           $places =       Place::lists('name','id');
         }
-        return view('calls.create',compact('departaments','places','users','modes'));
+
+        $callTitles =   Call::select('title')->distinct()->orderBy('title')->lists('title');
+        $callRequesters =   Call::select('requester')->distinct()->orderBy('requester')->lists('requester');
+
+        //dd($callTitles, $callRequesters);
+
+        return view('calls.create',compact('departaments','places','users','modes','callTitles','callRequesters'));
     }
 
     public function store(CallRequest $request)
@@ -223,7 +229,10 @@ class CallsController extends Controller
         $departaments = Departament::lists('name','id');
         $places =       Place::lists('name','id');
 
-        return view('calls.edit', compact('departaments','places','users','call','modes'));
+        $callTitles =   Call::select('title')->distinct()->orderBy('title')->lists('title');
+        $callRequesters =   Call::select('requester')->distinct()->orderBy('requester')->lists('requester');
+
+        return view('calls.edit', compact('departaments','places','users','call','modes','callTitles','callRequesters'));
     }
 
     public function update(CallRequest $request, $id)

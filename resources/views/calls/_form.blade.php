@@ -34,7 +34,7 @@
 
 <div class="form-group">
   {!! Form::label('title','Titulo:') !!}
-  {!! Form::text('title', null, ['class'=>'form-control']) !!}
+  {!! Form::text('title', null, ['class'=>'form-control ui-widget']) !!}
 </div>
 
 <div class="form-group">

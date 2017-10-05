@@ -5,8 +5,9 @@ Editar Chamado
 @endsection
 
 @section('head')
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/css/select2.min.css" rel="stylesheet" />
   @include('calls/_style')
+  <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet" />
+  <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -49,19 +50,42 @@ Editar Chamado
   <!-- ckEditor -->
   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
-    <!-- select2 -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/js/select2.min.js"></script>
+  <!-- select2 -->
+  <script src="{{ asset('js/select2.min.js') }}"></script>
+
+  <!--JQuery-ui -->
+  <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
 
   <script type="text/javascript">
-    $('select[name=departament]').change(function(){
-      var departament_id = $(this).val();
-      fillPlaces(departament_id, "");
-    });
+    //lista de titulos de chamados
+    var titles = {!! $callTitles !!};
+    //lista de solicitantes de chamados
+    var requesters = {!! $callRequesters !!};
+
     $(document).ready(function(){
       var departament_id = $('select[name=departament]').val();
       var place_id = $('select[name=place]').val();
       fillPlaces(departament_id, place_id);
+      
+      $("#requester" ).autocomplete({
+        minLength: 3,
+        delay: 500,
+        // autoFocus: true,
+        source: requesters
+      });
+
+      $("#title" ).autocomplete({
+        minLength: 3,
+        delay: 500,
+        source: titles
+      });
     });
+    
+    $('select[name=departament]').change(function(){
+      var departament_id = $(this).val();
+      fillPlaces(departament_id, "");
+    });
+
     function fillPlaces(departament_id, place_id){
       $.get('/places/json/'+departament_id, function(places){
         $('select[name=place]').empty();
@@ -73,6 +97,7 @@ Editar Chamado
         $('select[name=place]').select2();
       });
     }
+
     $(window).resize(function(){
         $('select[name=place]').select2();
     });

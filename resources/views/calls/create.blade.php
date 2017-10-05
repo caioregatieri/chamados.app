@@ -5,8 +5,9 @@ Novo chamado
 @endsection
 
 @section('head')
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/css/select2.min.css" rel="stylesheet" />
   @include('calls/_style')
+  <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet" />
+  <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -49,9 +50,17 @@ Novo chamado
   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
   <!-- select2 -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/js/select2.min.js"></script>
+  <script src="{{ asset('js/select2.min.js') }}"></script>
+
+  <!--JQuery-ui -->
+  <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
 
   <script type="text/javascript">
+    //lista de titulos de chamados
+    var titles = {!! $callTitles !!};
+    //lista de solicitantes de chamados
+    var requesters = {!! $callRequesters !!};
+
     $(document).ready(function(){
       $('#form').submit(function(){
         $('.btn-save').prop('disabled', true);
@@ -59,11 +68,26 @@ Novo chamado
       var departament_id = $('select[name=departament]').val();
       fillPlaces(departament_id);
       showFiles();
+
+      $("#requester" ).autocomplete({
+        minLength: 3,
+        delay: 500,
+        // autoFocus: true,
+        source: requesters
+      });
+
+      $("#title" ).autocomplete({
+        minLength: 3,
+        delay: 500,
+        source: titles
+      });
     });
+
     $('select[name=departament]').change(function(){
       var departament_id = $(this).val();
       fillPlaces(departament_id);
     });
+
     function fillPlaces(departament_id){
       $.get('/places/json/'+departament_id, function(places){
         $('select[name=place]').empty();
@@ -75,7 +99,9 @@ Novo chamado
         $('select[name=place]').select2();
       });
     }
+
     $("#files").change(function(){ showFiles(); });
+    
     function showFiles(){
       var files = $("#files")[0].files;
       var filesCount = files.length;
@@ -88,6 +114,7 @@ Novo chamado
         $("#filesAttacheds").append("<p>Nenhum arquivo selecionado</p>");
       }
     }
+
     $(window).resize(function(){
         $('select[name=place]').select2();
     });
