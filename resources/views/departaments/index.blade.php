@@ -40,7 +40,7 @@ Setores
       </div>
 
       <!-- Table -->
-      <table class="table table-striped">
+      <table class="table table-striped table-condensed">
           <tr>
             <th>Id</th>
             <th>Data</th>
@@ -52,7 +52,7 @@ Setores
               <td>{{$departament->id}}</td>
               <td>{{$departament->created_at}}</td>
               <td>{{$departament->name}}</td>
-              <td style="text-align: right;"><a href="{{ route('departaments.show',['id'=>$departament->id])}}" class="btn btn-primary"><i class="fa fa-eye"></i> Ver</a></td>
+              <td style="text-align: right;"><a href="{{ route('departaments.show',['id'=>$departament->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Ver</a></td>
             </tr>
           @endforeach
       </table>

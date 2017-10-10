@@ -43,14 +43,12 @@ Lembretes
       <table class="table table-striped table-condensed">
           <tr>
             <th>Id</th>
-            <th>Data</th>
             <th>Titulo</th>
             <th></th>
           </tr>
           @foreach($reminders as $reminder)
             <tr>
               <td>{{$reminder->id}}</td>
-              <td>{{$reminder->created_at}}</td>
               <td>{{$reminder->title}}</td>
               <td style="text-align: right;"><a href="{{ route('reminders.show',['id'=>$reminder->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Ver</a></td>
             </tr>

@@ -58,7 +58,7 @@ Secretarias
       </div>
 
       <!-- Table -->
-      <table class="table table-striped">
+      <table class="table table-striped table-condensed">
           <tr>
             <th>Id</th>
             <th>Data</th>
@@ -76,7 +76,7 @@ Secretarias
               <td>{{$place->Departament->name}}</td>
               <td>{{$place->prefix}} - {{$place->name}}</td>
               <td>{{$place->telephone1}}</td>
-              <td><a href="{{ route('places.show',['id'=>$place->id])}}" class="btn btn-primary"><i class="fa fa-eye"></i> Ver</a></td>
+              <td style="text-align: right;"><a href="{{ route('places.show',['id'=>$place->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Ver</a></td>
             </tr>
           @endforeach
       </table>

@@ -42,6 +42,10 @@
   {!! Form::textarea('description', null, ['class'=>'ckeditor form-control']) !!}
 </div>
 
+<div class="form-group">
+  <!-- <input type="checkbox" name="hastransfers"> Houve transferência de patrimonio. -->
+</div>
+
 <div class="panel panel-default">
   <div class="panel-heading">Anexos</div>
   <div class="panel-body">
