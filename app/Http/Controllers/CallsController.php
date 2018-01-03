@@ -52,7 +52,7 @@ class CallsController extends Controller
       }
 
       //comando a ser executado
-      $q = 'select c.id, c.created_at,  c.title, '.
+      $q = 'select c.id, c.created_at,  c.title, c.requester, '.
               'p.prefix, '.
               'p.name as place, '.
               'd.name as departament, '.
@@ -72,7 +72,7 @@ class CallsController extends Controller
       $w = '';
 
       if($search != ''){
-        $w = $w . "where (c.title like '%" . $search . "%' or c.description like '%" . $search . "%') ";
+        $w = $w . "where (c.title like '%" . $search . "%' or c.description like '%" . $search . "%' or c.requester like '%" . $search . "%') ";
       }
 
       if($mode != ''){
@@ -205,10 +205,10 @@ class CallsController extends Controller
             'description' => 'Chamado aberto. Aguardando...',
             'status_id' => '1'
         ]);
-        \Event::fire(new statusCall($call)); //envia e-mail para o responsável do setor requisitante
-        \Event::fire(new createCall($call)); //envia e-mail para o grupo de suporte técnico
+        //\Event::fire(new statusCall($call)); //envia e-mail para o responsável do setor requisitante
+        //\Event::fire(new createCall($call)); //envia e-mail para o grupo de suporte técnico
         \Session::flash('created', $call);
-        return redirect()->route('calls.index');
+        return redirect()->route('calls.show', ['id' => $call->id]);
     }
 
     public function show($id)
@@ -256,7 +256,8 @@ class CallsController extends Controller
           }
         }
 
-        $res = \Event::fire(new statusCall($call));
+        //\Event::fire(new statusCall($call));
+        //\Event::fire(new createCall($call)); //envia e-mail para o grupo de suporte técnico
         \Session::flash('updated', $call);
         return redirect()->route('calls.index');
     }
@@ -298,7 +299,7 @@ class CallsController extends Controller
           }
         }
         if($history){
-          $res = \Event::fire(new statusCall($history->Call));
+          //$res = \Event::fire(new statusCall($history->Call));
           \Session::flash('created', $history);
           return redirect()->route('calls.show', [$request['call']]);
         }

@@ -80,8 +80,9 @@ Chamados
             <th>Id</th>
             <th>Aberto em</th>
             <th>Tipo</th>
-            <th>Secretaria</th>
+            <!-- <th>Secretaria</th> -->
             <th>Setor</th>
+            <th>Solicitante</th>
             <th>Titulo</th>
             <th></th>
           </tr>
@@ -90,8 +91,9 @@ Chamados
               <td>{{$call->id}}</td>
               <td>{{date("d/m/Y h:i:s", strtotime($call->created_at))}}</td>
               <td>{{$call->mode}}</td>
-              <td>{{$call->departament}}</td>
+              <!-- <td>{{$call->departament}}</td> -->
               <td>{{$call->prefix}} - {{$call->place}}</td>
+              <td>{{$call->requester}}</td>
               <td>{{$call->title}}</td>
               <td style="text-align: right;"><a href="{{ route('calls.show',['id'=>$call->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Ver</a></td>
             </tr>
