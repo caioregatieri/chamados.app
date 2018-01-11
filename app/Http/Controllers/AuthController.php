@@ -14,6 +14,7 @@ use App\Entities\User\User;
 use App\Entities\Login\Login;
 use Input;
 use Auth;
+use Session;
 
 class AuthController extends Controller
 {
@@ -42,6 +43,13 @@ class AuthController extends Controller
                 Login::create(['user_id'=>Auth::user()->id,
                                'ip'=>$request->ip(),
                                'method'=>'login']);
+
+                //desloga o usuario de outras sessões
+                $user = Auth::user();
+                if($user->session_id)
+                    Session::getHandler()->destroy($user->session_id);
+                $user->session_id = Session::getId();
+                $user->save();
 
                 return redirect()->intended('home');
                 //return redirect('home');
