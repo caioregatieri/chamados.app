@@ -22,6 +22,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\statusCall' => [
             'App\Handlers\Events\enviarEmail',
         ],
+        'App\Events\createCall' => [
+            'App\Handlers\Events\alertCall',
+        ],
     ];
 
     /**
