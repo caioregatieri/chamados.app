@@ -22,49 +22,52 @@ Chamados
         <strong>Sucesso!</strong> Chamado alterado com sucesso.
       </div>
     @endif
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">Filtrar e pesquisar</h4>
-      </div>
-      <div class="panel-body">
-        <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-            <input name="search" type="text" class="form-control" placeholder="Titulo ou descrição" />
-          </div>
-          <div class="form-group">
-              <select class="form-control" name="mode">
-                <option value="" disabled selected>Tipo</option>
-                @foreach($modes as $mode)
-                  <option value="{{ $mode->id }}">{{ $mode->name }}</option>
+    
+    @if(Auth::user()->usertype->administrator == "1")
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">Filtrar e pesquisar</h4>
+        </div>
+        <div class="panel-body">
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input name="search" type="text" class="form-control" placeholder="Titulo ou descrição" />
+            </div>
+            <div class="form-group">
+                <select class="form-control" name="mode">
+                  <option value="" disabled selected>Tipo</option>
+                  @foreach($modes as $mode)
+                    <option value="{{ $mode->id }}">{{ $mode->name }}</option>
+                  @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+              <select class="form-control" name="departament">
+                <option value="" disabled selected>Secretaria</option>
+                @foreach($departaments as $departament)
+                  <option value="{{ $departament->id }}">{{ $departament->name }}</option>
                 @endforeach
               </select>
-          </div>
-          <div class="form-group">
-            <select class="form-control" name="departament">
-              <option value="" disabled selected>Secretaria</option>
-              @foreach($departaments as $departament)
-                <option value="{{ $departament->id }}">{{ $departament->name }}</option>
-              @endforeach
-            </select>
-          </div>
-          <div class="form-group">
-            <select class="form-control" name="place">
-              <option value="" disabled selected>Setor</option>
-              <!--codigo-->
-            </select>
-          </div>
-          <div class="form-group">
-            <select class="form-control" name="status">
-              <option value="" disabled selected>Situação</option>
-              @foreach($callstatus as $status)
-                <option value="{{ $status->id }}">{{ $status->name }}</option>
-              @endforeach
-            </select>
-          </div>
-          <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i> Pesquisar</button>
-        </form>
+            </div>
+            <div class="form-group">
+              <select class="form-control" name="place">
+                <option value="" disabled selected>Setor</option>
+                <!--codigo-->
+              </select>
+            </div>
+            <div class="form-group">
+              <select class="form-control" name="status">
+                <option value="" disabled selected>Situação</option>
+                @foreach($callstatus as $status)
+                  <option value="{{ $status->id }}">{{ $status->name }}</option>
+                @endforeach
+              </select>
+            </div>
+            <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i> Pesquisar</button>
+          </form>
+        </div>
       </div>
-    </div>
+    @endif
 
     <div class="panel panel-default">
       <!-- Default panel contents -->

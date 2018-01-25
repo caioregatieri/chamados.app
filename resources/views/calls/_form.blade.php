@@ -4,6 +4,15 @@
   {!! Form::select('user', $users, (isset($call->user->id) ? $call->user->id : null ), ['class'=>'form-control']) !!}
 </div>-->
 
+<?php
+  
+  if (Auth::user()->usertype->administrator != "1") {
+    $options = ['class'=>'form-control', 'readonly'=>'readonly'];
+  }else{
+    $options = ['class'=>'form-control'];
+  }
+?>
+
 {!! Form::hidden('user', Auth::user()->id, ['class'=>'form-control']) !!}
 
 <div class="form-group">
@@ -13,7 +22,7 @@
 
 <div class="form-group">
   {!! Form::label('departament','Secretaria:') !!}
-  {!! Form::select('departament', $departaments, (isset($call->place->departament->id) ? $call->place->departament->id : Auth::user()->place->departament->id ), ['class'=>'form-control']) !!}
+  {!! Form::select('departament', $departaments, (isset($call->place->departament->id) ? $call->place->departament->id : Auth::user()->place->departament->id ), $options) !!}
 </div>  
 
 <div class="form-group">
@@ -24,11 +33,11 @@
 <div class="form-group">
     <div class="col-sm-12 col-md-6 col-lg-6" style="padding: 0; margin-bottom: 15px;">
       {!! Form::label('requester','Solicitante:') !!}
-      {!! Form::text('requester', null, ['class'=>'form-control']) !!}
+      {!! Form::text('requester', (Auth::user()->usertype->administrator != "1" ? Auth::user()->name : null ), $options) !!}
     </div>
     <div class="col-sm-12 col-md-6 col-lg-6" style="padding: 0; margin-bottom: 15px;">
       {!! Form::label('register','Chapa:') !!}
-      {!! Form::text('register', null, ['class'=>'form-control']) !!}
+      {!! Form::text('register', (Auth::user()->usertype->administrator != "1" ? Auth::user()->register : null ), $options) !!}
     </div>
 </div>
 

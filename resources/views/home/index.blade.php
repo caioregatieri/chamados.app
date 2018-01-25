@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-Home
+    Home
 @endsection
 
 @section('head')
@@ -88,163 +88,161 @@ Home
 @endsection
 
 @section('content')
-
-@if(Auth::user()->usertype->administrator == "1")
-
-<!-- Row title -->
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header"><a href="{!! url('calls') !!}">Todos chamados</a></h1>
-    </div>
-    <!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-
-<!-- Calls details -->
-<div class="row">
-  @foreach($c['All'] as $call)
-  <div class="col-lg-3 col-md-6">
-      <div class="panel panel-{{ $call->color }}">
-          <div class="panel-heading">
-              <div class="row">
-                  <div class="col-xs-3">
-                      <i class="fa {{ $call->icon }} fa-5x"></i>
-                  </div>
-                  <div class="col-xs-9 text-right">
-                      <div class="huge">{{ $call->quantidade }}</div>
-                      <div>{{ $call->name }}</div>
-                  </div>
-              </div>
-          </div>
-          <a href="{{ url('calls?status='.$call->id) }}">
-              <div class="panel-footer">
-                  <span class="pull-left">Ver</span>
-                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                  <div class="clearfix"></div>
-              </div>
-          </a>
-      </div>
-  </div>
-  @endforeach
-</div>
-<!-- /Calls details -->
-<!-- /.row -->
-
-@endif
-
-<!-- Row title -->
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header"><a href="{!! url('calls?user='.Auth::user()->id) !!}">Seus chamados</a></h1>
-    </div>
-    <!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-
-<!-- Calls details -->
-<div class="row">
-  @foreach($c['Owner'] as $call)
-  <div class="col-lg-3 col-md-6">
-      <div class="panel panel-{{ $call->color }}">
-          <div class="panel-heading">
-              <div class="row">
-                  <div class="col-xs-3">
-                      <i class="fa {{ $call->icon }} fa-5x"></i>
-                  </div>
-                  <div class="col-xs-9 text-right">
-                      <div class="huge">{{ $call->quantidade }}</div>
-                      <div>{{ $call->name }}</div>
-                  </div>
-              </div>
-          </div>
-          <a href="{{ url('calls?status='.$call->id.'&user='.Auth::user()->id) }}">
-              <div class="panel-footer">
-                  <span class="pull-left">Ver</span>
-                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                  <div class="clearfix"></div>
-              </div>
-          </a>
-      </div>
-  </div>
-  @endforeach
-</div>
-<!-- /Calls details -->
-<!-- /.row -->
-
-<!-- Row title -->
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">Gráficos</h1>
-    </div>
-    <!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-
-<!-- Graphs -->
-<div class="row">
-    <!-- Calls per day -->
-    <div class="col-lg-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <i class="fa fa-bar-chart-o fa-fw"></i> Chamados por mês
+    @if(Auth::user()->usertype->administrator == "1")
+        <!-- Row title -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><a href="{!! url('calls') !!}">Todos chamados</a></h1>
             </div>
-            <!-- /.panel-heading -->
-            <div class="panel-body">
-                <div id="morris-area-chart"></div>
-            </div>
-            <!-- /.panel-body -->
+            <!-- /.col-lg-12 -->
         </div>
+        <!-- /.row -->
 
+        <!-- Calls details -->
+        <div class="row">
+        @foreach($c['All'] as $call)
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-{{ $call->color }}">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa {{ $call->icon }} fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{ $call->quantidade }}</div>
+                            <div>{{ $call->name }}</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="{{ url('calls?status='.$call->id) }}">
+                    <div class="panel-footer">
+                        <span class="pull-left">Ver</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        @endforeach
+        </div>
+        <!-- /Calls details -->
+        <!-- /.row -->
+    @endif
+
+    <!-- Row title -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header"><a href="{!! url('calls?user='.Auth::user()->id) !!}">Seus chamados</a></h1>
+        </div>
+        <!-- /.col-lg-12 -->
     </div>
-    <!-- /.col-lg-4 -->
+    <!-- /.row -->
 
-    <!-- Calls per departament -->
-    <div class="col-lg-4">
-        <!-- /.panel -->
-        <div class="panel panel-default">
+    <!-- Calls details -->
+    <div class="row">
+    @foreach($c['Owner'] as $call)
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-{{ $call->color }}">
             <div class="panel-heading">
-                <i class="fa fa-bar-chart-o fa-fw"></i> Chamados por secretaria
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa {{ $call->icon }} fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">{{ $call->quantidade }}</div>
+                        <div>{{ $call->name }}</div>
+                    </div>
+                </div>
             </div>
-            <div class="panel-body">
-                <div id="morris-donut-chart"></div>
-                <!-- No usage<a href="#" class="btn btn-default btn-block">View Details</a>-->
-            </div>
-            <!-- /.panel-body -->
+            <a href="{{ url('calls?status='.$call->id.'&user='.Auth::user()->id) }}">
+                <div class="panel-footer">
+                    <span class="pull-left">Ver</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
         </div>
     </div>
-    <!-- /.col-lg-4 -->
-
-    <!-- Calls per mode -->
-    <div class="col-lg-4">
-        <!-- /.panel -->
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <i class="fa fa-bar-chart-o fa-fw"></i> Chamados por tipo
-            </div>
-            <div class="panel-body">
-                <div id="morris-donut-chart2"></div>
-                <!-- No usage<a href="#" class="btn btn-default btn-block">View Details</a>-->
-            </div>
-            <!-- /.panel-body -->
-        </div>
+    @endforeach
     </div>
-    <!-- /.col-lg-4 -->
-</div>
-<!-- /Graphs -->
-<!-- /.row -->
+    <!-- /Calls details -->
+    <!-- /.row -->
+
+    @if(Auth::user()->usertype->administrator == "1")
+        <!-- Row title -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Gráficos</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+
+        <!-- Graphs -->
+        <div class="row">
+            <!-- Calls per day -->
+            <div class="col-lg-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i> Chamados por mês
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div id="morris-area-chart"></div>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+
+            </div>
+            <!-- /.col-lg-4 -->
+
+            <!-- Calls per departament -->
+            <div class="col-lg-4">
+                <!-- /.panel -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i> Chamados por secretaria
+                    </div>
+                    <div class="panel-body">
+                        <div id="morris-donut-chart"></div>
+                        <!-- No usage<a href="#" class="btn btn-default btn-block">View Details</a>-->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+            </div>
+            <!-- /.col-lg-4 -->
+
+            <!-- Calls per mode -->
+            <div class="col-lg-4">
+                <!-- /.panel -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i> Chamados por tipo
+                    </div>
+                    <div class="panel-body">
+                        <div id="morris-donut-chart2"></div>
+                        <!-- No usage<a href="#" class="btn btn-default btn-block">View Details</a>-->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+            </div>
+            <!-- /.col-lg-4 -->
+        </div>
+        <!-- /Graphs -->
+        <!-- /.row -->
+    @endif
 @endsection
 
-
 @section('scripts')
-<!-- MorrisJs -->
-<script src="{{ asset('js/morris.js') }}"></script>
-<script src="{{ asset('js/raphael-min.js') }}"></script>
+    <!-- MorrisJs -->
+    <script src="{{ asset('js/morris.js') }}"></script>
+    <script src="{{ asset('js/raphael-min.js') }}"></script>
 
-<script>
-    $(function(){
-      Morris.Area({!! $l !!});
-      Morris.Donut({!! $p !!});
-      Morris.Donut({!! $z !!});
-    });
-</script>
+    <script>
+        $(function(){
+        Morris.Area({!! $l !!});
+        Morris.Donut({!! $p !!});
+        Morris.Donut({!! $z !!});
+        });
+    </script>
 @endsection

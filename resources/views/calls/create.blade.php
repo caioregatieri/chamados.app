@@ -95,7 +95,15 @@ Novo chamado
         $.each(places, function(key, value){
           $('select[name=place]').append('<option value='+value.id+'>'+value.prefix+' - '+value.name+'</option>');
         });
-        $('select[name=place]').val("");
+        setTimeout(function(){
+          if(places.length > 1) {
+            $('select[name=place]').val("");
+          }else{
+            $('select[name=place]').val(places[0].id);
+            $('select[name=place]').prop('readonly','readonly');
+            $('select[name=place]').select2()
+          }
+        }, 1000)
         $('select[name=place]').select2();
       });
     }

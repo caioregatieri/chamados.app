@@ -140,13 +140,42 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::group(['prefix'=>'api'], function(){
 
+  Route::group(['prefix'=>'auth'], function(){
+    Route::post('/login',        ['as'=>'api.auth.login', 'uses'=>'ApiController@login']);
+    Route::post('/logout',       ['as'=>'api.auth.logout','uses'=>'ApiController@logout']);
+  });
+
+  Route::group(['prefix'=>'users'], function(){
+    Route::get('/',              ['as'=>'api.users.index', 'uses'=>'ApiController@getuser']);
+    Route::post('/',             ['as'=>'api.users.store', 'uses'=>'ApiController@saveUser']);
+    Route::put('/',              ['as'=>'api.users.update','uses'=>'ApiController@updateUser']);
+  });
+
   Route::group(['prefix'=>'calls'], function(){
-    Route::get('/{id?}',         ['as'=>'api.calls.index', 'uses'=>'CallsController@api_index']);
-    Route::post('/',             ['as'=>'api.calls.store', 'uses'=>'CallsController@api_store']);
-    Route::put('/{id}',          ['as'=>'api.calls.update', 'uses'=>'CallsController@api_update']);
-    Route::delete('/{id}',       ['as'=>'api.calls.destroy', 'uses'=>'CallsController@api_destroy']);
-    Route::get('/{id}/history',  ['as'=>'api.calls.history.index','uses'=>'CallsController@api_history_index']);
-    Route::post('/{id}/history', ['as'=>'api.calls.history.store','uses'=>'CallsController@api_history_store']);
+    Route::get('/{id?}',         ['as'=>'api.calls.index',  'uses'=>'ApiController@getCall']);
+    Route::post('/',             ['as'=>'api.calls.store',  'uses'=>'ApiController@saveCall']);
+    Route::put('/{id}',          ['as'=>'api.calls.update', 'uses'=>'ApiController@updateCall']);
+  });
+
+  Route::group(['prefix'=>'callmodes'], function(){
+    Route::get('/{id?}',         ['as'=>'api.modes.index',  'uses'=>'ApiController@getMode']);
+  });
+
+  Route::group(['prefix'=>'callstatus'], function(){
+    Route::get('/{id?}',         ['as'=>'api.status.index',  'uses'=>'ApiController@getStatus']);
+  });
+
+  Route::group(['prefix'=>'histories'], function(){
+    Route::get('/callid',        ['as'=>'api.histories.index','uses'=>'ApiController@getHistoryByCallId']);
+    Route::post('/',             ['as'=>'api.histories.store','uses'=>'ApiController@saveHistory']);
+  });
+
+  Route::group(['prefix'=>'places'], function(){
+    Route::get('/{id?}',         ['as'=>'api.places.index',  'uses'=>'ApiController@getPlace']);
+  });
+
+  Route::group(['prefix'=>'departments'], function(){
+    Route::get('/{id?}',         ['as'=>'api.department.index',  'uses'=>'ApiController@getDepartment']);
   });
 
 });

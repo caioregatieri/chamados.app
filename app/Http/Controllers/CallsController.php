@@ -373,36 +373,4 @@ class CallsController extends Controller
 
       return redirect()->back();
     }
-
-
-    /*
-    Endpoints para api
-    */
-    public function api_index($id = null){
-      if($id != null){
-        return Call::find($id)->get();
-      }
-      return Call::orderBy('id','DESC')->get();
-    }
-
-    public function api_store(Request $request){
-      return Call::create($request->all());
-    }
-
-    public function api_update($id, Request $request){
-      return Call::find($id)->update($request);
-    }
-
-    public function api_destroy($id){
-      return Call::find($id)->delete();
-    }
-
-    public function api_history_index($id){
-      return CallHistory::where('call_id', $id)->orderBy('id','DESC')->get();
-    }
-
-    public function api_history_store($id, Request $request){
-      return CallHistory::create($request);
-    }
-
 }
