@@ -57,10 +57,10 @@ class AuthController extends Controller
 
             Auth::logout();
             return redirect()->route('getLogin')
-                             ->with('flash_error', 'User is locked');
+                             ->with('flash_error', 'Usuário bloqueado.');
         }
         return redirect()->route('getLogin')
-                         ->with('flash_error', 'Email or password is wrong')
+                         ->with('flash_error', 'E-mail/Senha inválidos.')
                          ->withInput();
 
     }

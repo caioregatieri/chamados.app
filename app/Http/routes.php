@@ -136,6 +136,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('show/{id}', ['as'=>'reminders.show','uses'=>'ReminderController@show']);
   });
 
+  Route::group(['prefix'=>'test'], function(){
+    Route::get('email', ['as'=>'test.email','uses'=>'TestController@testMail']);
+  });
+
 });
 
 Route::group(['prefix'=>'api'], function(){

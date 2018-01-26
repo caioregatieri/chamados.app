@@ -34,7 +34,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
+    'host' => env('MAIL_HOST'),
 
     /*
     |--------------------------------------------------------------------------
@@ -47,7 +47,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT'),
 
     /*
     |--------------------------------------------------------------------------
@@ -60,7 +60,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'suportesme@franca.sp.gov.br', 'name' => 'Suporte'],
+    'from' => ['address' => env('MAIL_USERNAME'), 'name' => env('MAIL_USERNAME')],
 
     /*
     |--------------------------------------------------------------------------
@@ -86,7 +86,7 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME','tisuportesme@gmail.com'),
+    'username' => env('MAIL_USERNAME'),
 
     /*
     |--------------------------------------------------------------------------
