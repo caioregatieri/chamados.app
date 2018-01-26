@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Functions\Main as OwnFunctions;
 
 class TestController extends Controller
 {
@@ -19,6 +20,11 @@ class TestController extends Controller
             $m->from(env('MAIL_USERNAME'), 'Chamados');
             $m->to($request->to)->subject('Suporte - Teste');
         });
+    }
+
+    public function testPassword(Request $request) {
+        $length = isset($request->length) ? $request->length : 8;
+        return OwnFunctions::generatePassword($length);
     }
 
 }

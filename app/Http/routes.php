@@ -138,6 +138,7 @@ Route::group(['middleware' => 'auth'], function(){
 
   Route::group(['prefix'=>'test'], function(){
     Route::get('email', ['as'=>'test.email','uses'=>'TestController@testMail']);
+    Route::get('password', ['as'=>'test.password','uses'=>'TestController@testPassword']);
   });
 
 });
