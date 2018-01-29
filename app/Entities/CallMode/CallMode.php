@@ -23,6 +23,11 @@ class CallMode extends Model
 	public function call(){
 		return $this->hasMany('App\Entities\Call\Call');
 	}
+
+	/*todo tipo de chamado tem seus responsaveis*/
+	public function responsibles(){
+		return $this->belongsToMany('App\Entities\User\User', 'callmode_user', 'callmode_id', 'user_id');
+	}
 	
 	 /**/
 	public function getCreatedAtAttribute($value){

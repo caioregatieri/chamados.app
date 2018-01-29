@@ -45,6 +45,11 @@ class User extends Model implements AuthenticatableContract,
       return $this->hasMany('App\Entities\Login\Login');
     }
 
+    /*alguns usuarios podem ser responsaveis por alguns tipos de chamados */
+    public function callmodes(){
+      return $this->belongsToMany('App\Entities\CallMode\CallMode', 'callmode_user', 'callmode_id', 'user_id');
+    }
+
     /**/
     public function getCreatedAtAttribute($value){
         return date("d/m/Y h:i:s", strtotime($value));

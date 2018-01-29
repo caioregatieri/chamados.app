@@ -15,6 +15,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CallModesRequest;
 
 use \App\Entities\CallMode\CallMode;
+use \App\Entities\User\User;
 
 class CallModesController extends Controller
 {
@@ -37,8 +38,9 @@ class CallModesController extends Controller
 
   public function show($id)
   {
+      $users = User::where('usertype_id', '1')->get();
       $callmode = CallMode::find($id);
-      return view('callmodes.show',compact('callmode'));
+      return view('callmodes.show', compact('users','callmode'));
   }
 
   public function edit($id)
@@ -56,5 +58,25 @@ class CallModesController extends Controller
   public function destroy($id)
   {
       //
+  }
+
+  public function addresponsible(Request $request, $id){
+      //dd($request->all());
+      $callmode = CallMode::find($id);
+      foreach($callmode->responsibles as $responsible){
+        if ($responsible->id == $request->user_id){
+          return redirect()->back();
+          exit;
+        }
+      }
+      $callmode->responsibles()->attach($request->user_id);
+      return redirect()->back();
+  }
+
+  public function delresponsible(Request $request, $id){
+      //dd($request->all());
+      $callmode = CallMode::find($id);
+      $callmode->responsibles()->detach($request->user_id);
+      return redirect()->back();
   }
 }

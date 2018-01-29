@@ -8,6 +8,9 @@
                 <a href="{{ route('calls.index') }}"><i class="fa fa-phone fa-fw"></i> Chamados</a>
             </li>
             <li>
+                <a href="{{ route('callmodes.index') }}"><i class="fa fa-cog fa-fw"></i> Tipos de chamados</a>
+            </li>
+            <li>
                 <a href="#"><i class="fa fa-home fa-fw"></i> Locais</a>
                 <ul class="nav nav-second-level">
                 <li><a href="{{ route('departaments.index') }}">Secretarias</a></li>

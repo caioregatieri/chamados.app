@@ -96,6 +96,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('update/{id}', ['as'=>'callmodes.update', 'uses'=>'CallModesController@update']);
     Route::get('destroy/{id}', ['as'=>'callmodes.destroy', 'uses'=>'CallModesController@destroy']);
     Route::get('show/{id}', ['as'=>'callmodes.show','uses'=>'CallModesController@show']);
+    Route::post('addresponsible/{id}', ['as'=>'callmodes.addresponsible','uses'=>'CallModesController@addresponsible']);
+    Route::post('delresponsible/{id}', ['as'=>'callmodes.delresponsible','uses'=>'CallModesController@delresponsible']);
   });
 
   Route::group(['prefix'=>'users'], function(){
