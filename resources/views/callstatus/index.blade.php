@@ -19,16 +19,16 @@ Call status
       <table class="table">
           <tr>
             <th>Id</th>
-            <th>Date</th>
-            <th>Name</th>
-            <th>Action</th>
+            <th>Criado em:</th>
+            <th>Titulo</th>
+            <th></th>
           </tr>
           @foreach($callstatuses as $callstatus)
             <tr>
               <td>{{$callstatus->id}}</td>
               <td>{{$callstatus->created_at}}</td>
               <td>{{$callstatus->name}}</td>
-              <td><a href="{{ route('callstatus.show',['id'=>$callstatus->id])}}" class="btn btn-default">View</a></td>
+              <td style="text-align: right;"><a href="{{ route('callstatus.show',['id'=>$callstatus->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i>Ver</a></td>
             </tr>
           @endforeach
       </table>

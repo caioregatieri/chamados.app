@@ -1,14 +1,14 @@
 @extends('template')
 
 @section('title')
-New call status
+Novo status
 @endsection
 
 @section('content')
 
 @if($errors->any())
   <div class="alert alert-danger" role="alert">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <strong>Whoops!</strong> Algum(s) erros aconteceram ao enviar os dados.<br><br>
     <ul>
       @foreach($errors->all() as $error)
         <li>{{ $error }}</li>
@@ -19,7 +19,7 @@ New call status
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">New call status</h3>
+    <h3 class="panel-title">Novo status</h3>
   </div>
   <div class="panel-body">
 
@@ -27,8 +27,8 @@ New call status
 
       @include('callstatus/_formCreate')
 
-      <a href="{{ route('callstatus.index') }}" class="btn btn-default">Back</a>
-      {!! Form::submit('Save',['class'=>'btn btn-success bt-save']) !!}
+      <a href="{{ URL::previous() }}" class="btn btn-default"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar</a>
+      <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Salvar</button>
 
     {!! Form::close() !!}
   </div>

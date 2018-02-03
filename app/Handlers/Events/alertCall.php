@@ -34,10 +34,12 @@ class alertCall
     {
         $call = $event->getCall();
         //if(filter_var($call->place->email, FILTER_VALIDATE_EMAIL)){
-            \Mail::send('emails.createCall', ['call'=>$call], function ($m) use ($call) {
+        foreach($call->mode->responsibles as $responsible){
+            \Mail::send('emails.createCall', ['call'=>$call], function ($m) use ($responsible) {
                 $m->from('suportesme@franca.sp.gov.br', 'Suporte S.M.E.');
-                $m->to('suportesme@franca.sp.gov.br')->subject('Suporte - Novo chamado técnico');
+                $m->to($responsible->email)->subject('Suporte - Chamado técnico');
             });
+        }
         //}
     }
 }

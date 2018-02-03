@@ -239,6 +239,17 @@ class CallsController extends Controller
     {
         $files = Input::file('files');
         $call = Call::find($id);
+
+        //registra a mudança de tipo de chamado
+        if($call->mode_id != $request['mode']){
+          $history = CallHistory::create([
+              'call_id' => $call->id,
+              'user_id' => Auth::user()->id,
+              'description' => 'Tipo de chamado alterado de <strong>' . $call->mode->name . '</strong> para <strong>' . CallMode::find($request['mode'])->first()->name . '</strong>',
+              'status_id' => '3' //1 = Aguardando, 2 = Cancelado, 3 = Em Andamento, 4 = Finalizado
+          ]);          
+        }
+
         $call->mode_id = $request['mode'];
         $call->place_id = $request['place'];
         $call->requester = trim($request['requester']);
@@ -255,7 +266,6 @@ class CallsController extends Controller
             return redirect()->back();
           }
         }
-
         //\Event::fire(new statusCall($call));
         //\Event::fire(new createCall($call)); //envia e-mail para o grupo de suporte técnico
         \Session::flash('updated', $call);
