@@ -7,7 +7,7 @@ Monitoramento de Chamados
 @section('head')
     <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}" />
     <style media="screen">
-        .navbar, .sidebar {
+        .navbar, .sidebar, #rodape {
             display: none !important;
             visibility: hidden !important;
         }
@@ -72,12 +72,12 @@ Monitoramento de Chamados
         <div class="pull-left">
           <!-- <a href="{{ route('calls.create')}}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Novo</a> -->
           <div class="btn-group">
-              <a href="{{ URL::previous() }}" class="btn btn-default btn-sm"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
+              <a href="{{ route('calls.index') }}" class="btn btn-default btn-sm"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
             <a href="#" class="btn btn-default btn-sm btn-config"><i class="fa fa-cog"></i></a>
           </div>
           <h4 class="panel-title" style="display: inline;">Monitoramento de Chamados</h4>
         </div>
-        <h4 class="panel-title pull-right" style="padding-top: 7.5px;">Registros: {{ $calls->total() }}</h4>
+        <h4 class="panel-title pull-right" style="padding-top: 7.5px;">Exibindo {{ $calls->perPage() }} chamados</h4>
       </div>
       <!-- Table -->
       <table class="table">
@@ -89,7 +89,7 @@ Monitoramento de Chamados
             <th>Setor</th>
             <th>Solicitante</th>
             <th>Titulo</th>
-            <th></th>
+            <!-- <th></th> -->
           </tr>
           @foreach($calls as $call)
               <tr class="list-group-item-{{$call->color}}">
@@ -100,7 +100,7 @@ Monitoramento de Chamados
               <td>{{$call->prefix}} - {{$call->place}}</td>
               <td>{{$call->requester}}</td>
               <td>{{$call->title}}</td>
-              <td style="text-align: right;"><a href="{{ route('calls.show',['id'=>$call->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Ver</a></td>
+              <!-- <td style="text-align: right;"><a href="{{ route('calls.show',['id'=>$call->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Ver</a></td> -->
             </tr>
           @endforeach
       </table>
@@ -108,7 +108,7 @@ Monitoramento de Chamados
 
     <div id="display_refresh_message"></div> 
 
-    <div class="row row-centered" style="text-align: center;">
+    <div class="row row-centered" style="text-align: center; display: none;">
       {!! $calls->render() !!}
     </div>
 

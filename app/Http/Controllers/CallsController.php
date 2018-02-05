@@ -237,8 +237,8 @@ class CallsController extends Controller
       $calls = DB::select($q);
 
       //Paginação
-      $page = Input::get('page',1);
-      $perPage = 10;
+      $page = Input::get('page', 1);
+      $perPage = 16;
       $offSet = ($page * $perPage) - $perPage;
       $itemsForCurrentPage = array_slice($calls, $offSet, $perPage, true);
       $calls = new LengthAwarePaginator($itemsForCurrentPage, count($calls), $perPage, $page);
@@ -276,6 +276,8 @@ class CallsController extends Controller
       $triages->push((Object)['id'=>'4', 'name'=>'Manutenção de equipamentos']);
       $triages->push((Object)['id'=>'5', 'name'=>'Serviço externo']);
       dd($triages);*/
+
+      //dd($calls);
 
       return view('calls.monit',compact('calls','modes','departaments','callstatus'));
     }
