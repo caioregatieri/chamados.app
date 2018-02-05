@@ -13,16 +13,16 @@
         <link name="sbadmin" rel="stylesheet" href="{{ asset('css/sb-admin-2.css') }}">
         <!-- font-awesome -->
         <link name="fontawesome" rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-        @yield('head')
         <!-- Custom -->
         <link name="custom" rel="stylesheet" href="{{ asset('css/custom.css') }}">
         @if(Auth::user()->usertype->administrator != "1")
-            <style>
-                #page-wrapper {
-                    margin-left: 0;
-                }
-            </style>
+        <style>
+            #page-wrapper {
+                margin-left: 0;
+            }
+        </style>
         @endif
+        @yield('head')
     </head>
 <body>
 

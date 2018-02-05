@@ -35,6 +35,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('destroy/{id}', ['as'=>'calls.destroy', 'uses'=>'CallsController@destroy']);
     Route::get('show/{id}', ['as'=>'calls.show','uses'=>'CallsController@show']);
 
+    Route::get('monit', ['as'=>'calls.monit','uses'=>'CallsController@monit']);
+    
     Route::group(['prefix'=>'history'], function(){
       Route::get('create/{id}', ['as'=>'calls.history.create','uses'=>'CallsController@historycreate']);
       Route::post('store', ['as'=>'calls.history.store','uses'=>'CallsController@historystore']);

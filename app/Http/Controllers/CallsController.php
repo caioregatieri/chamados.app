@@ -158,6 +158,128 @@ class CallsController extends Controller
       return view('calls.index',compact('calls','modes','departaments','callstatus'));
     }
 
+    public function monit()
+    {
+      //pega as variaveis para filtrar
+      $search =      Input::get('search','');
+      $mode =        Input::get('mode','');
+      $departament = Input::get('departament','');
+      $place =       Input::get('place','');
+      $status =      Input::get('status','');
+      $user =        Input::get('user','');
+
+      //casoo usuario logado não seja administrador, sera filtrado os chamados por esse usuario
+      if ($user == ''){
+        $user = Auth::user()->usertype->administrator == "0" ?  Auth::user()->id : '';
+      }
+
+      //comando a ser executado
+      $q = 'select c.id, c.created_at,  c.title, c.requester, '.
+              'p.prefix, '.
+              'p.name as place, '.
+              'd.name as departament, '.
+              'm.name as mode, '.
+              's.name as status, s.color '.
+          'from calls c '.
+          'inner join places p on c.place_id = p.id '.
+          'inner join departaments d on p.departament_id = d.id '.
+          'inner join callmodes m on c.mode_id = m.id '.
+          'inner join ( '.
+                  'select call_id, status_id '.
+                  'from callhistories '.
+                  'group by call_id '.
+                  ') h on  h.call_id = c.id '.
+          'inner join callstatuses s on s.id = h.status_id ';
+
+      $w = '';
+
+      if($search != ''){
+        $w = $w . "where (c.title like '%" . $search . "%' or c.description like '%" . $search . "%' or c.requester like '%" . $search . "%') ";
+      }
+
+      if($mode != ''){
+        if ($w == '')
+          $w = $w . "where c.mode_id = " . $mode . " ";
+        else
+          $w = $w . "and c.mode_id = " . $mode . " ";
+      }
+
+      if($departament != ''){
+        if ($w == '')
+            $w = $w . "where d.id = " . $departament . " ";
+        else
+            $w = $w . "and d.id = " . $departament . " ";
+      }
+
+      if($place != ''){
+        if ($w == '')
+            $w = $w . "where c.place_id = " . $place . " ";
+        else
+            $w = $w . "and c.place_id = " . $place . " ";
+      }
+
+      if($status != ''){
+        if ($w == '')
+            $w = $w . "where h.status_id = " . $status . " ";
+        else
+            $w = $w . "and h.status_id = " . $status . " ";
+      }
+
+      if($user != ''){
+        if ($w == '')
+            $w = $w . "where c.user_id = " . $user . " ";
+        else
+            $w = $w . "and c.user_id = " . $user . " ";
+      }
+
+      $q =  $q . $w . 'order by c.id desc';
+
+      $calls = DB::select($q);
+
+      //Paginação
+      $page = Input::get('page',1);
+      $perPage = 10;
+      $offSet = ($page * $perPage) - $perPage;
+      $itemsForCurrentPage = array_slice($calls, $offSet, $perPage, true);
+      $calls = new LengthAwarePaginator($itemsForCurrentPage, count($calls), $perPage, $page);
+
+      //define o path correto ao paginador
+      if ($search != "")
+        $calls->appends(['search'=>$search]);
+
+      if ($mode != "")
+        $calls->appends(['mode'=>$mode]);
+
+      if ($departament != "")
+        $calls->appends(['departament'=>$departament]);
+
+      if ($place != "")
+        $calls->appends(['place'=>$place]);
+
+      if ($status != "")
+        $calls->appends(['status'=>$status]);
+
+      if ($user != "")
+        $calls->appends(['user'=>$user]);
+
+      $calls->setPath('/calls');
+
+      //variaveis para preencher os selects
+      $modes =        CallMode::all()->sortBy('name');
+      $departaments = Departament::all()->sortBy('name');
+      $callstatus =   CallStatus::all()->sortBy('name');
+
+      /*$triages = collect();
+      $triages->push((Object)['id'=>'1', 'name'=>'Auxilio pelo telefone']);
+      $triages->push((Object)['id'=>'2', 'name'=>'Conexão remota']);
+      $triages->push((Object)['id'=>'3', 'name'=>'Garantia']);
+      $triages->push((Object)['id'=>'4', 'name'=>'Manutenção de equipamentos']);
+      $triages->push((Object)['id'=>'5', 'name'=>'Serviço externo']);
+      dd($triages);*/
+
+      return view('calls.monit',compact('calls','modes','departaments','callstatus'));
+    }
+
     public function create()
     {
         $users =  User::where('id', Auth::user()->id)->lists('name','id');

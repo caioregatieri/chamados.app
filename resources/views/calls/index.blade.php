@@ -74,6 +74,7 @@ Chamados
       <div class="panel-heading clearfix">
         <div class="btn-group pull-left">
           <a href="{{ route('calls.create')}}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Novo</a>
+          <a href="{{ route('calls.monit')}}" class="btn btn-default btn-sm"><i class="fa fa-eye"></i> Monitorar</a>
         </div>
         <h4 class="panel-title pull-right" style="padding-top: 7.5px;">Registros: {{ $calls->total() }}</h4>
       </div>
