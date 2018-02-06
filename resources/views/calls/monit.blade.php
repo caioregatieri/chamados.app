@@ -1,12 +1,34 @@
 @extends('template')
 
 @section('title')
-Monitoramento de Chamados
+    Monitoramento de Chamados
 @endsection
 
 @section('head')
     <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}" />
-    <style media="screen">
+    <style>
+        .list-group-item-success{
+            border-color: #5cb85c;
+            color: #fff;
+            background-color: #5cb85c;
+        }
+        .list-group-item-info{
+            border-color: #337ab7;
+            color: #fff;
+            background-color: #337ab7;
+        }
+        .list-group-item-danger{
+            border-color: #d9534f;
+            color: #fff;
+            background-color: #d9534f;
+        }
+        .list-group-item-warning{
+            border-color: #f0ad4e;
+            color: #fff;
+            background-color: #f0ad4e;
+        }
+    </style>
+    <style>
         .navbar, .sidebar, #rodape {
             display: none !important;
             visibility: hidden !important;
@@ -73,11 +95,11 @@ Monitoramento de Chamados
           <!-- <a href="{{ route('calls.create')}}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Novo</a> -->
           <div class="btn-group">
               <a href="{{ route('calls.index') }}" class="btn btn-default btn-sm"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
-            <a href="#" class="btn btn-default btn-sm btn-config"><i class="fa fa-cog"></i></a>
+              <!-- <a href="#" class="btn btn-default btn-sm btn-config"><i class="fa fa-cog"></i></a> -->
           </div>
-          <h4 class="panel-title" style="display: inline;">Monitoramento de Chamados</h4>
+          <!-- <h4 class="panel-title" style="display: inline;">Monitoramento de Chamados</h4> -->
         </div>
-        <h4 class="panel-title pull-right" style="padding-top: 7.5px;">Exibindo {{ $calls->perPage() }} chamados</h4>
+        <h4 class="panel-title pull-right" style="padding-top: 7.5px;">Exibindo os ultimos {{ $calls->perPage() }} chamados</h4>
       </div>
       <!-- Table -->
       <table class="table">
@@ -132,7 +154,8 @@ Monitoramento de Chamados
         $('#display_refresh_message').html( '<p>Atualizando em: <small>' + (segundos - interval) + '</small> sec.</p>' )
         if (interval >= segundos){
           interval = 0;
-          location.reload();
+          //location.reload();
+          window.location.href = "{{ route('calls.graphs') }}";
         }
       }, 1000)
 

@@ -36,6 +36,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('show/{id}', ['as'=>'calls.show','uses'=>'CallsController@show']);
 
     Route::get('monit', ['as'=>'calls.monit','uses'=>'CallsController@monit']);
+    Route::get('graphs', ['as'=>'calls.graphs','uses'=>'HomeController@graphs']);
     
     Route::group(['prefix'=>'history'], function(){
       Route::get('create/{id}', ['as'=>'calls.history.create','uses'=>'CallsController@historycreate']);

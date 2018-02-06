@@ -38,6 +38,16 @@ class HomeController extends Controller
       return view('home.about');
     }
 
+    public function graphs(){
+      $c = ($this->calls());
+      $l = ($this->graphPerMonth('morris-area-chart-1', 13, Departament::lists('name'), Departament::lists('name')));
+      $m = ($this->graphPerMonth('morris-area-chart-2', 11, Departament::lists('name'), Departament::lists('name')));
+      $p = ($this->graphPerDepartament('morris-donut-chart', $this->palletColors(), true));
+      $z = ($this->graphPerMode('morris-donut-chart2', $this->palletColors(), true));
+      //dd(compact('c','l','p','z'));
+      return view('calls.graphs', compact('c','l','m','p','z'));
+    }
+
     function palletColors(){
       return array("#556270","#4ECDC4","#C7F464","#FF6B6B","#C44D58",
                    "#69D2E7","#A7DBD8","#E0E4CC","#F38630","#FA6900",
@@ -46,8 +56,7 @@ class HomeController extends Controller
 
     function calls(){
       $all = $this->selectCalls();
-      $owner = $this->selectCalls(Auth::user()->id);
-      $ret = ["All"=>$all, "Owner"=>$owner];
+      $ret = ["All"=>$all];
       return ($ret);
     }
 
@@ -153,5 +162,58 @@ class HomeController extends Controller
       }
 
       return json_encode(['element'=>$element, 'data'=>$all, 'colors'=>$colors, 'resize'=>$resize]);
+    }
+
+    function graphOfMonth($element, $months=1, $departaments, $labels=null, $colors=null, $resize=true){
+      $q = "select strftime('%Y-%m', c.created_at) as 'period', ".
+                  "d.name as departament, ".
+                  "count(*) as total ".
+           "from calls c ".
+           "inner join places p on c.place_id = p.id ".
+           "inner join departaments d on p.departament_id = d.id ".
+           "where c.created_at > date('now','start of month','-$months month','-1 day') ".
+           "group by strftime('%Y-%m', c.created_at), d.name";
+
+      $result = DB::select($q);
+      $period = array();
+      //percorro o resultado do banco
+      foreach ($result as $row) {
+        //se o array period estiver vazio crio o primeiro registro
+        if (count($period) == 0){
+          $tmp = array();
+          $tmp['Period'] = $row->period;
+          foreach ($departaments as $d) {
+            $tmp[$d] = "0";
+          }
+          //e então modifico o valor padrão do departamento pelo valor do banco
+          $tmp[$row->departament] = $row->total;
+          array_push($period, $tmp);
+        }
+        else{
+          $existia = false;
+          //percorro o array period
+          foreach ($period as $key => $value) {
+            //verifico se existe um registro com o periodo do banco no array result
+            if ($period[$key]['Period'] == $row->period){
+              //se exixtir apenas mudo o valor da chave relacionada ao departamento;
+              $period[$key][$row->departament] = $row->total;
+              $existia = true;
+              break;
+            }
+          }
+          if(!$existia){
+            //caso não exista contruo um array com o periodo e todos os departamentos
+            $tmp = array();
+            $tmp['Period'] = $row->period;
+            foreach ($departaments as $d) {
+              $tmp[$d] = "0";
+            }
+            //e então modifico o valor padrão do departamento pelo valor do banco
+            $tmp[$row->departament] = $row->total;
+            array_push($period, $tmp);
+          }
+        }
+      }
+      return json_encode(['element'=>$element, 'data'=>$period, 'xkey'=>'Period', 'ykeys'=>$departaments, 'labels'=>$labels, 'resize'=>$resize]);      
     }
 }

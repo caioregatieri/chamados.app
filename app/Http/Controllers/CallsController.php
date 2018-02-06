@@ -269,16 +269,6 @@ class CallsController extends Controller
       $departaments = Departament::all()->sortBy('name');
       $callstatus =   CallStatus::all()->sortBy('name');
 
-      /*$triages = collect();
-      $triages->push((Object)['id'=>'1', 'name'=>'Auxilio pelo telefone']);
-      $triages->push((Object)['id'=>'2', 'name'=>'Conexão remota']);
-      $triages->push((Object)['id'=>'3', 'name'=>'Garantia']);
-      $triages->push((Object)['id'=>'4', 'name'=>'Manutenção de equipamentos']);
-      $triages->push((Object)['id'=>'5', 'name'=>'Serviço externo']);
-      dd($triages);*/
-
-      //dd($calls);
-
       return view('calls.monit',compact('calls','modes','departaments','callstatus'));
     }
 
