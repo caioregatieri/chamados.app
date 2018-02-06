@@ -56,7 +56,8 @@ class HomeController extends Controller
 
     function calls(){
       $all = $this->selectCalls();
-      $ret = ["All"=>$all];
+      $owner = $this->selectCalls();
+      $ret = ["All"=>$all, "Owner"=>$owner];
       return ($ret);
     }
 
