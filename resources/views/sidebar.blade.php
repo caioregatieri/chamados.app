@@ -38,6 +38,9 @@
                 <a href="{{ route('reminders.index') }}"><i class="fa fa-file-text-o"></i> Lembretes</a>
             </li>
             <li>
+                <a href="{{ route('personalnotes.index') }}"><i class="fa fa-file-text-o"></i> Notas pessoais</a>
+            </li>
+            <li>
                 <a href="{{ route('about') }}"><i class="fa fa-info fa-fw"></i> Sobre</a>
             </li>
         </ul>

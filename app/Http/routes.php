@@ -141,6 +141,16 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('show/{id}', ['as'=>'reminders.show','uses'=>'ReminderController@show']);
   });
 
+  Route::group(['prefix'=>'personalnotes'], function(){
+    Route::get('', ['as'=>'personalnotes.index','uses'=>'PersonalNotesController@index']);
+    Route::get('create', ['as'=>'personalnotes.create', 'uses'=>'PersonalNotesController@create']);
+    Route::post('store', ['as'=>'personalnotes.store', 'uses'=>'PersonalNotesController@store']);
+    Route::get('edit/{id}', ['as'=>'personalnotes.edit', 'uses'=>'PersonalNotesController@edit']);
+    Route::post('update/{id}', ['as'=>'personalnotes.update', 'uses'=>'PersonalNotesController@update']);
+    Route::get('destroy/{id}', ['as'=>'personalnotes.destroy', 'uses'=>'PersonalNotesController@destroy']);
+    Route::get('show/{id}', ['as'=>'personalnotes.show','uses'=>'PersonalNotesController@show']);
+  });
+
   Route::group(['prefix'=>'test'], function(){
     Route::get('email', ['as'=>'test.email','uses'=>'TestController@testMail']);
     Route::get('password', ['as'=>'test.password','uses'=>'TestController@testPassword']);
