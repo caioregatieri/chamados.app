@@ -195,7 +195,6 @@
     <script>
         $( document ).ready(function() {
             Morris.Area({!! $l !!});
-            // Morris.Area({!! $m !!});
             Morris.Donut({!! $p !!});
             Morris.Donut({!! $z !!});
 
