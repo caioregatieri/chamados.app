@@ -200,7 +200,7 @@
             Morris.Donut({!! $z !!});
 
             var interval = 0;
-            var segundos = 60;
+            var segundos = 30;
             
             setInterval(function(){
                 interval++;

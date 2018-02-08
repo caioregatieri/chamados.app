@@ -191,10 +191,13 @@ class CallsController extends Controller
                   ') h on  h.call_id = c.id '.
           'inner join callstatuses s on s.id = h.status_id ';
 
-      $w = '';
+      $w = 'where (h.status_id = 1 or h.status_id = 3)' . ' ';
 
       if($search != ''){
-        $w = $w . "where (c.title like '%" . $search . "%' or c.description like '%" . $search . "%' or c.requester like '%" . $search . "%') ";
+        if ($w == '')
+          $w = $w . "where (c.title like '%" . $search . "%' or c.description like '%" . $search . "%' or c.requester like '%" . $search . "%') ";
+        else 
+          $w = $w . "and (c.title like '%" . $search . "%' or c.description like '%" . $search . "%' or c.requester like '%" . $search . "%') ";
       }
 
       if($mode != ''){

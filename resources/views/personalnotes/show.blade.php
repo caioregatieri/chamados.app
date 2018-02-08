@@ -26,9 +26,17 @@
     <br/><br/>
     <a href="{{ route('personalnotes.index') }}" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Voltar</a>
     <a href="{{ route('personalnotes.edit',['id'=>$note->id])}}" class="btn btn-primary"><i class="fa fa-edit"></i> Editar</a>
-    <a href="{{ route('personalnotes.destroy',['id'=>$note->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i> Editar</a>
+    <a href="{{ route('personalnotes.destroy',['id'=>$note->id])}}" class="btn btn-danger confirmar"><i class="fa fa-trash"></i> Excluir</a>
 
   </div>
 </div>
 
+@endsection
+
+@section('scripts')
+  <script>
+    $('.confirmar').on('click', function(e){
+      return confirm('Deseja realmente excluir essa nota?');
+    })
+  </script>
 @endsection

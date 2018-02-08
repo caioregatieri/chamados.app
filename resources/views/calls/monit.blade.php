@@ -91,15 +91,16 @@
     <div class="panel panel-default">
       <!-- Default panel contents -->
       <div class="panel-heading clearfix">
-        <div class="pull-left">
-          <!-- <a href="{{ route('calls.create')}}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Novo</a> -->
+        <!-- <div class="pull-left">
+          <a href="{{ route('calls.create')}}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Novo</a>
           <div class="btn-group">
               <a href="{{ route('calls.index') }}" class="btn btn-default btn-sm"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
-              <!-- <a href="#" class="btn btn-default btn-sm btn-config"><i class="fa fa-cog"></i></a> -->
+              <a href="#" class="btn btn-default btn-sm btn-config"><i class="fa fa-cog"></i></a>
           </div>
-          <!-- <h4 class="panel-title" style="display: inline;">Monitoramento de Chamados</h4> -->
-        </div>
-        <h4 class="panel-title pull-right" style="padding-top: 7.5px;">Exibindo os ultimos {{ $calls->perPage() }} chamados</h4>
+          <h4 class="panel-title" style="display: inline;">Monitoramento de Chamados</h4>
+        </div> -->
+        <!-- <h4 class="panel-title pull-right" style="padding-top: 7.5px;">Exibindo os ultimos {{ $calls->perPage() }} chamados</h4> -->
+        <h4 class="panel-title" style="padding-top: 7.5px;">Exibindo os ultimos {{ $calls->perPage() }} chamados (Aguardando e em andamento)</h4>
       </div>
       <!-- Table -->
       <table class="table">
@@ -148,7 +149,7 @@
       fillPlaces(departament_id);
 
       var interval = 0;
-      var segundos = 60;
+      var segundos = 30;
       setInterval(function(){
         interval++;
         $('#display_refresh_message').html( '<p>Atualizando em: <small>' + (segundos - interval) + '</small> sec.</p>' )
