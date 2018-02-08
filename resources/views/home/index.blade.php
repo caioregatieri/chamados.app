@@ -237,12 +237,22 @@
     <!-- MorrisJs -->
     <script src="{{ asset('js/morris.js') }}"></script>
     <script src="{{ asset('js/raphael-min.js') }}"></script>
-
+    <!-- JQuery toaster -->
+    <script src="{{ asset('js/jquery.toaster.js') }}"></script>
     <script>
         $(function(){
-        Morris.Area({!! $l !!});
-        Morris.Donut({!! $p !!});
-        Morris.Donut({!! $z !!});
+            Morris.Area({!! $l !!});
+            Morris.Donut({!! $p !!});
+            Morris.Donut({!! $z !!});
+            $callOpened = {!! $c['Owner'][0]->quantidade !!} + {!! $c['Owner'][2]->quantidade !!};
+            //exibir um toaster caso o usuario tenha mais de 10 chamados em aberto, com situação em aguarde e em andamento
+            if($callOpened > 10){
+                $.toaster({ 
+                    priority : 'warning', 
+                    title : 'Alerta', 
+                    message : 'Você tem muitos chamados em aberto, verifique!',
+                });
+            }
         });
     </script>
 @endsection

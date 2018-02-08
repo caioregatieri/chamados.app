@@ -41,7 +41,7 @@ class HomeController extends Controller
     public function graphs(){
       $c = ($this->calls());
       $l = ($this->graphPerMonth('morris-area-chart-1', 13, Departament::lists('name'), Departament::lists('name')));
-      $m = ($this->graphPerMonth('morris-area-chart-2', 11, Departament::lists('name'), Departament::lists('name')));
+      //$m = ($this->graphPerMonth('morris-area-chart-2', 11, Departament::lists('name'), Departament::lists('name')));
       $p = ($this->graphPerDepartament('morris-donut-chart', $this->palletColors(), true));
       $z = ($this->graphPerMode('morris-donut-chart2', $this->palletColors(), true));
       //dd(compact('c','l','p','z'));

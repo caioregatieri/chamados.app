@@ -27,7 +27,7 @@ Tipos de chamado
               <td>{{$callmode->id}}</td>
               <td>{{$callmode->created_at}}</td>
               <td>{{$callmode->name}}</td>
-              <td><a href="{{ route('callmodes.show',['id'=>$callmode->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Ver</a></td>
+              <td style="width: 100px; text-align: right"><a href="{{ route('callmodes.show',['id'=>$callmode->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Ver</a></td>
             </tr>
           @endforeach
       </table>
