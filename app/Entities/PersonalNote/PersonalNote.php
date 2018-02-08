@@ -5,6 +5,8 @@ namespace App\Entities\PersonalNote;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\AuditingTrait;
 
+use Crypt;
+
 class PersonalNote extends Model
 {
     use AuditingTrait;
@@ -21,5 +23,25 @@ class PersonalNote extends Model
     /**/
 	public function getCreatedAtAttribute($value){
 	    return date("d/m/Y h:i:s", strtotime($value));
+    }
+    
+    /**/
+	public function getTitleAttribute($value){
+	    return Crypt::decrypt($value);
+    }
+
+    /**/ 
+    public function setTitleAttribute($value){
+	    $this->attributes['title'] = Crypt::encrypt($value);
+    }
+    
+    /**/
+	public function getDescriptionAttribute($value){
+	    return Crypt::decrypt($value);
+    }
+    
+    /**/ 
+    public function setDescriptionAttribute($value){
+	    $this->attributes['description'] = Crypt::encrypt($value);
 	}
 }

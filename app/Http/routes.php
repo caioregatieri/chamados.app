@@ -142,13 +142,13 @@ Route::group(['middleware' => 'auth'], function(){
   });
 
   Route::group(['prefix'=>'personalnotes'], function(){
-    Route::get('', ['as'=>'personalnotes.index','uses'=>'PersonalNotesController@index']);
-    Route::get('create', ['as'=>'personalnotes.create', 'uses'=>'PersonalNotesController@create']);
-    Route::post('store', ['as'=>'personalnotes.store', 'uses'=>'PersonalNotesController@store']);
-    Route::get('edit/{id}', ['as'=>'personalnotes.edit', 'uses'=>'PersonalNotesController@edit']);
-    Route::post('update/{id}', ['as'=>'personalnotes.update', 'uses'=>'PersonalNotesController@update']);
-    Route::get('destroy/{id}', ['as'=>'personalnotes.destroy', 'uses'=>'PersonalNotesController@destroy']);
-    Route::get('show/{id}', ['as'=>'personalnotes.show','uses'=>'PersonalNotesController@show']);
+    Route::get('', ['as'=>'personalnotes.index','uses'=>'PersonalNoteController@index']);
+    Route::get('create', ['as'=>'personalnotes.create', 'uses'=>'PersonalNoteController@create']);
+    Route::post('store', ['as'=>'personalnotes.store', 'uses'=>'PersonalNoteController@store']);
+    Route::get('edit/{id}', ['as'=>'personalnotes.edit', 'uses'=>'PersonalNoteController@edit']);
+    Route::post('update/{id}', ['as'=>'personalnotes.update', 'uses'=>'PersonalNoteController@update']);
+    Route::get('destroy/{id}', ['as'=>'personalnotes.destroy', 'uses'=>'PersonalNoteController@destroy']);
+    Route::get('show/{id}', ['as'=>'personalnotes.show','uses'=>'PersonalNoteController@show']);
   });
 
   Route::group(['prefix'=>'test'], function(){

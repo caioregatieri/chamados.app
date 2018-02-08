@@ -17,15 +17,16 @@
     <b>Descrição:</b>
     <div class="panel panel-default">
       <div class="panel-body">
-        {!! $notes->description !!}
+        {!! $note->description !!}
       </div>
     </div>
-    @if($notes->logs->count() > 1)
-      <br/><b>Houveram modificações neste lembrete</b>
+    @if($note->logs->count() > 1)
+      <br/><b>Houveram modificações nesta nota</b>
     @endif
     <br/><br/>
     <a href="{{ route('personalnotes.index') }}" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Voltar</a>
     <a href="{{ route('personalnotes.edit',['id'=>$note->id])}}" class="btn btn-primary"><i class="fa fa-edit"></i> Editar</a>
+    <a href="{{ route('personalnotes.destroy',['id'=>$note->id])}}" class="btn btn-danger"><i class="fa fa-trash"></i> Editar</a>
 
   </div>
 </div>

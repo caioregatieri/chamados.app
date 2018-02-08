@@ -18,6 +18,12 @@
         <strong>Sucesso!</strong> Nota alterada com sucesso.
       </div>
     @endif
+    @if(Session::has('error'))
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Erro!</strong> {!! Session::has('error') !!}
+      </div>
+    @endif
     <div class="panel panel-default">
       <div class="panel-heading">Filtrar e pesquisar</div>
       <div class="panel-body">
@@ -34,7 +40,7 @@
       <!-- Default panel contents -->
       <div class="panel-heading clearfix">
         <div class="btn-group pull-left">
-          <a href="{{ route('notes.create')}}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Novo</a>
+          <a href="{{ route('personalnotes.create')}}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Novo</a>
         </div>
         <h4 class="panel-title pull-right" style="padding-top: 7.5px;">Registros: {{ $notes->total() }}</h4>
       </div>

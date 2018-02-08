@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Entities\PersonalNote\PersonalNote;
 use App\Http\Requests\PersonalNoteRequest;
 
-use Crypt;
+use Auth;
 
 class PersonalNoteController extends Controller
 {
@@ -25,7 +25,7 @@ class PersonalNoteController extends Controller
 
         $filter = isset($_GET['search']) ? trim($_GET['search']) : '';
         if($filter != ''){
-            $notes = $notes->where('title','like','%'. Crypt::encrypt($filter) .'%');
+            $notes = $notes->where('title','like','%'. $filter .'%');
         }
 
         $notes = $notes->paginate(10);
@@ -52,8 +52,6 @@ class PersonalNoteController extends Controller
     public function store(PersonalNoteRequest $request)
     {
         $data = $request->all();
-        $data['title'] = Crypt::encrypt($data['title']);
-        $data['description'] = Crypt::encrypt($data['description']);
         $note = PersonalNote::create($data);
         if($note){
             \Session::flash('created', $note);
@@ -76,8 +74,6 @@ class PersonalNoteController extends Controller
                 return redirect()->back();
                 exit;
             }
-            $note['title'] = Crypt::decrypt($note['title']);
-            $note['description'] = Crypt::decrypt($note['description']);
             return view('personalnotes.show', compact('note'));
         }
     }
@@ -97,8 +93,6 @@ class PersonalNoteController extends Controller
                 return redirect()->back();
                 exit;
             }
-            $note['title'] = Crypt::decrypt($note['title']);
-            $note['description'] = Crypt::decrypt($note['description']);
             return view('personalnotes.edit', compact('note'));
         }
     }
@@ -113,8 +107,6 @@ class PersonalNoteController extends Controller
     public function update(PersonalNoteRequest $request, $id)
     {
         $data = $request->all();
-        $data['title'] = Crypt::encrypt($data['title']);
-        $data['description'] = Crypt::encrypt($data['description']);
         $note = PersonalNote::find($id)->update($data);
         if($note){
             \Session::flash('updated', $note);
