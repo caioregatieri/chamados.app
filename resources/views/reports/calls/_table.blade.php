@@ -8,38 +8,41 @@
   </div>
   <!-- Table -->
   <table id="table" class="table table-striped">
-      <tr>
-        <th>Id</th>
-        <th>Aberto em</th>
-        <th>Por</th>
-        <th>Tipo</th>
-        <th>Secretaria</th>
-        <th>Setor</th>
-        <th>Titulo</th>
-        <th>Situação</th>
-      </tr>
       @foreach($calls as $call)
         <tr>
-          <td>{{$call->id}}</td>
-          <td>{{date("d/m/Y h:i:s", strtotime($call->created_at))}}</td>
-          <td>{{$call->usuario}}</td>
-          <td>{{$call->mode}}</td>
-          <td>{{$call->departament}}</td>
-          <td>{{$call->place}}</td>
-          <td>{{$call->title}}</td>
-          <td>{{$call->status}}</td>
-        </tr>
-        <tr>
-          <td colspan="8">
+          <td>
             <table class="table" style="margin-bottom: 0;">
               <tr>
-                <th>Descrição</th>
+                <th>Id</th>
+                <th>Aberto em</th>
+                <th>Tipo</th>
+                <th>Secretaria</th>
+                <th>Setor</th>
               </tr>
               <tr>
-                <td>{!!$call->description!!}</td>
+                <td>{{$call->id}}</td>
+                <td>{{date("d/m/Y h:i:s", strtotime($call->created_at))}}</td>
+                <td>{{$call->mode}}</td>
+                <td>{{$call->departament}}</td>
+                <td>{{$call->place}}</td>                
+              </tr>
+            </table>
+            <table class="table" style="margin-bottom: 0;">
+              <tr>
+                <th>Solicitante</th>
+                <th>Titulo</th>
+                <th>Situação</th>
+              </tr>
+              <tr>
+                <td>{{$call->requester}}</td>
+                <td>{{$call->title}}</td>
+                <td style="width: 150px;">{{$call->status}}</td>
               </tr>
             </table>
           </td>
+        </tr>
+        <tr>
+          <td></td>
         </tr>
       @endforeach
   </table>
