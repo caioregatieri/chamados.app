@@ -21,12 +21,14 @@ class ReminderController extends Controller
     {
         $reminders = new Reminder;
 
+        $pagesize = isset($_GET['pagesize']) ? $_GET['pagesize'] : 100;
+
         $filter = isset($_GET['search']) ? trim($_GET['search']) : '';
         if($filter != ''){
             $reminders = $reminders->where('title','like','%'.$filter.'%');
         }
 
-        $reminders = $reminders->paginate(10);
+        $reminders = $reminders->paginate($pagesize);
       
         return view('reminders.index', compact('reminders'));
     }

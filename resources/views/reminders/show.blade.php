@@ -11,7 +11,6 @@ Lembrete
     <h3 class="panel-title">Detalhes</h3>
   </div>
   <div class="panel-body">
-    <b>Id:</b> {{$reminder->id}} <br/>
     <b>Criado:</b>  {{$reminder->created_at}} <br/>
     <b>Por: </b> {{$reminder->user->name}}<br/>
     <b>Titulo:</b> {{$reminder->title}} <br/>
