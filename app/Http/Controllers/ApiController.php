@@ -30,7 +30,8 @@ class ApiController extends Controller
 
     //Auth
     public function login(Request $request){
-        if(!isset($request->email) || $request->email == '' || !isset($request->password) || $request->password = ''){
+        if(!isset($request->email) || $request->email == '' || 
+           !isset($request->password) || $request->password == ''){
             return ['msg'=>'Login fail', 'error'=>true];
             exit;
         }
