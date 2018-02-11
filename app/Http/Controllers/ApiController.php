@@ -16,13 +16,14 @@ use App\Entities\CallStatus\CallStatus;
 use App\Entities\Departament\Departament;
 use App\Entities\Place\Place;
 use App\Entities\User\User;
+use DB;
 
 class ApiController extends Controller
 {
 
     function validUser($request){
-        $email     =  $request->email;
-        $password  =  $request->password;
+        $email     =  isset($request->email)    ? $request->email    : '';
+        $password  =  isset($request->password) ? $request->password : '';
         if(!isset($email) || $email == '' || 
            !isset($password) || $password == ''){
             return false;
@@ -52,9 +53,13 @@ class ApiController extends Controller
     }    
 
     //User
-    public function getUser($id = null){
-        if($id != null){
-          return User::find($id)->get();
+    public function getUser(Request $request){
+        if(!$this->validUser($request)){
+            return ['msg'=>'Login fail', 'error'=>true];
+            exit;
+        }
+        if(isset($request->id)){
+          return User::find($request->id);
         }
         return User::orderBy('name','ASC')->get();
     }
@@ -68,11 +73,27 @@ class ApiController extends Controller
     }    
 
     //Calls
-    public function getCall($id = null){
-        if($id != null){
-          return Call::find($id)->get();
+    public function getCall(Request $request){
+        if(!$this->validUser($request)){
+            return ['msg'=>'Login fail', 'error'=>true];
+            exit;
         }
-        return Call::orderBy('id','DESC')->get();
+
+        if(isset($request->id)){
+            return Call::find($request->id);
+        }
+
+        if(isset($request->call_status)){
+            $query = "select c.*, s.name 
+                      from calls as c 
+                      inner join (select call_id, status_id from callhistories group by call_id) as h on (h.call_id = c.id)
+                      inner join callstatuses as s on (h.status_id = s.id)
+                      where s.id = $request->call_status";
+            return DB::select($query);
+        }
+
+        return Call::orderBy('id','DESC')
+                    ->get();
     }
   
     public function saveCall(Request $request){
@@ -80,31 +101,49 @@ class ApiController extends Controller
     }
   
     public function updateCall($id, Request $request){
-        return Call::find($id)->update($request);
+        return Call::find($id)
+                    ->update($request);
     }
   
     //Histories
-    public function getHistoryByCallId($callid){
-        return CallHistory::where('call_id', $callid)->orderBy('id','DESC')->get();
+    public function getHistoryByCallId(Request $request){
+        if(!$this->validUser($request)){
+            return ['msg'=>'Login fail', 'error'=>true];
+            exit;
+        }
+        return CallHistory::with('user')->where('call_id', $request->callid)
+                            ->orderBy('id','DESC')
+                            ->get();
     }
   
     public function saveHistory(Request $request){
-        return CallHistory::create($request);
+        return CallHistory::create($request->all());
     }
 
     //Places
-    public function getPlace($id){
-        if($id != null){
-            return Place::find($id)->get();
-          }
-          return Place::orderBy('name','ASC')->get();
+    public function getPlace(Request $request){
+        if(!$this->validUser($request)){
+            return ['msg'=>'Login fail', 'error'=>true];
+            exit;
+        }
+        if(isset($request->departament_id)){
+            return Place::where('departament_id', $request->departament_id)->get();
+        }
+        if(isset($request->id)){
+            return Place::find($request->id);
+        }
+        return Place::orderBy('name','ASC')->get();
     }
 
     //Departments
-    public function getDepartment($id){
-        if($id != null){
-            return Department::find($id)->get();
-          }
-          return Department::orderBy('name','ASC')->get();
+    public function getDepartment(Request $request){
+        if(!$this->validUser($request)){
+            return ['msg'=>'Login fail', 'error'=>true];
+            exit;
+        }
+        if($request->id != null){
+            return Department::find($request->id);
+        }
+        return Department::orderBy('name','ASC')->get();
     }
 }
