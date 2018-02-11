@@ -32,13 +32,15 @@ class ApiController extends Controller
     public function login(Request $request){
         if(!isset($request->email) || $request->email == '' || !isset($request->password) || $request->password = ''){
             return ['msg'=>'Login fail', 'error'=>true];
+            exit;
         }
 
         $user = $this->validUser($request->email, $request->password);
         if(!$user){
             return ['msg'=>'Login fail', 'error'=>true];
+        }else{
+            return ['msg'=>'Login success', 'error'=>false, 'user'=>$user];
         }
-        return ['msg'=>'Login success', 'user'=>$user];
     }
   
     public function logout(Request $request){
