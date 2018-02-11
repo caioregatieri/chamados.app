@@ -20,23 +20,26 @@ use App\Entities\User\User;
 class ApiController extends Controller
 {
 
-    function validUser($email, $pass){
-        $user = User::where(['email'=>$email])->first();
-        if (\Hash::check($pass, $user->password)) {
-            return $user;
+    function validUser($request){
+        $email     =  $request->email;
+        $password  =  $request->password;
+        if(!isset($email) || $email == '' || 
+           !isset($password) || $password == ''){
+            return false;
+            exit;
         }
-        return false;
+
+        $user = User::where(['email'=>$email])->first();
+        if (\Hash::check($password, $user->password)) {
+            return $user;
+        }else {
+            return false;
+        }
     }
 
     //Auth
     public function login(Request $request){
-        if(!isset($request->email) || $request->email == '' || 
-           !isset($request->password) || $request->password == ''){
-            return ['msg'=>'Login fail', 'error'=>true];
-            exit;
-        }
-
-        $user = $this->validUser($request->email, $request->password);
+        $user = $this->validUser($request);
         if(!$user){
             return ['msg'=>'Login fail', 'error'=>true];
         }else{
