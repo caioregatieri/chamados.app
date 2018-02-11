@@ -30,7 +30,7 @@ class ApiController extends Controller
         }
 
         $user = User::where(['email'=>$email])->first();
-        if (\Hash::check($password, $user->password)) {
+        if ($user && \Hash::check($password, $user->password)) {
             return $user;
         }else {
             return false;
