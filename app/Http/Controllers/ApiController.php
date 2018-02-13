@@ -107,11 +107,13 @@ class ApiController extends Controller
                       inner join (select call_id, status_id from callhistories group by call_id) as h on (h.call_id = c.id)
                       inner join callstatuses as s on (h.status_id = s.id)
                       where s.id = $request->call_status
+                      limit 100 
                       order by c.id DESC";
             return DB::select($query);
         }
 
         return Call::orderBy('id','DESC')
+                    ->take(100)
                     ->get();
     }
   
