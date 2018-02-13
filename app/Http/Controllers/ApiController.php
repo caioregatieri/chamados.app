@@ -111,7 +111,8 @@ class ApiController extends Controller
             return DB::select($query);
         }
 
-        return Call::orderBy('id','DESC')
+        return Call::with(['place','departament'])
+                    ->orderBy('id','DESC')
                     ->get();
     }
   
