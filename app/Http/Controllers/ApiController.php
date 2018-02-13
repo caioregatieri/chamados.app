@@ -98,7 +98,7 @@ class ApiController extends Controller
         }
 
         if(isset($request->id)){
-            return Call::find($request->id);
+            return Call::with(['place','departament'])->find($request->id);
         }
 
         if(isset($request->call_status)){
