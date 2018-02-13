@@ -16,6 +16,7 @@ use App\Entities\CallStatus\CallStatus;
 use App\Entities\Departament\Departament;
 use App\Entities\Place\Place;
 use App\Entities\User\User;
+use App\Entities\Login\Login;
 use DB;
 
 class ApiController extends Controller
@@ -32,7 +33,10 @@ class ApiController extends Controller
 
         $user = User::where(['email'=>$email])->first();
         if ($user && \Hash::check($password, $user->password)) {
-            return $user;
+            if ($user->locked == '0'){
+                return $user;
+            }
+            return false;
         }else {
             return false;
         }
@@ -44,12 +48,26 @@ class ApiController extends Controller
         if(!$user){
             return ['msg'=>'Login fail', 'error'=>true];
         }else{
+            Login::create([
+                'user_id'=>$user->id,
+                'ip'=>$request->ip(),
+                'method'=>'login'
+            ]);
             return ['msg'=>'Login success', 'error'=>false, 'user'=>$user];
         }
     }
   
     public function logout(Request $request){
-        return ['msg'=>'Logout success'];
+        $user = $this->validUser($request);
+        if($user){
+            return ['msg'=>'Logout fail', 'error'=>true];
+        }
+        Login::create([
+            'user_id'=>$user->id,
+            'ip'=>$request->ip(),
+            'method'=>'logout'
+        ]);
+        return ['msg'=>'Logout success', 'error'=>false];
     }    
 
     //User
