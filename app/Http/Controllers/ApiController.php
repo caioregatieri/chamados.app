@@ -18,6 +18,7 @@ use App\Entities\Place\Place;
 use App\Entities\User\User;
 use App\Entities\Login\Login;
 use DB;
+use Validator;
 
 class ApiController extends Controller
 {
@@ -98,7 +99,7 @@ class ApiController extends Controller
         }
 
         if(isset($request->id)){
-            return Call::with(['place','departament','history'])->find($request->id);
+            return Call::with(['place','place.departament','history'])->find($request->id);
         }
 
         if(isset($request->call_status)){
@@ -138,6 +139,28 @@ class ApiController extends Controller
     }
   
     public function saveHistory(Request $request){
+        $validator = Validator::make(
+            $request->all(), 
+            [
+                'user_id'     => 'required',
+                'description' => 'required|min:10',
+                'status_id'   => 'required',
+                'call_id'     => 'required',
+            ],[
+                'user_id.required'     => "É necessario informar o campo 'user_id'",
+                'description.required' => "É necessario informar o campo 'description'",
+                'description.min' => "O campo 'description' deve ter pelo menos 10 caracteres",
+                'status_id.required'   => "É necessario informar o campo 'status_id'",
+                'call_i.drequired'     => "É necessario informar o campo 'call_id'",
+            ]
+        );
+
+        if ($validator->fails()) {
+            return [
+                'errors' => $validator->errors()
+            ];
+        }
+        
         return CallHistory::create($request->all());
     }
 
