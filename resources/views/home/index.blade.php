@@ -244,7 +244,7 @@
             Morris.Area({!! $l !!});
             Morris.Donut({!! $p !!});
             Morris.Donut({!! $z !!});
-            $callOpened = {!! $c['Owner'][0]->quantidade !!} + {!! $c['Owner'][2]->quantidade !!};
+            $callOpened = {!! isset($c['Owner'][0]->quantidade) ? $c['Owner'][0]->quantidade : 0 !!} + {!! isset($c['Owner'][2]->quantidade) ? $c['Owner'][2]->quantidade : 0 !!};
             //exibir um toaster caso o usuario tenha mais de 10 chamados em aberto, com situação em aguarde e em andamento
             if($callOpened > 10){
                 $.toaster({ 

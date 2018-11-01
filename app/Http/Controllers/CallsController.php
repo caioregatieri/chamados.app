@@ -39,12 +39,13 @@ class CallsController extends Controller
     public function index()
     {
       //pega as variaveis para filtrar
-      $search =      Input::get('search','');
-      $mode =        Input::get('mode','');
-      $departament = Input::get('departament','');
-      $place =       Input::get('place','');
-      $status =      Input::get('status','');
-      $user =        Input::get('user','');
+      $search =        Input::get('search','');
+      $mode =          Input::get('mode','');
+      $departament =   Input::get('departament','');
+      $place =         Input::get('place','');
+      $status =        Input::get('status','');
+      $user =          Input::get('user','');
+      $has_transfers = Input::get('has_transfers','');
 
       //casoo usuario logado não seja administrador, sera filtrado os chamados por esse usuario
       if ($user == ''){
@@ -52,7 +53,7 @@ class CallsController extends Controller
       }
 
       //comando a ser executado
-      $q = 'select c.id, c.created_at,  c.title, c.requester, '.
+      $q = 'select c.id, c.created_at,  c.title, c.requester, c.has_transfers, '.
               'p.prefix, '.
               'p.name as place, '.
               'd.name as departament, '.
@@ -108,6 +109,13 @@ class CallsController extends Controller
             $w = $w . "where c.user_id = " . $user . " ";
         else
             $w = $w . "and c.user_id = " . $user . " ";
+      }
+
+      if($has_transfers != ''){
+        if ($w == '')
+            $w = $w . "where c.has_transfers = " . $has_transfers . " ";
+        else
+            $w = $w . "and c.has_transfers = " . $has_transfers . " ";
       }
 
       $q =  $q . $w . 'order by c.id desc';
@@ -174,7 +182,7 @@ class CallsController extends Controller
       }
 
       //comando a ser executado
-      $q = 'select c.id, c.created_at,  c.title, c.requester, '.
+      $q = 'select c.id, c.created_at,  c.title, c.requester, c.has_transfers, '.
               'p.prefix, '.
               'p.name as place, '.
               'd.name as departament, '.
@@ -305,7 +313,8 @@ class CallsController extends Controller
             'requester'=>trim($request['requester']),
             'register'=>trim($request['register']),
             'title'=>trim($request['title']),
-            'description'=>trim($request['description'])
+            'description'=>trim($request['description']),
+            'has_transfers'=>(isset($request['has_transfers']) ? true : false)
         ]);
         if($files[0]){
           //executa a função de upload e verifica se houveram erros
@@ -373,6 +382,7 @@ class CallsController extends Controller
         $call->register = trim($request['register']);
         $call->title = trim($request['title']);
         $call->description = trim($request['description']);
+        $call->has_transfers = $request['has_transfers'] ? true : false;
         $call->save();
         if($files[0]){
           //executa a função de upload e verifica se houveram erros

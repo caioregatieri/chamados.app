@@ -63,6 +63,13 @@ Chamados
                 @endforeach
               </select>
             </div>
+            <div class="form-group">
+              <select class="form-control" name="has_transfers">
+                <option value="" disabled selected>Transferências</option>
+                <option value="0">Não</option>
+                <option value="1">Sim</option>
+              </select>
+            </div>
             <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i> Pesquisar</button>
           </form>
         </div>
@@ -88,6 +95,7 @@ Chamados
             <th>Setor</th>
             <th>Solicitante</th>
             <th>Titulo</th>
+            <th>Transferências</th>
             <th></th>
           </tr>
           @foreach($calls as $call)
@@ -99,6 +107,7 @@ Chamados
               <td>{{$call->prefix}} - {{$call->place}}</td>
               <td>{{$call->requester}}</td>
               <td>{{$call->title}}</td>
+              <td>{{$call->has_transfers ? 'Sim' : 'Não'}}</td>
               <td style="text-align: right;"><a href="{{ route('calls.show',['id'=>$call->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Ver</a></td>
             </tr>
           @endforeach

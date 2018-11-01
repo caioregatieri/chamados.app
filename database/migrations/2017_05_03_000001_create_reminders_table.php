@@ -9,7 +9,7 @@ Description: Sistema desenvolvido para controle de chamados
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlacesTable extends Migration
+class CreateRemindersTable extends Migration
 {
     /**
      * Run the migrations.

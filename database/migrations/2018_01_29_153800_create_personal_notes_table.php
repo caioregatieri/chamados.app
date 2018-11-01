@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCallmodesResponsiblesTable extends Migration
+class CreatePersonalNotesTable extends Migration
 {
     /**
      * Run the migrations.

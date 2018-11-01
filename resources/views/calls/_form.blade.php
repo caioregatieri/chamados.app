@@ -47,6 +47,11 @@
 </div>
 
 <div class="form-group">
+  {!! Form::label('has_transfers','Transferências de patrimonio:') !!}
+  {!! Form::checkbox('has_transfers', null, $call->has_transfers, []) !!}
+</div>
+
+<div class="form-group">
   {!! Form::label('description','Descrição:') !!}
   {!! Form::textarea('description', null, ['class'=>'ckeditor form-control']) !!}
 </div>

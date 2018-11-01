@@ -17,7 +17,7 @@ class Call extends Model
 
   protected $table = 'calls';
 
-  protected $fillable = ['user_id', 'mode_id', 'place_id', 'requester', 'register', 'title', 'description'];
+  protected $fillable = ['user_id', 'mode_id', 'place_id', 'requester', 'register', 'title', 'description','has_transfers'];
 
   /*todo chamado possui um usuario*/
   public function user(){

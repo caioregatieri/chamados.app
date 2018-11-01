@@ -45,11 +45,11 @@ class AuthController extends Controller
                                'method'=>'login']);
 
                 //desloga o usuario de outras sessões
-                $user = Auth::user();
-                if($user->session_id)
-                    Session::getHandler()->destroy($user->session_id);
-                $user->session_id = Session::getId();
-                $user->save();
+                // $user = Auth::user();
+                // if($user->session_id)
+                //     Session::getHandler()->destroy($user->session_id);
+                // $user->session_id = Session::getId();
+                // $user->save();
 
                 return redirect()->intended('home');
                 //return redirect('home');
