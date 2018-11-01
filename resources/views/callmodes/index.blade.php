@@ -15,7 +15,7 @@ Tipos de chamado
         <h4 class="panel-title pull-right" style="padding-top: 7.5px;">Registros: {{ $callmodes->total() }}</h4>
       </div>
       <!-- Table -->
-      <table class="table">
+      <table class="table table-striped table-responsible table-sm">
           <tr>
             <th>Id</th>
             <th>Data</th>

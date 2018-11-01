@@ -11,7 +11,6 @@
     <h3 class="panel-title">Detalhes</h3>
   </div>
   <div class="panel-body">
-    <b>Id:</b> {{$note->id}} <br/>
     <b>Criado:</b>  {{$note->created_at}} <br/>
     <b>Titulo:</b> {{$note->title}} <br/>
     <b>Descrição:</b>

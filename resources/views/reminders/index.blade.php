@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-Lembretes
+  Lembretes
 @endsection
 
 @section('content')
@@ -42,13 +42,11 @@ Lembretes
       <!-- Table -->
       <table class="table table-striped table-condensed">
           <tr>
-            <th>Id</th>
             <th>Titulo</th>
             <th></th>
           </tr>
           @foreach($reminders as $reminder)
             <tr>
-              <td>{{$reminder->id}}</td>
               <td>{{$reminder->title}}</td>
               <td style="text-align: right;"><a href="{{ route('reminders.show',['id'=>$reminder->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Ver</a></td>
             </tr>

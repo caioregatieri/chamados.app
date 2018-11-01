@@ -48,13 +48,11 @@
       <!-- Table -->
       <table class="table table-striped table-condensed">
           <tr>
-            <th>Id</th>
             <th>Titulo</th>
             <th></th>
           </tr>
           @foreach($notes as $note)
             <tr>
-              <td>{{$note->id}}</td>
               <td>{{$note->title}}</td>
               <td style="text-align: right;"><a href="{{ route('personalnotes.show',['id'=>$note->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Ver</a></td>
             </tr>

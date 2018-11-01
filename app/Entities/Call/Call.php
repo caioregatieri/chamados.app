@@ -46,7 +46,7 @@ class Call extends Model
 
   /*todo chamado possui um ou nenhum status*/
   public function status(){
-      return $this->history->last()->status();
+    return $this->history->last()->status();
   }
 
   /*todo historico pertence a um modo*/

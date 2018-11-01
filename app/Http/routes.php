@@ -166,9 +166,9 @@ Route::group(['prefix'=>'api'], function(){
   });
 
   Route::group(['prefix'=>'users'], function(){
-    Route::get('/',              ['as'=>'api.users.index', 'uses'=>'ApiController@getuser']);
+    Route::get('/{id?}',         ['as'=>'api.users.index', 'uses'=>'ApiController@getuser']);
     Route::post('/',             ['as'=>'api.users.store', 'uses'=>'ApiController@saveUser']);
-    Route::put('/',              ['as'=>'api.users.update','uses'=>'ApiController@updateUser']);
+    Route::put('/{id}',          ['as'=>'api.users.update','uses'=>'ApiController@updateUser']);
   });
 
   Route::group(['prefix'=>'calls'], function(){
@@ -186,8 +186,8 @@ Route::group(['prefix'=>'api'], function(){
   });
 
   Route::group(['prefix'=>'histories'], function(){
-    Route::get('/callid',        ['as'=>'api.histories.index','uses'=>'ApiController@getHistoryByCallId']);
-    Route::post('/',             ['as'=>'api.histories.store','uses'=>'ApiController@saveHistory']);
+    Route::get('/{callid?}',        ['as'=>'api.histories.index','uses'=>'ApiController@getHistoryByCallId']);
+    Route::post('/',                ['as'=>'api.histories.store','uses'=>'ApiController@saveHistory']);
   });
 
   Route::group(['prefix'=>'places'], function(){

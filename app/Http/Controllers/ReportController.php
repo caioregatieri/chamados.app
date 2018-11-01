@@ -26,6 +26,12 @@ use \App\Events\statusCall;
 class ReportController extends Controller
 {
     public function getCalls(){
+        //variaveis para preencher os selects
+        $modes        = CallMode::all()->sortBy('name');
+        $departaments = Departament::all()->sortBy('name');
+        $callstatus   = CallStatus::all()->sortBy('name');
+        $users        = User::all()->sortBy('name');
+
         //pega as variaveis para filtrar
         $search =      Input::get('search','');
         $mode =        Input::get('mode','');
@@ -35,13 +41,19 @@ class ReportController extends Controller
         $user =        Input::get('user','');
         $date =        Input::get('created_at','');
 
+        if ($search == '' && $mode == '' && $departament == '' && $place == '' && $status == '' & $user == '' & $date == ''){
+          $calls = collect();
+          return view('reports.calls.index', compact('calls','modes','departaments','callstatus','users'));
+          exit;
+        }
+
         //caso o usuario logado não seja administrador, sera filtrado os chamados por esse usuario
         if ($user == ''){
           $user = Auth::user()->usertype->administrator == "0" ?  Auth::user()->id : '';
         }
 
         //comando a ser executado
-        $q = 'select c.id, c.created_at,  c.title, c.description, '.
+        $q = 'select c.id, c.created_at, c.title, c.description, c.requester, c.register, '.
                 'p.name as place, '.
                 'd.name as departament, '.
                 'm.name as  mode, '.
@@ -114,12 +126,6 @@ class ReportController extends Controller
         //dd($q);
 
         $calls = DB::select($q);
-
-        //variaveis para preencher os selects
-        $modes        = CallMode::all()->sortBy('name');
-        $departaments = Departament::all()->sortBy('name');
-        $callstatus   = CallStatus::all()->sortBy('name');
-        $users        = User::all()->sortBy('name');
 
         return view('reports.calls.index', compact('calls','modes','departaments','callstatus','users'));
     }

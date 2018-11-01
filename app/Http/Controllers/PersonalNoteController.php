@@ -23,12 +23,14 @@ class PersonalNoteController extends Controller
     {
         $notes = PersonalNote::where('user_id', Auth::user()->id);
 
+        $pagesize = isset($_GET['pagesize']) ? $_GET['pagesize'] : 100;
+
         $filter = isset($_GET['search']) ? trim($_GET['search']) : '';
         if($filter != ''){
             $notes = $notes->where('title','like','%'. $filter .'%');
         }
 
-        $notes = $notes->paginate(10);
+        $notes = $notes->paginate($pagesize);
 
         return view('personalnotes.index', compact('notes'));
     }

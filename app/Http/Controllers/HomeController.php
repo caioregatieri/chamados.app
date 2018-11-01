@@ -27,8 +27,20 @@ class HomeController extends Controller
       $l = ($this->graphPerMonth('morris-area-chart', 5, Departament::lists('name'), Departament::lists('name')));
       $p = ($this->graphPerDepartament('morris-donut-chart', $this->palletColors(), true));
       $z = ($this->graphPerMode('morris-donut-chart2', $this->palletColors(), true));
-      //dd(compact('c','l','p','z'));
-      return view('home.index', compact('c','l','p','z'));
+
+      $callsOpened = $this->callsOpened($c['Owner']);
+      // dd(compact('c','l','p','z','callsOpened'));
+      return view('home.index', compact('c','l','p','z','callsOpened'));
+    }
+
+    function callsOpened($groups){
+      $amount = 0;
+      foreach($groups as $type){
+        if ($type->id == 1 || $type->id == 3){
+          $amount += $type->quantidade;
+        }
+      }
+      return $amount;
     }
 
     public function about(Request $request){
@@ -41,10 +53,10 @@ class HomeController extends Controller
     public function graphs(){
       $c = ($this->calls());
       $l = ($this->graphPerMonth('morris-area-chart-1', 13, Departament::lists('name'), Departament::lists('name')));
-      //$m = ($this->graphPerMonth('morris-area-chart-2', 11, Departament::lists('name'), Departament::lists('name')));
+      // $m = ($this->graphPerMonth('morris-area-chart-2', 11, Departament::lists('name'), Departament::lists('name')));
       $p = ($this->graphPerDepartament('morris-donut-chart', $this->palletColors(), true));
       $z = ($this->graphPerMode('morris-donut-chart2', $this->palletColors(), true));
-      //dd(compact('c','l','p','z'));
+      // dd(compact('c','l','p','z'));
       return view('calls.graphs', compact('c','l','m','p','z'));
     }
 
