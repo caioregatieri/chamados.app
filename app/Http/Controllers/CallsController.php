@@ -285,6 +285,7 @@ class CallsController extends Controller
 
     public function create()
     {
+        $call = new Call();
         $users =  User::where('id', Auth::user()->id)->lists('name','id');
         $modes =  CallMode::lists('name','id');
         if(Auth::user()->usertype->onlyyourplace == "1"){
@@ -300,7 +301,7 @@ class CallsController extends Controller
 
         //dd($callTitles, $callRequesters);
 
-        return view('calls.create',compact('departaments','places','users','modes','callTitles','callRequesters'));
+        return view('calls.create',compact('call','departaments','places','users','modes','callTitles','callRequesters'));
     }
 
     public function store(CallRequest $request)
