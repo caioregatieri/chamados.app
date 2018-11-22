@@ -27,7 +27,7 @@ Chamado
     <b>Tipo:</b> {{$call->mode->name}} <br/>
     <b>Secretaria:</b> {{$call->place->Departament->name}} <br/>
     <b>Setor:</b><a href="{{ route('places.show',['id'=>$call->place->id]) }}"> {{$call->place->prefix}} - {{$call->place->name}} </a><br/>
-    <b>Solicitante:</b> {{ $call->register }} - {{ $call->requester }} <br/>
+    <b>Solicitante:</b> {{ $call->requester }} <b>E-mail:</b> <a href="mailto:{{ $call->requester_email }}">{{ $call->requester_email }}</a> <b>Chapa:</b> {{ $call->register }}<br/>
     <b>Titulo:</b> {{ $call->title }} <br/>
     <b>Transferências de patrimonio:</b> {{ $call->has_transfers ? 'Sim' : 'Não' }} <br/>
     <b>Descrição:</b>

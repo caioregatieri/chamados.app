@@ -312,6 +312,7 @@ class CallsController extends Controller
             'mode_id'=>$request['mode'],
             'place_id'=>$request['place'],
             'requester'=>trim($request['requester']),
+            'requester_email'=>trim($request['requester_email']),
             'register'=>trim($request['register']),
             'title'=>trim($request['title']),
             'description'=>trim($request['description']),
@@ -380,6 +381,7 @@ class CallsController extends Controller
         $call->mode_id = $request['mode'];
         $call->place_id = $request['place'];
         $call->requester = trim($request['requester']);
+        $call->requester_email = trim($request['requester_email']);
         $call->register = trim($request['register']);
         $call->title = trim($request['title']);
         $call->description = trim($request['description']);

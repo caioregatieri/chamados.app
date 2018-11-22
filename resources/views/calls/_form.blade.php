@@ -31,11 +31,18 @@
 </div>
 
 <div class="form-group">
-    <div class="col-sm-12 col-md-6 col-lg-6" style="padding: 0; margin-bottom: 15px;">
+    <div class="col-sm-12 col-md-4 col-lg-4" style="padding: 0; margin-bottom: 15px;">
       {!! Form::label('requester','Solicitante:') !!}
       {!! Form::text('requester', (Auth::user()->usertype->administrator != "1" ? Auth::user()->name : null ), $options) !!}
     </div>
-    <div class="col-sm-12 col-md-6 col-lg-6" style="padding: 0; margin-bottom: 15px;">
+    <div class="col-sm-12 col-md-4 col-lg-4" style="padding: 0; margin-bottom: 15px;">
+      {!! Form::label('requester_email','E-mail:') !!}
+      {!! Form::email('requester_email', (Auth::user()->usertype->administrator != "1" ? Auth::user()->email : null ), $options) !!}
+    </div>
+    <div class="col-sm-12 col-md-4 col-lg-4" style="padding: 0; margin-bottom: 15px;">
+      <?php
+        $options = ['class'=>'form-control number'];
+      ?>
       {!! Form::label('register','Chapa:') !!}
       {!! Form::text('register', (Auth::user()->usertype->administrator != "1" ? Auth::user()->register : null ), $options) !!}
     </div>
