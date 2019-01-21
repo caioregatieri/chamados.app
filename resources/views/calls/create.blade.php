@@ -126,5 +126,13 @@ Novo chamado
     $(window).resize(function(){
         $('select[name=place]').select2();
     });
+
+    $('input[name=requester_email]').on('blur', function(e){
+      e.preventDefault();
+      inputValue = $(this).val();
+      if (inputValue.length == 0) return;
+      if (inputValue.indexOf('@franca.sp.gov.br') > 0) return;
+      $(this).val(inputValue + '@franca.sp.gov.br')
+    })
   </script>
 @endsection
