@@ -15,12 +15,21 @@
         <link name="fontawesome" rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
         <!-- Custom -->
         <link name="custom" rel="stylesheet" href="{{ asset('css/custom.css') }}">
-        @if(Auth::user()->usertype->administrator != "1")
         <style>
-            #page-wrapper {
-                margin-left: 0;
+            .nav > .dropdown > .dropdown-toggle {
+                color: #f8f8f8 !important;
+            }
+            .nav > li > a:hover {
+                text-decoration: none;
+                background-color: #167ac6 !important;
             }
         </style>
+        @if(Auth::user()->usertype->administrator != "1")
+            <style>
+                #page-wrapper {
+                    margin-left: 0;
+                }
+            </style>
         @endif
         @yield('head')
     </head>
@@ -29,7 +38,7 @@
     <div id="wrapper">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <nav class="navbar navbar-default navbar-static-top" style="color: #f8f8f8; background-color: #337ab7;" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -37,7 +46,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ route('home') }}">Chamados técnicos</a>
+                <a class="navbar-brand" style="color: #f8f8f8;" href="{{ route('home') }}">Chamados técnicos</a>
             </div>
             <!-- /.navbar-header -->
 
