@@ -8,7 +8,7 @@ Novo usuário
 
 @if($errors->any())
   <div class="alert alert-danger" role="alert">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <strong>Whoops!</strong> Algum(s) erros aconteceram ao enviar os dados.<br><br>
     <ul>
       @foreach($errors->all() as $error)
         <li>{{ $error }}</li>
@@ -44,6 +44,14 @@ Novo usuário
       $('#form').submit(function(){
         $('.btn-save').prop('disabled', true);
       });
-    }
+
+      $('#email').on('blur', function(e){
+        e.preventDefault();
+        inputValue = $(this).val();
+        if (inputValue.length == 0) return;
+        if (inputValue.indexOf('@franca.sp.gov.br') > 0) return;
+        $(this).val(inputValue + '@franca.sp.gov.br')
+      })
+    })
   </script>
 @endsection

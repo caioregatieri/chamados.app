@@ -61,3 +61,15 @@
 	</div>
 </div>
 @endsection
+
+@section('scripts')
+  <script type="text/javascript">
+    $('input[name=email').on('blur', function(e){
+      e.preventDefault();
+      inputValue = $(this).val();
+      if (inputValue.length == 0) return;
+      if (inputValue.indexOf('@franca.sp.gov.br') > 0) return;
+      $(this).val(inputValue + '@franca.sp.gov.br')
+    })
+  </script>
+@endsection
