@@ -33,7 +33,7 @@ class UsersCreateRequest extends Request
         'usertype_id' => 'required',
         'place_id' => 'required',
         'name' => 'required|min:8',
-        'register' => 'required|min:4',
+        'register' => 'required|min:4|unique:users',
         'email' => 'required|email',
         'password' => 'required|min:8',
         'confirm' => 'required'
@@ -49,10 +49,11 @@ class UsersCreateRequest extends Request
           'name.min' => 'O campo <b>nome</b> deve ter no minimo :min caracteres.',
           'register.required' => 'O campo <b>chapa</b> é obrigatório.',
           'register.min' => 'O campo <b>chapa</b> deve ter no minimo :min caracteres.',
+          'register.unique' => 'O valor <b>chapa</b> já foi registrado por outro usuário.',
           'email.required' => 'O campo <b>e-mail</b> é obrigatório.',
           'email.email' => 'O campo <b>e-mail</b> não está em um formato válido.',
           'password.required' => 'O campo <b>senha</b> é obrigatório.',
-          'password.required' => 'O campo <b>senha</b> deve ter no minimo :min caracteres.',
+          'password.min' => 'O campo <b>senha</b> deve ter no minimo :min caracteres.',
           'confirm.required' => 'O campo <b>confirmar senha</b> é obrigatório.'
         ];
     }
