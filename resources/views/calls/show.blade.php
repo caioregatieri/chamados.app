@@ -19,10 +19,10 @@ Chamado
   </div>
   <div class="panel-body">
     <b>Id:</b> {{$call->id}} <br/>
-    <b>Criado em:</b>  {{$call->created_at}}<br/>
+    <b>Criado em:</b> {{$call->created_at}}<br/>
     @if(Auth::user()->usertype->administrator == "1")
-      <b>Atualizado em:</b>  {{$call->updated_at}}<br/>
-      <b>Criado por:</b> {{$call->user->name}} <br/>
+      <b>Atualizado em:</b> {{$call->updated_at}}<br/>
+      <b>Atualizado por:</b> {{$call->user->name}} <br/>
     @endif
     <b>Tipo:</b> {{$call->mode->name}} <br/>
     <b>Secretaria:</b> {{$call->place->Departament->name}} <br/>
@@ -75,7 +75,7 @@ Chamado
         <div class="panel panel-{{ $history->status->color }}">
           <div class="panel-heading">{{ $history->status->name }}</div>
           <div class="panel-body">
-            <b>Data:</b> {{ $history->created_at }} <br/>
+            <b>Data:</b> {{$history->created_at}} <br/>
             <b>Responsável:</b> {{ $history->user->name }} <br/>
             <b>Descrição:</b>
             <div class="panel panel-default">

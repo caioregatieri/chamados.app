@@ -101,7 +101,7 @@ Chamados
           @foreach($calls as $call)
               <tr class="list-group-item-{{$call->color}}">
               <td>{{$call->id}}</td>
-              <td>{{date("d/m/Y h:i:s", strtotime($call->created_at))}}</td>
+              <td>{{date("d/m/Y H:i:s", strtotime($call->created_at))}}</td>
               <td>{{$call->mode}}</td>
               <!-- <td>{{$call->departament}}</td> -->
               <td>{{$call->prefix}} - {{$call->place}}</td>
