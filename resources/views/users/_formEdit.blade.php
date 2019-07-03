@@ -28,3 +28,8 @@
   {!! Form::label('email','E-mail:') !!}
   {!! Form::text('email', null, ['class'=>'form-control']) !!}
 </div>
+
+<div class="form-group">
+  {!! Form::label('note','Observação:') !!}
+  {!! Form::text('note', null, ['class'=>'form-control']) !!}
+</div>

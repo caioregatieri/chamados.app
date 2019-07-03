@@ -31,7 +31,7 @@ Editar usuário
         <div class="checkbox">
           <label>
             {!! Form::checkbox('Bloqueado', null, $user->locked, []) !!}
-            Locked
+            Bloqueado
           </label>
         </div>
       </div>
