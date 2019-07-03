@@ -39,6 +39,8 @@ Novo usuário
 @endsection
 
 @section('scripts')
+  <!-- ckEditor -->
+  <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
   <script type="text/javascript">
     $(document).ready(function(){
       $('#form').submit(function(){

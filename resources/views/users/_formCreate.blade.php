@@ -31,5 +31,5 @@
 
 <div class="form-group">
   {!! Form::label('note','Observação:') !!}
-  {!! Form::text('note', null, ['class'=>'form-control']) !!}
+  {!! Form::textarea('note', null, ['class'=>'ckeditor form-control']) !!}
 </div>

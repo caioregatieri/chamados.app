@@ -48,3 +48,8 @@ Editar usuário
 </div>
 
 @endsection
+
+@section('scripts')
+  <!-- ckEditor -->
+  <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+@endsection
