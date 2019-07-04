@@ -19,13 +19,28 @@ Usuários
       </div>
     @endif
     <div class="panel panel-default">
-      <div class="panel-heading">Filter and search</div>
+      <div class="panel-heading">Filtrar e pesquisar</div>
       <div class="panel-body">
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
-            <input name="search" type="text" class="form-control" placeholder="Name" />
+            <input name="name" type="text" class="form-control" placeholder="Nome" />
           </div>
-          <button type="submit" class="btn btn-default">Search</button>
+          <div class="form-group">
+            <select name="usertype_id" class="form-control">
+            <option value="" disabled selected>Tipo</option>
+              @foreach($usertypes as $type)
+              <option value="{{ $type->id }}">{{ $type->name }}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="form-group">
+            <select class="form-control" name="locked">
+              <option value="" disabled selected>Bloqueado</option>
+              <option value="0">Não</option>
+              <option value="1">Sim</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i> Pesquisar</button>
         </form>
       </div>
     </div>

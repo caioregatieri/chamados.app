@@ -27,14 +27,24 @@ class UsersController extends Controller
   {
       $users = new User;
 
-      $filter = isset($_GET['search']) ? trim($_GET['search']) : '';
-      if($filter != ''){
-        $users = $users->where('name','like','%'.$filter.'%');
+      $name = isset($_GET['name']) ? trim($_GET['name']) : '';
+      if($name != ''){
+        $users = $users->where('name','like','%'.$name.'%');
+      }
+      $usertype_id = isset($_GET['usertype_id']) ? trim($_GET['usertype_id']) : '';
+      if($usertype_id != ''){
+        $users = $users->where('usertype_id','=',''.$usertype_id.'');
+      }
+      $locked = isset($_GET['locked']) ? trim($_GET['locked']) : '';
+      if($locked != ''){
+        $users = $users->where('locked','=',''.$locked.'');
       }
 
       $users = $users->paginate(10);
+      $usertypes = UserType::all();
+    //   dd($usertypes);
       
-      return view('users.index', compact('users'));
+      return view('users.index', compact('users','usertypes'));
   }
 
   public function create()
@@ -83,7 +93,8 @@ class UsersController extends Controller
         'name' => $request['name'],
         'register' => $request['register'],
         'email' => $request['email'],
-        'locked' => (!isset($request['locked']) ? 0 : 1)
+        'note' => $request['note'],
+        'locked' => (!isset($request['locked']) ? 0 : 1),
       ]);
       \Session::flash('updated', $user);
       return redirect()->route('users.show',['id'=>$id]);
