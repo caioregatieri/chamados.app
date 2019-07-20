@@ -16,7 +16,7 @@ class CreateCallFile extends Migration
         Schema::create('callfiles', function (Blueprint $table) {
           $table->increments('id');
           $table->integer('call_id')->unsigned();
-          $table->foreign('call_id')->references('call')->on('id')->onDelete('cascade');
+          $table->foreign('call_id')->references('id')->on('calls')->onDelete('cascade');
           $table->string('filename');
           $table->timestamps();
       });

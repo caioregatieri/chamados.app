@@ -16,7 +16,7 @@ class CreateCallHistoryFile extends Migration
         Schema::create('callhistoryfiles', function (Blueprint $table) {
           $table->increments('id');
           $table->integer('history_id')->unsigned();
-          $table->foreign('history_id')->references('callhistories')->on('id')->onDelete('cascade');
+          $table->foreign('history_id')->references('id')->on('callhistories')->onDelete('cascade');
           $table->string('filename');
           $table->timestamps();
       });

@@ -21,11 +21,11 @@ class CreateCallHistoryTable extends Migration
       Schema::create('callhistories', function (Blueprint $table) {
           $table->increments('id');
           $table->integer('call_id')->unsigned();
-          $table->foreign('call_id')->references('calls')->on('id')->onDelete('cascade');
+          $table->foreign('call_id')->references('id')->on('calls')->onDelete('cascade');
           $table->integer('user_id')->unsigned();
-          $table->foreign('user_id')->references('users')->on('id')->onDelete('cascade');
+          $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
           $table->integer('status_id')->unsigned();
-          $table->foreign('status_id')->references('callstatuses')->on('id')->onDelete('cascade');
+          $table->foreign('status_id')->references('id')->on('callstatuses')->onDelete('cascade');
           $table->string('description');
           $table->timestamps();
       });

@@ -21,11 +21,11 @@ class CreateCallsTable extends Migration
       Schema::create('calls', function (Blueprint $table) {
           $table->increments('id');
           $table->integer('user_id')->unsigned();
-          $table->foreign('user_id')->references('users')->on('id')->onDelete('cascade');
+          $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
           $table->integer('mode_id')->unsigned();
-          $table->foreign('mode_id')->references('callmode')->on('id')->onDelete('cascade');
+          $table->foreign('mode_id')->references('id')->on('callmodes')->onDelete('cascade');
           $table->integer('place_id')->unsigned();
-          $table->foreign('place_id')->references('places')->on('id')->onDelete('cascade');
+          $table->foreign('place_id')->references('id')->on('places')->onDelete('cascade');
           $table->string('title');
           $table->string('description');
           $table->timestamps();
