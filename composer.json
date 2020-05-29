@@ -37,7 +37,8 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "php artisan clear-compiled"
+            "php artisan clear-compiled",
+            "chmod -R 777 public/"
         ],
         "pre-update-cmd": [
             "php artisan clear-compiled"
