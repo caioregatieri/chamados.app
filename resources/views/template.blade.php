@@ -6,15 +6,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>@yield('title')</title>
         <!-- Bootstrap -->
-        <link name="bootstrap" rel="stylesheet" href="{{ str_replace('http', 'https', asset('css/boot.min.css')) }}">
+        <link name="bootstrap" rel="stylesheet" href="{{ asset('css/boot.min.css') }}">
         <!-- MetisMenu -->
-        <link name="metismenu" rel="stylesheet" href="{{ str_replace('http', 'https', asset('css/metisMenu.min.css')) }}">
+        <link name="metismenu" rel="stylesheet" href="{{ asset('css/metisMenu.min.css') }}">
         <!-- SB Admin 2 -->
-        <link name="sbadmin" rel="stylesheet" href="{{ str_replace('http', 'https', asset('css/sb-admin-2.css')) }}">
+        <link name="sbadmin" rel="stylesheet" href="{{ asset('css/sb-admin-2.css') }}">
         <!-- font-awesome -->
-        <link name="fontawesome" rel="stylesheet" href="{{ str_replace('http', 'https', asset('css/font-awesome.min.css')) }}">
+        <link name="fontawesome" rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
         <!-- Custom -->
-        <link name="custom" rel="stylesheet" href="{{ str_replace('http', 'https', asset('css/custom.css')) }}">
+        <link name="custom" rel="stylesheet" href="{{ asset('css/custom.css') }}">
         <style>
             .nav > .dropdown > .dropdown-toggle {
                 color: #f8f8f8 !important;
@@ -88,13 +88,13 @@
 
 
     <!-- JQuery -->
-    <script src="{{ str_replace('http', 'https', asset('js/jquery.min.js')) }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <!-- Bootstrap -->
-    <script src="{{ str_replace('http', 'https', asset('js/boot.min.js')) }}"></script>
+    <script src="{{ asset('js/boot.min.js') }}"></script>
     <!-- Custom Theme JavaScript -->
-    <script src="{{ str_replace('http', 'https', asset('js/metisMenu.min.js')) }}"></script>
+    <script src="{{ asset('js/metisMenu.min.js') }}"></script>
     <!-- Custom Theme JavaScript -->
-    <script src="{{ str_replace('http', 'https', asset('js/sb-admin-2.js')) }}"></script>
+    <script src="{{ asset('js/sb-admin-2.js') }}"></script>
 
     <script>
         $(".number").keydown(function (e) {
