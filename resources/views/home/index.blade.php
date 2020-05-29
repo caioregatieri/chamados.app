@@ -6,7 +6,7 @@
 
 @section('head')
   <!-- Morris Charts CSS -->
-  <link rel="stylesheet" href="{{ asset('css/morris.css') }}">
+  <link rel="stylesheet" href="{{ str_replace('http', 'https', asset('css/morris.css')) }}">
 
   <style>
       .huge {
@@ -235,10 +235,10 @@
 
 @section('scripts')
     <!-- MorrisJs -->
-    <script src="{{ asset('js/morris.js') }}"></script>
-    <script src="{{ asset('js/raphael-min.js') }}"></script>
+    <script src="{{ str_replace('http', 'https' asset('js/morris.js')) }}"></script>
+    <script src="{{ str_replace('http', 'https' asset('js/raphael-min.js')) }}"></script>
     <!-- JQuery toaster -->
-    <script src="{{ asset('js/jquery.toaster.js') }}"></script>
+    <script src="{{ str_replace('http', 'https' asset('js/jquery.toaster.js')) }}"></script>
     <script>
         $(function(){
             Morris.Area({!! $l !!});
