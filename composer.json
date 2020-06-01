@@ -38,10 +38,7 @@
     "scripts": {
         "post-install-cmd": [
             "php artisan clear-compiled",
-            "chmod -R 777 public/",
-            "touch storage/database.sqlite",
-            "php artisan migrate",
-            "php artisan db:seed"
+            "chmod -R 777 public/"
         ],
         "pre-update-cmd": [
             "php artisan clear-compiled"
