@@ -19,6 +19,7 @@ class CreateCallHistoryFile extends Migration
           $table->foreign('history_id')->references('id')->on('callhistories')->onDelete('cascade');
           $table->string('filename');
           $table->timestamps();
+          $table->softDeletes();
       });
     }
 

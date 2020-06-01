@@ -24,6 +24,7 @@ class CreateUserTypesTable extends Migration
           $table->integer('administrator')->default(0);
           $table->integer('onlyyourplace')->default(0);
           $table->timestamps();
+          $table->softDeletes();
       });
     }
 

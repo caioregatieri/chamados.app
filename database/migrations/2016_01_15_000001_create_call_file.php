@@ -19,6 +19,7 @@ class CreateCallFile extends Migration
           $table->foreign('call_id')->references('id')->on('calls')->onDelete('cascade');
           $table->string('filename');
           $table->timestamps();
+          $table->softDeletes();
       });
     }
 

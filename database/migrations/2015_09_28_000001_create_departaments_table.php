@@ -23,6 +23,7 @@ class CreateDepartamentsTable extends Migration
           $table->string('name')->unique();
           $table->string('responsable');
           $table->timestamps();
+          $table->softDeletes();
       });
     }
 

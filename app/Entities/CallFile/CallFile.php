@@ -9,11 +9,13 @@ Description: Sistema desenvolvido para controle de chamados
 namespace App\Entities\CallFile;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use OwenIt\Auditing\AuditingTrait;
 
 class CallFile extends Model
 {
 	use AuditingTrait;
+	use SoftDeletes;
 
 	protected $table = 'callfiles';
 

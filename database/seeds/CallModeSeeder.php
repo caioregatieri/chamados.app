@@ -23,7 +23,7 @@ class CallModeSeeder extends Seeder
           'name' => 'Local'
       ]);
       CallMode::create([
-          'name' => 'Remote'
+          'name' => 'Remoto'
       ]);
     }
 }

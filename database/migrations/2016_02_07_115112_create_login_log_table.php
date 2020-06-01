@@ -24,6 +24,7 @@ class CreateLoginLogTable extends Migration
           $table->string('ip');
           $table->string('method');
           $table->timestamps();
+          $table->softDeletes();
         });
     }
 

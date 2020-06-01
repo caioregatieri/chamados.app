@@ -20,6 +20,7 @@ class CreatePersonalNotesTable extends Migration
             $table->string('description')->nullable();
   
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

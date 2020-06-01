@@ -16,6 +16,8 @@ use App\Entities\Call\Call;
 use App\Entities\CallStatus\CallStatus;
 use App\Entities\Departament\Departament;
 use App\Entities\Login\Login;
+
+use Carbon\Carbon;
 use Auth;
 use DB;
 
@@ -74,7 +76,7 @@ class HomeController extends Controller
     }
 
     function selectCalls($user = null){
-      $q = "select c.id, c.name, ifnull(a.quantidade, 0) as quantidade, c.color, c.icon ".
+      $q = "select c.id, c.name, coalesce(b.quantidade, 0) as quantidade, c.color, c.icon ".
            "from ( ".
                "select count(*) as quantidade, status_id ".
             	 "from ( select call_id, status_id ".
@@ -85,23 +87,25 @@ class HomeController extends Controller
                       "where c.user_id = $user ";
             }
 
-      $q.=            "group by h.call_id ) ".
-               "group by status_id ) as a ".
-            "inner join callstatuses as c on a.status_id = c.id";
+      $q.=            "group by h.call_id ) as a ".
+               "group by status_id ) as b ".
+            "inner join callstatuses as c on b.status_id = c.id";
 
       return DB::select($q);
     }
 
     function graphPerMonth($element, $months=1, $departaments, $labels=null, $colors=null, $resize=true){
       //$departaments = Departament::all();
-      $q = "select strftime('%Y-%m', c.created_at) as 'period', ".
+      $q = "select DATE_FORMAT(c.created_at, '%Y-%m') as 'period', ".
                   "d.name as departament, ".
                   "count(*) as total ".
            "from calls c ".
            "inner join places p on c.place_id = p.id ".
            "inner join departaments d on p.departament_id = d.id ".
-           "where c.created_at > date('now','start of month','-$months month','-1 day') ".
-           "group by strftime('%Y-%m', c.created_at), d.name";
+           "where c.created_at > " . Carbon::now()->subMonths(5)->format('Y-m') . " " .
+           "group by DATE_FORMAT(c.created_at, '%Y-%m'), d.name";
+           
+      error_log($q);
 
       $result = DB::select($q);
       $period = array();
@@ -178,14 +182,14 @@ class HomeController extends Controller
     }
 
     function graphOfMonth($element, $months=1, $departaments, $labels=null, $colors=null, $resize=true){
-      $q = "select strftime('%Y-%m', c.created_at) as 'period', ".
+      $q = "select DATE_FORMAT(c.created_at, '%Y-%m') as 'period', ".
                   "d.name as departament, ".
                   "count(*) as total ".
            "from calls c ".
            "inner join places p on c.place_id = p.id ".
            "inner join departaments d on p.departament_id = d.id ".
-           "where c.created_at > date('now','start of month','-$months month','-1 day') ".
-           "group by strftime('%Y-%m', c.created_at), d.name";
+           "where c.created_at > " . Carbon::now()->subMonths($months)->format('Y-m') . " " .
+           "group by DATE_FORMAT(c.created_at, '%Y-%m'), d.name";
 
       $result = DB::select($q);
       $period = array();

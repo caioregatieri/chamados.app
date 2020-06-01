@@ -37,6 +37,7 @@ class CreatePlacesTable extends Migration
           $table->string('note')->nullable();
 
           $table->timestamps();
+          $table->softDeletes();
       });
     }
 

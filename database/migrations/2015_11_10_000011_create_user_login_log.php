@@ -19,6 +19,7 @@ class CreateUserLoginLog extends Migration
           $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
           $table->string('ip');
           $table->timestamp('created_at');
+          $table->softDeletes();
       });
     }
 

@@ -3,11 +3,13 @@
 namespace App\Entities\Reminder;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use OwenIt\Auditing\AuditingTrait;
 
 class Reminder extends Model
 {
     use AuditingTrait;
+    use SoftDeletes;
 
     protected $table = 'reminders';
 

@@ -9,11 +9,13 @@ Description: Sistema desenvolvido para controle de chamados
 namespace App\Entities\CallMode;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use OwenIt\Auditing\AuditingTrait;
 
 class CallMode extends Model
 {
 	use AuditingTrait;
+	use SoftDeletes;
 
 	protected $table = 'callmodes';
 

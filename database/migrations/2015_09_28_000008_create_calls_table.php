@@ -29,6 +29,7 @@ class CreateCallsTable extends Migration
           $table->string('title');
           $table->string('description');
           $table->timestamps();
+          $table->softDeletes();
       });
     }
 

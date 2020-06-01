@@ -26,6 +26,7 @@ class CreateCallStatusTable extends Migration
           $table->integer('isstart')->default(0);
           $table->integer('isend')->default(0);
           $table->timestamps();
+          $table->softDeletes();
       });
     }
 

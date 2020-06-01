@@ -26,6 +26,7 @@ class CreateLogTable extends Migration
             $table->text('new_value')->nullable();
             $table->string('type');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

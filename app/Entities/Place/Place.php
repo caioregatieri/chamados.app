@@ -9,11 +9,13 @@ Description: Sistema desenvolvido para controle de chamados
 namespace App\Entities\Place;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use OwenIt\Auditing\AuditingTrait;
 
 class Place extends Model
 {
     use AuditingTrait;
+    use SoftDeletes;
     
     protected $table = 'places';
 

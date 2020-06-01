@@ -28,6 +28,7 @@ class CreateCallHistoryTable extends Migration
           $table->foreign('status_id')->references('id')->on('callstatuses')->onDelete('cascade');
           $table->string('description');
           $table->timestamps();
+          $table->softDeletes();
       });
     }
 
