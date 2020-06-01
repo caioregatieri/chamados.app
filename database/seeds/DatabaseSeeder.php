@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
       $this->call(PlaceSeeder::class);
       $this->call(UserTypeSeeder::class);
       $this->call(UserSeeder::class);
+      $this->call(CallSeeder::class);
 
       //para mysql deixar ativado
       //DB::statement("SET foreign_key_checks = 1");

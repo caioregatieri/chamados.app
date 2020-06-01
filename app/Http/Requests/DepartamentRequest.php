@@ -30,7 +30,18 @@ class DepartamentRequest extends Request
     public function rules()
     {
         return [
-            'name'=>'required|min:4'
+            'name'=>'required|min:4',
+            'responsable'=>'required|min:4'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+          'name.required' => 'O campo <b>nome</b> é obrigatório.',
+          'name.min' => 'O campo <b>nome</b> deve ter no minimo :min caracteres.',
+          'responsable.required' => 'O campo <b>responsável</b> é obrigatório.',
+          'responsable.min' => 'O campo <b>responsável</b> deve ter no minimo :min caracteres.',
         ];
     }
 }

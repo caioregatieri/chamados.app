@@ -8,7 +8,7 @@ Editar tipo de chamado
 
 @if($errors->any())
   <div class="alert alert-danger" role="alert">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <strong>Whoops!</strong> Algo está errado.<br><br>
     <ul>
       @foreach($errors->all() as $error)
         <li>{{ $error }}</li>

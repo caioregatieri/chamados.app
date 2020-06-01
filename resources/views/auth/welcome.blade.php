@@ -58,7 +58,6 @@ Chamados
       <div class="col col-md-9 col-centered">
         <div class="title" >
           <b>Chamados Técnicos</b><br/>
-          Secretaria Municipal de Educação
         </div>
       </div>
     </div>

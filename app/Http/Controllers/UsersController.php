@@ -64,7 +64,8 @@ class UsersController extends Controller
         'register' => $request['register'],
         'email' => $request['email'],
         'password' => bcrypt($request['password']),
-        'locked' => 1
+        'note' => $request['note'],
+        'locked' => 0
       ]);
       \Session::flash('created', $user);
       return redirect()->route('users.index');

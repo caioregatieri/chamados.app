@@ -8,7 +8,7 @@ Editar usuário
 
 @if($errors->any())
   <div class="alert alert-danger" role="alert">
-    <strong>Whoops!</strong> Algum(s) erros aconteceram ao enviar os dados.<br><br>
+    <strong>Whoops!</strong> Algo está errado.<br><br>
     <ul>
       @foreach($errors->all() as $error)
         <li>{!! $error !!}</li>

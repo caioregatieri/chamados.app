@@ -30,9 +30,11 @@ class CallRequest extends Request
     public function rules()
     {
         return [
-          'user'=>'required',
-          'departament'=>'required',
-          'place'=>'required',
+          'user_id'=>'required',
+          'departament_id'=>'required',
+          'place_id'=>'required',
+          'requester'=>'required|min:5',
+          'requester_email'=>'required|email',
           'title'=>'required|min:10',
           'description'=>'required|min:10'
         ];
@@ -41,9 +43,13 @@ class CallRequest extends Request
     public function messages()
     {
         return [
-          'user.required' => 'O campo <b>usuário</b> é obrigatório.',
-          'departament.required' => 'O campo <b>secretaria</b> é obrigatório.',
-          'place.required' => 'O campo <b>setor</b> é obrigatório.',
+          'user_id.required' => 'O campo <b>usuário</b> é obrigatório.',
+          'departament_id.required' => 'O campo <b>secretaria</b> é obrigatório.',
+          'place_id.required' => 'O campo <b>setor</b> é obrigatório.',
+          'requester.required' => 'O campo <b>Solicitante</b> é obrigatório.',
+          'requester.min' => 'O campo <b>Solicitante</b> deve ter no minimo :min caracteres.',
+          'requester_email.required' => 'O campo <b>Solicitante</b> é obrigatório.',
+          'requester_email.email' => 'O campo <b>E-mail</b> não é válido',
           'title.required' => 'O campo <b>titulo</b> é obrigatório.',
           'description.required' => 'O campo <b>descrição</b> é obrigatório.',
           'title.min' => 'O campo <b>titulo</b> deve ter no minimo :min caracteres.',

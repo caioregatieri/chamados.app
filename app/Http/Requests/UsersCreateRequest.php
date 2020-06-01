@@ -43,7 +43,7 @@ class UsersCreateRequest extends Request
     public function messages()
     {
         return [
-          'usertype_id.required' => 'O campo <b>tipo de usaário</b> é obrigatório.',
+          'usertype_id.required' => 'O campo <b>tipo de usuário</b> é obrigatório.',
           'place_id.required' => 'O campo <b>setor</b> é obrigatório.',
           'name.required' => 'O campo <b>nome</b> é obrigatório.',
           'name.min' => 'O campo <b>nome</b> deve ter no minimo :min caracteres.',

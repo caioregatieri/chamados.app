@@ -23,23 +23,27 @@ class CallStatusSeeder extends Seeder
           'name' => 'Waiting',
           'color' => 'warning',
           'isstart' => '1',
+          'icon' => 'fa-clock-o',
           'isend' => '0'
       ]);
       CallStatus::create([
           'name' => 'Canceled',
           'color' => 'danger',
+          'icon' => 'fa-ban',
           'isstart' => '0',
           'isend' => '1'
       ]);
       CallStatus::create([
           'name' => 'In progress',
           'color' => 'info',
+          'icon' => 'fa-spinner',
           'isstart' => '0',
           'isend' => '0'
       ]);
       CallStatus::create([
           'name' => 'Finalized',
           'color' => 'success',
+          'icon' => 'fa-check',
           'isstart' => '0',
           'isend' => '1'
       ]);

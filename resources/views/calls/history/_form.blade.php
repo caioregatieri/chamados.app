@@ -12,7 +12,7 @@
 </div>
 
 <div class="form-group">
-  {!! Form::label('description','Descrição:') !!}
+  {!! Form::label('description','* Descrição:') !!}
   {!! Form::textarea('description', null, ['class'=>'ckeditor form-control','autofocus'=>'true']) !!}
 </div>
 

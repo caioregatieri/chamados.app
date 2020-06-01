@@ -14,6 +14,7 @@ Show place
     <b>Id:</b> {{$departament->id}} <br/>
     <b>Criado em:</b>  {{$departament->created_at}}<br/>
     <b>Nome:</b> {{ $departament->name }} <br/>
+    <b>Responsável:</b> {{ $departament->responsable }} <br/>
     @if($departament->logs->count() > 1)
       <b>Houveram modificações neste registro</b>
     @endif

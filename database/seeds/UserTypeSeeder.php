@@ -19,10 +19,21 @@ class UserTypeSeeder extends Seeder
      */
     public function run()
     {
-      UserType::create([
-          'name' => 'Default',
+      UserType::insert([
+        [
+          'name' => 'Administradores',
           'administrator' => '1',
-          'onlyyourplace' => '0'
+          'onlyyourplace' => '0',
+          'created_at' => date('Y-m-d h:i'),
+          'updated_at' => date('Y-m-d h:i'),
+        ],
+        [
+          'name' => 'Limitados',
+          'administrator' => '0',
+          'onlyyourplace' => '1',
+          'created_at' => date('Y-m-d h:i'),
+          'updated_at' => date('Y-m-d h:i'),
+        ]
       ]);
     }
 }

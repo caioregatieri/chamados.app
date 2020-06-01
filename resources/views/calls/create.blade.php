@@ -14,7 +14,7 @@ Novo chamado
 
 @if($errors->any())
   <div class="alert alert-danger" role="alert">
-    <strong>Whoops!</strong> Algum(s) erros aconteceram ao enviar os dados.<br><br>
+    <strong>Whoops!</strong> Algo está errado.<br><br>
     <ul>
       @foreach($errors->all() as $error)
         <li>{!! $error !!}</li>
@@ -132,7 +132,9 @@ Novo chamado
       inputValue = $(this).val();
       if (inputValue.length == 0) return;
       if (inputValue.indexOf('@') >= 0) return;
-      $(this).val(inputValue + '@franca.sp.gov.br')
+      const domain = '{!! env("EMAIL_DOMAIN") !!}';
+      if (!domain) return;
+      $(this).val(inputValue + '@' + domain.replace(new RegExp('@', 'g'), ''))
     })
   </script>
 @endsection

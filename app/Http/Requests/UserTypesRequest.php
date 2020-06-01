@@ -33,4 +33,12 @@ class UserTypesRequest extends Request
             'name'=>'required|min:8'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required'           => 'Informe o nome',
+            'name.min'                => 'O nome deve ter no mínimo 8 caracteres',
+        ];
+    }
 }

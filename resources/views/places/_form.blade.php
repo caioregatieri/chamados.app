@@ -1,36 +1,36 @@
 
 <div class="form-group">
-  {!! Form::label('departament_id','Secretaria:') !!}
+  {!! Form::label('departament_id','* Secretaria:') !!}
   {!! Form::select('departament_id', $departaments, null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
-  {!! Form::label('prefix','Prefixo:') !!}
+  {!! Form::label('prefix','* Prefixo:') !!}
   {!! Form::text('prefix', null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
-  {!! Form::label('name','Nome:') !!}
+  {!! Form::label('name','* Nome:') !!}
   {!! Form::text('name', null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
-  {!! Form::label('neighborhood','Bairro:') !!}
+  {!! Form::label('neighborhood','* Bairro:') !!}
   {!! Form::text('neighborhood', null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
-  {!! Form::label('address','Logradouro:') !!}
+  {!! Form::label('address','* Logradouro:') !!}
   {!! Form::text('address', null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
-  {!! Form::label('number','Numero:') !!}
+  {!! Form::label('number','* Numero:') !!}
   {!! Form::text('number', null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
-  {!! Form::label('telephone1','Telefone 1:') !!}
+  {!! Form::label('telephone1','* Telefone 1:') !!}
   {!! Form::text('telephone1', null, ['class'=>'form-control']) !!}
 </div>
 
@@ -60,7 +60,7 @@
 </div>
 
 <div class="form-group">
-  {!! Form::label('region','Região:') !!}
+  {!! Form::label('region','* Região:') !!}
   {!! Form::select('region', ['Norte'=>'Norte','Sul'=>'Sul','Leste'=>'Leste','Oeste'=>'Oeste','Centro'=>'Centro'],null, ['class'=>'form-control']) !!}
 </div>
 

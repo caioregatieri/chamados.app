@@ -8,7 +8,7 @@ Editando setor
 
 @if($errors->any())
   <div class="alert alert-danger" role="alert">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <strong>Whoops!</strong> Algo está errado.<br><br>
     <ul>
       @foreach($errors->all() as $error)
         <li>{{ $error }}</li>
@@ -46,16 +46,6 @@ Editando setor
         $('.btn-save').prop('disabled', true);
       });
       $('input[name=ip_range]').mask('000.000.000.000');
-      $('input[name=ip_range]').on('blur', function(){
-        console.log($(this).val());
-        if(!validateIP($(this).val())){
-          alert('IP inválido');
-        }
-      })
-      function validateIP(ip){
-        var padraoip = "^(?:(?:25[0-5]2[0-4][0-9][01]?[0-9][0-9]?)\.){3}(?:25[0-5]2[0-4][0-9][01]?[0-9][0-9]?)$";
-        return ip.match(padraoip);
-      }
     });
   </script>
 @endsection

@@ -45,6 +45,7 @@ Setores
             <th>Id</th>
             <th>Data</th>
             <th>Nome</th>
+            <th>Responsável</th>
             <th></th>
           </tr>
           @foreach($departaments as $departament)
@@ -52,6 +53,7 @@ Setores
               <td>{{$departament->id}}</td>
               <td>{{$departament->created_at}}</td>
               <td>{{$departament->name}}</td>
+              <td>{{$departament->responsable}}</td>
               <td style="text-align: right;"><a href="{{ route('departaments.show',['id'=>$departament->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Ver</a></td>
             </tr>
           @endforeach

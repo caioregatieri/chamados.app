@@ -19,8 +19,11 @@ class AlterCallTable extends Migration
     public function up()
     {
       Schema::table('calls', function (Blueprint $table) {
-        $table->string('requester');
-        $table->string('register');
+        $table->string('requester')->nullable();
+        $table->string('register')->nullable();
+        $table->boolean('has_transfers')->nullable();
+        $table->string('requester_email')->nullable();
+        $table->text('note')->nullable();
       });
     }
 
@@ -32,8 +35,11 @@ class AlterCallTable extends Migration
     public function down()
     {
       Schema::table('calls', function (Blueprint $table) {
-        $table->dropColumn('requester')->nullable();
-        $table->dropColumn('register')->nullable();
+        $table->dropColumn('requester');
+        $table->dropColumn('register');
+        $table->dropColumn('has_transfers');
+        $table->dropColumn('requester_email');
+        $table->dropColumn('note');
       });
     }
 }

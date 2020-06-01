@@ -19,8 +19,19 @@ class DepartamentSeeder extends Seeder
      */
     public function run()
     {
-      Departament::create([
-          'name' => 'Default'
+      Departament::insert([
+          [
+            'name' => 'Secretaria 1',
+            'responsable' => 'Responsável 1',
+            'created_at' => date('Y-m-d h:i'),
+            'updated_at' => date('Y-m-d h:i'),
+          ],
+          [
+            'name' => 'Secretaria 2',
+            'responsable' => 'Responsável 2',
+            'created_at' => date('Y-m-d h:i'),
+            'updated_at' => date('Y-m-d h:i'),
+          ]
       ]);
     }
 }

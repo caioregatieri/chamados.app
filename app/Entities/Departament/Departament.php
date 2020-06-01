@@ -17,7 +17,7 @@ class Departament extends Model
 
 	protected $table = 'departaments';
 
-	protected $fillable = ['name'];
+	protected $fillable = ['name', 'responsable'];
 
 	/*todo departameto possui diversos locais*/
 	public function place(){
