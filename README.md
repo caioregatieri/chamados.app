@@ -15,3 +15,15 @@
 - php artisan key:generate
 - php artisan migrate --seed
 - php artisan serve
+
+#### Para ver o demo acesse:
+
+https://chamados-app.herokuapp.com
+
+#### Para login pode ser usado:
+
+- email: admin@admin.com
+- senha: admin
+
+- email: limitado@email.com
+- senha: limitado
