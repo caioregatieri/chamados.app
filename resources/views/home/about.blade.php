@@ -58,7 +58,7 @@ Chamados
       <div class="title" style="margin: 0 auto;">
         Sistema de controle de chamados técnicos.<br/>
         Desenvolvido por: <a href="mailto:caio.cesar.regatieri">Caio Regatieri</a>.<br/>
-        Usando PHP (Laravel), Bootstrap e Sqlite.
+        Usando PHP (Laravel), Bootstrap e Mysql.
       </div>
   </div>
   <br/>

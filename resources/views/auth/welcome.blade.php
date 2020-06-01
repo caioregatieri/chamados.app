@@ -57,7 +57,7 @@ Chamados
     <div class="row row-centered" >
       <div class="col col-md-9 col-centered">
         <div class="title" >
-          <b>Chamados Técnicos</b><br/>
+          <b>Sistema de controle de chamados técnicos.</b><br/>
         </div>
       </div>
     </div>
