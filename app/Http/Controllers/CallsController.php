@@ -118,7 +118,7 @@ class CallsController extends Controller
             $w = $w . "and c.has_transfers = " . $has_transfers . " ";
       }
 
-      $q =  $q . $w . 'order by c.id desc';
+      $q =  $q . $w . ' group by c.id order by c.id desc';
 
       $calls = DB::select($q);
 
@@ -349,7 +349,7 @@ class CallsController extends Controller
     {
         $call = Call::find($id);
 
-        if ($call->history->last()->status->isend == 'on')
+        if ($call->history->last()->status->isend == 1)
             return redirect()->route('calls.index');
 
         $users =        User::lists('name','id');
@@ -407,11 +407,11 @@ class CallsController extends Controller
         return view('calls.index');
     }
 
-    public function historycreate($id)
+    public function historycreate($call_id)
     {
-        $call =   Call::find($id);
+        $call = Call::find($call_id);
 
-        if ($call->history->last()->status->isend == 'on')
+        if ($call->history->last()->status->isend == 1)
             return redirect()->route('calls.index');
 
         $users =  User::where('id', Auth::user()->id)->lists('name','id');

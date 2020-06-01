@@ -102,7 +102,7 @@ class HomeController extends Controller
            "from calls c ".
            "inner join places p on c.place_id = p.id ".
            "inner join departaments d on p.departament_id = d.id ".
-           "where c.created_at > " . Carbon::now()->subMonths(5)->format('Y-m') . " " .
+           "where c.created_at > '" . Carbon::now()->subMonths(5)->format('Y-m-d') . "' " .
            "group by DATE_FORMAT(c.created_at, '%Y-%m'), d.name";
            
       error_log($q);
@@ -188,7 +188,7 @@ class HomeController extends Controller
            "from calls c ".
            "inner join places p on c.place_id = p.id ".
            "inner join departaments d on p.departament_id = d.id ".
-           "where c.created_at > " . Carbon::now()->subMonths($months)->format('Y-m') . " " .
+           "where c.created_at > '" . Carbon::now()->subMonths($months)->format('Y-m-d') . "' " .
            "group by DATE_FORMAT(c.created_at, '%Y-%m'), d.name";
 
       $result = DB::select($q);

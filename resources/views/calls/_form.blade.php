@@ -5,7 +5,6 @@
 </div>-->
 
 <?php
-  
   if (Auth::user()->usertype->administrator != "1") {
     $options = ['class'=>'form-control', 'readonly'=>'readonly'];
   }else{

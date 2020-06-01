@@ -37,16 +37,12 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('monit', ['as'=>'calls.monit','uses'=>'CallsController@monit']);
     Route::get('graphs', ['as'=>'calls.graphs','uses'=>'HomeController@graphs']);
-    
-    Route::group(['prefix'=>'history'], function(){
-      Route::get('create/{id}', ['as'=>'calls.history.create','uses'=>'CallsController@historycreate']);
-      Route::post('store', ['as'=>'calls.history.store','uses'=>'CallsController@historystore']);
-    });
 
-    Route::get('download/call/{call}/file/{file}', ['as'=>'calls.file.download','uses'=>'CallsController@downloadcallfile']);
-    Route::get('delete/call/{call}/file/{file}', ['as'=>'calls.file.delete','uses'=>'CallsController@deletecallfile']);
+    Route::get('/{call_id}/download/{file}', ['as'=>'calls.file.download','uses'=>'CallsController@downloadcallfile']);
 
-    Route::get('download/history/{history}/file/{file}', ['as'=>'calls.history.file.download','uses'=>'CallsController@downloadhistoryfile']);
+    Route::get('/{call_id}/create-history', ['as'=>'calls.history.create','uses'=>'CallsController@historycreate']);
+    Route::post('/{call_id}/store-history', ['as'=>'calls.history.store','uses'=>'CallsController@historystore']);
+    Route::get('/{call_id}/download-history/{file}', ['as'=>'calls.history.file.download','uses'=>'CallsController@downloadhistoryfile']);
   });
 
   Route::group(['prefix'=>'places'], function(){
