@@ -47,28 +47,28 @@ class CallsController extends Controller
       $user =          Input::get('user','');
       $has_transfers = Input::get('has_transfers','');
 
-      //casoo usuario logado não seja administrador, sera filtrado os chamados por esse usuario
+      //caso usuário logado não seja administrador, será filtrado os chamados por esse usuário
       if ($user == ''){
         $user = Auth::user()->usertype->administrator == "0" ?  Auth::user()->id : '';
       }
 
       //comando a ser executado
-      $q = 'select c.id, c.created_at,  c.title, c.requester, c.has_transfers, '.
-              'p.prefix, '.
-              'p.name as place, '.
-              'd.name as departament, '.
-              'm.name as mode, '.
-              's.name as status, s.color '.
-          'from calls c '.
-          'inner join places p on c.place_id = p.id '.
-          'inner join departaments d on p.departament_id = d.id '.
-          'inner join callmodes m on c.mode_id = m.id '.
-          'inner join ( '.
-                  'select call_id, status_id '.
-                  'from callhistories '.
-                  'group by call_id '.
-                  ') h on  h.call_id = c.id '.
-          'inner join callstatuses s on s.id = h.status_id ';
+      $q = "
+        SELECT c.id, c.created_at,  c.title, c.requester, c.has_transfers, p.prefix, 
+              p.name AS place, d.name AS departament, m.name AS mode,
+              s.name AS status, s.color 
+        FROM calls AS c 
+        INNER JOIN places AS p ON c.place_id = p.id 
+        INNER JOIN departaments AS d ON p.departament_id = d.id 
+        INNER JOIN callmodes AS m ON c.mode_id = m.id 
+        INNER JOIN ( 
+          SELECT c1.call_id, c1.status_id 
+          FROM callhistories AS c1
+          LEFT JOIN callhistories AS c2 ON c1.created_at < c2.created_at AND c1.call_id = c2.call_id
+          WHERE c2.call_id IS NULL
+        ) AS h ON  h.call_id = c.id 
+        INNER JOIN callstatuses AS s ON s.id = h.status_id 
+      "; 
 
       $w = '';
 
@@ -154,14 +154,6 @@ class CallsController extends Controller
       $modes =        CallMode::all()->sortBy('name');
       $departaments = Departament::all()->sortBy('name');
       $callstatus =   CallStatus::all()->sortBy('name');
-
-      /*$triages = collect();
-      $triages->push((Object)['id'=>'1', 'name'=>'Auxilio pelo telefone']);
-      $triages->push((Object)['id'=>'2', 'name'=>'Conexão remota']);
-      $triages->push((Object)['id'=>'3', 'name'=>'Garantia']);
-      $triages->push((Object)['id'=>'4', 'name'=>'Manutenção de equipamentos']);
-      $triages->push((Object)['id'=>'5', 'name'=>'Serviço externo']);
-      dd($triages);*/
 
       return view('calls.index',compact('calls','modes','departaments','callstatus'));
     }

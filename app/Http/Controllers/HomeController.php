@@ -76,21 +76,36 @@ class HomeController extends Controller
     }
 
     function selectCalls($user = null){
-      $q = "select c.id, c.name, coalesce(b.quantidade, 0) as quantidade, c.color, c.icon ".
-           "from ( ".
-               "select count(*) as quantidade, status_id ".
-            	 "from ( select call_id, status_id ".
-            	        "from callhistories h ";
-
-            if ($user != null){
-                $q .= "inner join calls c on h.call_id = c.id ".
-                      "where c.user_id = $user ";
-            }
-
-      $q.=            "group by h.call_id ) as a ".
-               "group by status_id ) as b ".
-            "inner join callstatuses as c on b.status_id = c.id";
-
+      if ($user != null) {
+        $q = "
+          SELECT ch.status_id AS id, cs.name, cs.color, cs.icon, COALESCE(ch.quantidade, 0) AS quantidade
+          FROM (
+            SELECT c1.status_id, COUNT(*) AS quantidade
+              FROM callhistories AS c1
+              LEFT JOIN callhistories AS c2 ON c1.created_at < c2.created_at AND c1.call_id = c2.call_id
+              WHERE c2.call_id IS NULL AND c1.call_id NOT IN (
+                SELECT id 
+              FROM  calls
+              WHERE user_id = 2
+            )
+              GROUP BY c1.status_id
+          ) AS ch
+          INNER JOIN callstatuses AS cs on ch.status_id = cs.id
+        ";
+      } else {
+        $q = "
+          SELECT ch.status_id AS id, cs.name, cs.color, cs.icon, COALESCE(ch.quantidade, 0) AS quantidade
+          FROM (
+            SELECT c1.status_id, COUNT(*) AS quantidade
+              FROM callhistories AS c1
+              LEFT JOIN callhistories AS c2 ON c1.created_at < c2.created_at AND c1.call_id = c2.call_id
+              WHERE c2.call_id IS NULL 
+              GROUP BY c1.status_id
+          ) AS ch
+          INNER JOIN callstatuses AS cs on ch.status_id = cs.id
+        ";
+      }
+      
       return DB::select($q);
     }
 
@@ -105,8 +120,6 @@ class HomeController extends Controller
            "where c.created_at > '" . Carbon::now()->subMonths(5)->format('Y-m-d') . "' " .
            "group by DATE_FORMAT(c.created_at, '%Y-%m'), d.name";
            
-      error_log($q);
-
       $result = DB::select($q);
       $period = array();
       //percorro o resultado do banco
