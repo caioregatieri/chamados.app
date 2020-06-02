@@ -19,9 +19,18 @@
             .nav > .dropdown > .dropdown-toggle {
                 color: #f8f8f8 !important;
             }
+            .icon-bar {
+                background-color: #f8f8f8 !important;
+            }
+            .nav .open > a, 
+            .nav .open > a:focus, 
+            .nav .open > a:hover,
+            .navbar-toggle:hover {
+                background-color: #337AB7 !important;
+            }
             .nav > li > a:hover {
                 text-decoration: none;
-                background-color: #167ac6 !important;
+                background-color: #337AB7 !important;
             }
         </style>
         @if(Auth::user()->usertype->administrator != "1")

@@ -9,12 +9,31 @@
         <link rel="stylesheet" href="{{ asset('css/boot.min.css') }}">
         <!-- font-awesome -->
         <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+        <style>
+          .navbar.navbar-default, 
+          .panel-heading {
+            color: #fff !important;
+            background-color: #337AB7 !important;
+          }
+          .navbar.navbar-default a, 
+          .navbar.navbar-default a:hover,
+          .nav.navbar-nav.navbar-right li a {
+            color: #fff;
+          }
+          .icon-bar {
+            background-color: #f8f8f8 !important;
+          }
+          .nav > li > a:hover,
+          .navbar-toggle:hover {
+            text-decoration: none;
+            background-color: #337AB7 !important;
+          }
+        </style>
         @yield('head')
     </head>
     <body>
       <div class="container-fluid">
       	<div class="row">
-      		<div class="col-md-12">
             <nav class="navbar navbar-default" role="navigation">
       				<div class="navbar-header">
       					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -32,7 +51,6 @@
             <div id="container" class="container">
                 @yield('content')
             </div>
-          </div>
       	</div>
       </div>
     </div>

@@ -18,9 +18,9 @@
                 </ul>
             </li>
             <li>
-                <a href="#"><i class="fa fa-users fa-fw"></i> Usuarios</a>
+                <a href="#"><i class="fa fa-users fa-fw"></i> Usuários</a>
                 <ul class="nav nav-second-level">
-                <li><a href="{{ route('users.index') }}">Usuarios</a></li>
+                <li><a href="{{ route('users.index') }}">Usuários</a></li>
                 <li><a href="{{ route('usertypes.index') }}">Tipos</a></li>
                 </ul>
             </li>
